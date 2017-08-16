@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+        }
+        ul{
+            width: 500px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        ul h3{
+            background: darkorange;
+            color: #fff;
+            cursor: pointer;
+        }
+        ul.list>li{
+            border:1px solid #e5e5e5;
+        }
+        .list li>ul{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="list">
+    <li>
+        <h3>tab1</h3>
+        <ul>
+            <li>11</li>
+            <li>22</li>
+            <li>33</li>
+        </ul>
+    </li>
+    <li>
+        <h3>tab1</h3>
+        <ul>
+            <li>11</li>
+            <li>22</li>
+            <li>33</li>
+        </ul>
+    </li>
+    <li>
+        <h3>tab1</h3>
+        <ul>
+            <li>11</li>
+            <li>22</li>
+            <li>33</li>
+        </ul>
+    </li>
+</ul>
+<button class="btn">btn</button>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $('.btn').click(function () {
+       $('.btn').toggle();
+    });
+    $('.list h3').click(function () {
+        //console.log(this.next());
+       // $(this).next().toggle().parent().siblings().children('ul').hide();
+        console.log($(this).next().toggle().end());
+    })
+</script>
+</body>
+</html>

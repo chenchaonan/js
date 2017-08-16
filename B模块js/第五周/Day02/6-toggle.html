@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>toggle</title>
+</head>
+<body>
+<button id="btn">显示／隐藏</button>
+<div id="oDiv">1234</div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script src="jquery-migrate.min.js"></script>
+<script>
+    $(function () {
+        var $oDiv=$('#oDiv');
+        $('#btn').click(function () {
+//            if($oDiv.is(':visible')){
+//                $oDiv.hide(300);
+//            }else {
+//                $oDiv.show(300);
+//            }
+//            $oDiv.toggle(300)
+        });
+        //在之前的版本里面toggle是一个点击的符合写法
+//        $('#btn').toggle(function () {
+//            $oDiv.hide(300);
+//        },function () {
+//            $oDiv.show(300);
+//        });
+        $('#btn').toggle(5000,'linear',function () {
+            console.log(123);
+        })
+    })
+</script>

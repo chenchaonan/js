@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //通常后台返回给我的数据格式是JSON
+    //JSON是一种前后端交互的数据格式，是一种载体。
+    //JSON格式两种类型
+    //JSON对象,类似于js对象，但是，属性名和属性值如果是字符串，必须用双引号包起来，数字可以不用。
+    //var obj = {name: 'zhufeng'};
+    //var obj = {"name": "zhufeng", "id": 123};
+    //    for (var k in obj) {
+    //        console.log(obj[k]);
+    //    }
+    //JSON字符串
+
+
+
+    var jsonStr = '{"name":"zhufeng","id":123}';
+
+    //IE8以下是没有JSON对象的
+    eval('('+jsonStr+')');
+
+    //JSON格式转换:全局提供了一个JSON对象，它里面parse，stringify，用来进行数据格式的转换。
+    //JSON.parse();//将我们的JSON字符串转化成JSON对象。
+    console.log(JSON);
+    //console.log(JSON.parse(jsonStr));
+
+    //JSON.stringify,将JSON对象或普通对象转化为JSON字符串。
+    var obj = {name: 'zhufeng', id: 123};
+
+    console.log(JSON.stringify(obj));
+    //console.log(JSON.parse(obj));
+    
+    
+    function jsonParse() {
+
+    }
+</script>

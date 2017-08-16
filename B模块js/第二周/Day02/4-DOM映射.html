@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="oDiv"></div>
+
+<ul id="oUl">
+    <li id="first">11</li>
+    <li>22</li>
+    <li>33</li>
+    <li>44</li>
+</ul>
+</body>
+</html>
+<script>
+    //DOM映射：html页面中，元素和通过js的DOM方法获取到的元素对象一一对应的映射关系，一个改变另一个也发生改变。
+    var oDiv=document.getElementById('oDiv');
+    console.log(oDiv);
+    oDiv.innerHTML='hello';
+    oDiv.style.background='pink';
+
+    var oUl=document.getElementById('oUl');
+    var oLis=oUl.getElementsByTagName('li');//元素集合
+    console.log(oLis);//HTMLCollection 及时同步更新，当内部结构发生改变就会自动同步。
+
+    var first=document.getElementById('first');
+    oUl.removeChild(first);
+
+    var li=document.createElement('li');
+    li.innerHTML='最新添加的';
+    console.log(oLis);
+    setTimeout(function () {
+        oUl.appendChild(li);
+        console.log(oLis);
+    },5000)
+</script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+</head>
+<body>
+<div id="oDiv" zhufeng="珠峰培训">
+    <div>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div></div>
+    <div id="div3"></div>
+    <ul id="ul1">
+        <li>珠峰</li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div id="div4"></div>
+    <ul id="ul2">
+        <li>珠峰</li>
+        <li>22</li>
+        <li>33</li>
+        <li>44</li>
+    </ul>
+    <ul id="ul3">
+        <li>珠峰</li>
+        <li>22</li>
+        <li>33</li>
+        <li>44</li>
+    </ul>
+</div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    //1.通过jQuery选择器获取到的结果是一个jQuery对象，可以i 使用jQuery中提供的属性和方法。但是不能直接的使用浏览器内置的属性和方法。
+    var $oDiv = $('#oDiv');
+//    console.log($oDiv.innerWidth());
+//    console.log($oDiv.attr('zhufeng'));
+
+
+    //通过js获取到的结果叫做元素对象／元素集合／节点集合，他们可以使用浏览器为其提供的天生自带的属性和方法。原生的js不能直接使用jQuery提供的属性和方法。
+    var oDiv = document.getElementById('oDiv');
+//    console.log(oDiv.clientWidth);
+
+
+    //2.关于原生js对象和jQuery对象之间的转换。
+    // 原生的转变为jQuery
+    //console.log($('#oDiv').attr('zhufeng'));
+    //jQuery转变成原生的：直接通过索引获取对应的元素对象即可。
+    console.log($oDiv[0].getAttribute('zhufeng'));
+    console.log($oDiv.get(0));//get（索引），通过索引来获取指定位置的元素对象（js原生对象）
+
+    /*
+    * 3.更多的jQuery选择器
+    * (1)基本 id／element／.class/* 匹配所有/selector1,selector2,selectorN..群组选择器
+    * （2）层级选择器
+    * ancestor descendant
+    * parent>child
+    * prev+next
+    * prev~siblings
+    * (3)基本过滤器选择器
+    * :first 每个集合当中的第一个
+    * :last 每个集合当中的最后一个
+    * :not  除了谁
+    * :even 偶数
+    * :odd 奇数
+    * :eq 通过索引来查找，获取集合中的某一个，但是获取的结果依然是一个jQuery对象（之前讲的get方法，虽然也是通过索引来获取名单获取到的结果是一个js原生对象）
+    * :gt(索引) 大于索引的元素
+    * :lt（索引）小于索引的元素
+    *（4）内容过滤器
+    * :contains 包含哪些内容的
+    * :empty 内容是空的，空格也算内容
+    * :has 包含指定元素
+    * :parent
+    * （5）子元素过滤器选择器
+    * :nth-child() 第几个子元素
+    * first-child
+    * :last-child
+    * :only-child
+    *
+    * （6）表单选择器
+    * :input
+    * :text
+    * :password
+    * :radio
+    * :checkbox
+    * :submit
+    * :image
+    * :reset
+    * :button
+    * :file
+    * :hidden
+    * (7)表单过滤选择器
+    * :enabled 可用
+    * :disabled 不可用
+    * :checked 复选框的选中
+    * :selected 下拉框的选中
+    *
+    * */
+//    console.log($('#oDiv li'));//获取子子孙孙级别的
+//    console.log($('#oDiv>li'));//获取子集
+//    console.log($('#div3+'));//获取它的下一个弟弟
+//    console.log($('#div3+ul'));//获取它的下一个弟弟，并且标签名是ul的
+//    console.log($('#div3~'));//获取所有的弟弟元素
+//    console.log($('#div3~ul'));//获取所有的弟弟元素中的标签名为ul的
+    //console.log($('#oDiv:not(div3)'));
+
+//    console.log($('#oDiv li:contains(珠峰)'));//获取的所有的li中 内容包含珠峰的li
+//    console.log($('#oDiv li:empty()'));//获取内容是空的
+//    console.log($('#oDiv:has(ul)'));//所有div当中所有包含ul的
+//    console.log($('#oDiv>*[id*=1]'));//获取#oDiv下所有id包含1的元素
+    console.log($('#oDiv:nth-child(1)'));//获取集合中的第一个
+
+
+</script>

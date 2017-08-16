@@ -1,0 +1,270 @@
+body, html {
+    font: 12px/1.5 Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \\5b8b\4f53, sans-serif;
+    color: #666;
+    width: 100%;
+}
+
+a {
+    color: #999;
+}
+
+.header {
+    min-width: 1200px;
+    height: 30px;
+    background: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+}
+
+.l-h li a {
+    line-height: 24px;
+}
+
+
+.header .top_nav {
+    width: 1200px;
+    margin: 0 auto;
+    height: 100%
+}
+/*jd logo*/
+.header .top_nav .jd_logo {
+    float: left;
+    display: block;
+    width: 190px;
+    height: 170px;
+    background: #fff;
+    -webkit-box-shadow: 0 -12px 10px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 -12px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 -12px 10px rgba(0, 0, 0, .2);
+}
+
+.header .top_nav .jd_logo img {
+    width: 100%;
+    height: 100%;
+}
+.header .top_nav .left_nav{
+    margin-left: 10px;
+}
+.header .top_nav > ul > li {
+    line-height: 30px;
+    padding: 0 3px;
+}
+
+.header .top_nav ul li a {
+    font-size: 12px;
+}
+
+/*给下拉隐藏按钮加透明边框占位*/
+.city-list, .my_jd a, .service a, .web-nav a {
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.city-list i {
+    color: red
+}
+
+.header .right_nav > li {
+    display: inline-block;
+    padding: 0 4px;
+}
+
+.header .left_nav > li > a, .header .right_nav > li > a {
+    display: inline-block;
+    height: inherit;
+    padding: 0 10px;
+}
+
+.header .top_nav ul li a:hover {
+    color: red;
+}
+
+.header .right_nav > li:before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 1px;
+    height: 11px;
+    margin: 11px 5px 0 -5px;
+    background: #ccc;
+}
+
+.city-list:hover, .my_jd:hover > a, .service:hover > a, .web-nav:hover > a {
+    background: #fff;
+    border: 1px solid #ccc;
+}
+
+.city-list:hover .down-city, .my_jd:hover .my_jdDown, .service:hover .down-service ,.web-nav:hover .web-navList{
+    display: block;
+}
+
+/*隐藏层*/
+.down {
+    position: absolute;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, .1);
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, .1);
+}
+
+/*左侧城市隐藏层*/
+.down-city {
+    display: none;
+    width: 310px;
+    margin:-1PX 0 0 -4px;
+    padding: 10px 0;
+}
+
+.down-city ul {
+    clear: both;
+}
+
+.down-city ul li {
+    float: left;
+    width: 60px;
+    text-align: center;
+}
+
+.down-city ul li a {
+    padding: 4px 8px;
+}
+
+.down-city .select a {
+    background: red;
+    color: #fff;
+}
+
+.down-city ul li a:hover {
+    background: #f4f4f4;
+    color: red;
+}
+
+.down-city:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -1px;
+    left: 0;
+    width: 64px;
+    height: 2px;
+    background: #fff;
+}
+
+/*我的京东*/
+.my_jd .my_jdDown {
+    display: none;
+    width: 280px;
+    padding: 10px 0 0 0;
+    margin-top: -2px;
+}
+
+.my_jd .my_jdDown .my_jdList {
+    padding: 0 0 5px 15px;
+    clear: both;
+}
+
+.my_jd .my_jdDown .my_jdList > li {
+    display: inline-block;
+    width: 120px;
+    line-height: 24px;
+}
+
+.my_jd .my_jdDown .my_jdList2, .down-service .serviceList {
+    border-top: 1px solid #f1f1f1;
+}
+
+.my_jdDown:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -1px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: #fff;
+}
+
+/*客户服务*/
+.service {
+    position: relative;
+}
+
+.service .down-service {
+    display: none;
+    right: 3px;
+    margin-top: -2px;
+    width: 170px;
+    padding: 10px;
+    background: #fff;
+}
+
+.service .down-service ul {
+    clear: both;
+}
+
+.service .down-service li {
+    float: left;
+    width: 50%;
+}
+
+.service .down-service:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -1px;
+    right: 0;
+    width: 80px;
+    height: 2px;
+    background: #fff;
+}
+
+/*网站导航*/
+.web-nav .web-navList {
+    z-index: 10;
+    display: none;
+    right: 120px;
+    width: 1200px;
+    margin-top: -2px;
+    clear: both;
+    padding: 20px 0;
+    background: #fff;
+}
+.web-nav .web-navList .listCon{
+    float: left;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-left: 1px solid #f5f5f5;
+}
+.web-nav .web-navList .f1{
+    border-left: none;
+}
+
+.web-nav .web-navList .listCon:last-child{
+    border-right: none;
+ }
+.web-nav .web-navList .listCon > h3{
+    font-size: 12px ;
+}
+.web-nav .web-navList .listCon ul{
+    overflow: hidden;
+    width: 255px;
+}
+.web-nav .web-navList .f1 ul{
+    width: 340px;
+}
+.web-nav .web-navList .listCon ul li{
+    float: left;
+    width: 85px;
+}
+.web-nav .web-navList:before{
+    position: absolute;
+    content: '';
+    display: block;
+    top: -1px;
+    right: 80px;
+    width: 80px;
+    height: 2px;
+    background: #fff;
+}
+
+

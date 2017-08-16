@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    //Object.is()
+    console.dir(Object);
+    console.log(+0 === -0);
+    console.log(Object.is(+0, -0));
+    console.log(NaN === NaN);
+    console.log(Object.is(NaN, NaN));
+
+
+    let a=+0;
+    console.log(-0..toString());
+
+    //合并对象:Object.assign(obj1,obj2.....)
+    //将obj2...合并到obj1上,将obj1返回
+    //注意obj2...可以不是一个对象,属性名依次为"0","1"....
+
+    //只将obj2的私有属性给obj1
+    let obj1={a:1};
+    function FF() {
+        this.b=2;
+    }
+    FF.prototype.x=12;
+    FF.prototype.y=22;
+    let obj2=new FF();
+    console.log(Object.assign(obj1, obj2));
+
+    //console.log(obj2.x);//
+    console.log(obj1.x);
+
+    console.log(obj2);
+    //获取原型
+    console.log(Object.getPrototypeOf(obj2));
+
+    let obj3=Object.create(FF.prototype);
+    console.log(obj3.__proto__ == FF.prototype);
+
+    console.log(obj3);
+
+
+    //let obj4=new obj3();
+    //obj4.__proto__==obj3.prototype;
+    //obj3.prototype.__proto__==FF.prototype;
+    //console.log(obj4.x);
+    function getPro(obj1,obj2) {
+        let p=Object.getPrototypeOf(obj2);
+        let p1=Object.create(p);
+        return Object.assign(obj1,p,obj2)
+    }
+
+    console.log(getPro(obj1, obj2));
+
+    let obj = { foo: 123 };
+    console.log(Object.getOwnPropertyDescriptor(obj, 'foo'));
+    let s="111";
+    console.log(Object.getOwnPropertyDescriptor(s, 'length'));
+
+    //Object.setPrototypeOf(),Object.getPrototypeOf()
+    //给原型增加属性
+    Object.setPrototypeOf(obj2,{p:"p"});
+    console.log(obj2);
+
+</script>

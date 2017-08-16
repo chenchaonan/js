@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>问号</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+    * ?
+    * 1.量词元字符
+    * 2.?:取消分组捕获，只匹配不捕获
+    * 3.放在量词元字符后边取消贪婪性
+    *贪婪性：按照最长匹配。
+    * ?= 正向预查，一个条件，把条件写在分组里面（？=1），不会对他进行分组捕获。
+    * ?! 反向预查，相反的条件（?!1）,不会对他进行分组捕获
+    * */
+
+//    var str='h123456';
+//    var reg=/\d+/;//等价于{1,}
+//    console.log(reg.exec(str));
+//
+//    //var reg2=/\d{2,4}/;//不加问号，按最长匹配。
+//    var reg2=/\d{2,4}?/;//加上问号，取消贪婪性，按最短匹配
+//    console.log(reg2.exec(str));
+
+
+    //正向预查
+//    var reg=/[a-z](?=3|4)/;//捕获到后边是3或者4的字符
+//    console.log(reg.exec('a3'));
+//    console.log(reg.exec('b4'));
+//    console.log(reg.exec('c3'));
+//    console.log(reg.exec('d5'));
+
+    //反向预查
+//    var reg=/[a-z](?!3|4)/;//捕获到后边不是3或者4的字符
+//    console.log(reg.exec('a3'));
+//    console.log(reg.exec('b4'));
+//    console.log(reg.exec('c3'));
+//    console.log(reg.exec('d5'));
+//
+//    //用match方法捕获
+//    var str='a3b4c5';
+//    console.log(str.match(reg));
+
+
+//    var reg=/^(?=3)\d/;//把限制条件写在前面，就限制了后边元字符的范围里只能是3
+//    console.log(reg.test('3'));
+//    console.log(reg.test('4'));
+//    console.log(reg.test('5'));
+//    console.log(reg.test('6'));
+
+//    var reg=/^((?=3)\d)+$/;//把限制条件写在前面，就限制了后边元字符的范围里只能是连续的3
+//    console.log(reg.test('3333'));
+//    console.log(reg.test('43'));
+//    console.log(reg.test('5333'));
+//    console.log(reg.test('6'));
+
+    var reg=/^((?!a)[a-z])+$/;//把限制条件写在前面，就限制了后边元字符的范围里只不能有a
+    console.log(reg.test('a'));
+    console.log(reg.test('b'));
+    console.log(reg.test('c'));
+    console.log(reg.test('d'));
+</script>

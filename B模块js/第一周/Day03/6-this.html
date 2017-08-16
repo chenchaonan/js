@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+<button id="btn1"></button>
+</body>
+</html>
+<script>
+    /*非严格模式下
+     * this 主要出现在作用域中，就是一个行为主体
+     1.全局中的this就是window
+     2.函数中this就看函数执行的时候前面有没有".",点前面是谁，函数中的this就是谁。
+     *函数在哪定义和在哪里执行没有关系
+     3.自执行函数中的this，非严格模式下永远是window
+     4.事件中this，绑定事件的元素。
+     * */
+
+    /*
+    * 严格模式，让js在严格的条件下运行js（消除不合理的，一些怪异行为）。
+    * 'user strict' 加上这句话可以让js处于严格模式下。
+    * 自执行函数的this就是undefined；
+    * 函数执行的时候看前面有没有'.',点前面是谁，this就是谁，如果没有点，就是undefined
+    * */
+    'user strict'
+        function fn() {
+            console.log(this);
+        }
+        fn();//window
+        window.fn();
+
+    //    var obj={};
+    //    function fn() {
+    //        console.log(this);
+    //    }
+    //    obj.fe=fn();
+    //    obj.fe();
+
+    //    function ff() {
+    //        console.log(this);//window
+    //    }
+    //
+    //    function fn() {
+    //        console.log(this);//obj
+    //        ff()
+    //    }
+    //    var obj={};
+    //    obj.fe=fn;
+    //    obj.fe();
+
+
+    //    var obj = {
+    //        fn: function () {
+    //            console.log(this);//window
+    //        }
+    //    };
+    //    function ff(foo) {
+    //        foo()
+    //    }
+    //    ff(obj.fn)
+
+
+    //    var bar={   //?????
+    //        fn:function () {
+    //            console.log(this);
+    //            var obj={
+    //                that:this;
+    //            }
+    //            console.log(obj.that);
+    //        }
+    //    }
+
+    //    function fe() {
+    //        //console.log(this);
+    //        return function () {
+    //            console.log(this);
+    //        }
+    //    }
+    //
+    //    var ff=fe;
+    //    ff();
+    //
+    //    var obj={};
+    //    obj.foo=fe();
+    //    obj.foo();
+
+
+    //自执行函数
+    var obj = {};
+    obj.fn = (function () {
+        console.log(this);//window
+        return function () {
+            console.log(this);//obj
+        }
+    })();
+    obj.fn();
+
+    var fn=(function () {
+        console.log(this);
+    })();
+
+
+    //4
+//    function fe() {
+//        console.log(this);
+//    }
+//    btn.onclick=fe;
+</script>

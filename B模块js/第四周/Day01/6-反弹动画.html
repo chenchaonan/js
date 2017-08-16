@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            left: 50px;
+            top: 60px;
+            width: 120px;
+            height: 120px;
+            background: red;
+        }
+
+        button {
+            width: 50px;
+            height: 35px;
+            background: darkorange;
+            color: #fff;
+            margin: 10px;
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<button id="left">向左走</button>
+<button id="right">向右走</button>
+<div id="oDiv"></div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    //边界值：先累加再判断，预防累加步长后超过目标点
+    //清除动画时，将运动值设置为目标值
+    //动画累积问题，先清除当前动画，再执行新动画
+    //定时器共享问题
+    var oDiv = document.getElementById('oDiv');
+    var left = document.getElementById('left');
+    var right = document.getElementById('right');
+    var step = 10;
+    //边界值
+    var minLeft = 0;
+    var maxLeft = utils.win('clientWidth') - oDiv.offsetWidth;
+    left.onclick = function () {
+        clearInterval(timer);//为了预防动画累积
+        move(minLeft);
+    };
+
+    right.onclick = function () {
+        clearInterval(timer);
+        move(maxLeft)
+    };
+    var timer;
+    function move(target) {
+        timer = setInterval(function () {
+            var curLeft = utils.getCss(oDiv, 'left');
+            if (curLeft < target) {//向右走 向右的目标值 target ，maxLeft
+                curLeft += step;
+                if(curLeft>=target){
+                    utils.setCss(oDiv,'left',target);
+                    clearInterval(timer);
+                    return
+                }
+            } else if (curLeft > target) {
+                curLeft -= step;
+                console.log(123);
+            }else {
+                if(curLeft<=target){
+                    utils.setCss(oDiv,'left',target);
+                    clearInterval(timer);
+                    return
+                }
+            }
+            utils.setCss(oDiv, 'left', curLeft)
+        }, 10)
+    }
+
+</script>

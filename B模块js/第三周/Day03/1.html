@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<script>
+    function bindData(data) {
+        for (var i = 0; i < 50; i++) {
+            var ind = Math.round(Math.random() * 8);
+            var cur = data[ind];
+            var oLi = document.createElement('li');
+            var oa = document.createElement('a');
+            oLi.appendChild(oa);
+
+            var sp = document.createElement('span');
+            sp.innerHTML = '采集';
+            oa.appendChild(sp);
+
+            var img = document.createElement('img');
+            img.src = cur.src;
+            // 获取随机高 220 - 350  130
+            img.style.height = Math.round(Math.random() * 130 + 220) + 'px';
+            oa.appendChild(img);
+
+            var op = document.createElement('p');
+            op.innerHTML = cur.title;
+            oa.appendChild(op);
+
+            // 根据ul高度进行排序
+            arrUl.sort(function (a, b) {
+                return utils.getCss(a, 'height') - utils.getCss(b, 'height');
+            });
+
+            // 将创建的li插入到 高度最小的那一个ul里
+            arrUl[0].appendChild(oLi);
+        }
+    }
+</script>

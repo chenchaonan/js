@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+<script>
+    /*动态计算根元素字体*/
+    var desW = 640;
+    var doc = document.documentElement;
+
+    function refreshRem() {
+        var winW = doc.clientWidth;//获取视口宽度
+        if(winW > desW){
+            doc.style.fontSize = 100 + 'px';
+            return;
+        }
+        var radio = desW / winW; //像素比
+        doc.style.fontSize = 100 / radio + 'px';
+    }
+    refreshRem();
+    window.addEventListener('resize',refreshRem)
+
+</script>
+
+<body>
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">button</button>
+</body>
+</html>
+<script>
+    var btn = document.getElementById('btn');
+
+    /*
+    * 1.this问题addEventListener中的this是当前元素，attachEvent中的this是window
+    * 2.重复绑定，同一个行为多次绑定同一个处理函数，addEventListener只绑定一次，attachEvent绑定几次就执行几次。
+    * 3.执行顺序，addEventListener执行顺序和绑定顺序相同。在ie6-8是倒叙（乱序）；
+    *
+    * */
+
+    //挂在到元素的原型属性上，供元素直接调用
+    Element.prototype.on = on;
+    Element.prototype.off = off;
+
+    function on(type, handle) {
+        if (this.addEventListener) {
+            this.addEventListener(type, handle, false);
+        } else if (this.attachEvent) {
+            this.attachEvent('on' + type, handle);
+        }
+    }
+
+    function off(type, handle) {
+        if (this.removeEventListener) {
+            this.removeEventListener(type, handle, false);
+        } else if (this.detachEvent) {
+            this.detachEvent('on' + type, handle);
+        }
+    }
+
+    function fn1() {
+        console.log('fn1');
+    }
+
+    function fn2() {
+        console.log('fn2');
+    }
+
+    btn.on('click', fn1)
+</script>

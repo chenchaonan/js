@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绑定预留事件</title>
+</head>
+<body>
+<ul id="oul">
+    <li>新闻</li>
+    <li>娱乐</li>
+    <li>综艺</li>
+</ul>
+</body>
+</html>
+<script>
+    var oUl = document.getElementById('oul');
+    var list = oUl.getElementsByTagName('li');
+    //    for(var i=0;i<list.length;i++){
+    //        list[i].onclick=function () {
+    //            alert(this.innerText)
+    //        }
+    //    }
+    oUl.onclick = function (e) {
+        e = e || window.event;
+        var tar = e.target || e.srcElement;
+        if (tar.tagName.toLocaleUpperCase() === "LI") {
+            alert(tar.innerText);
+        }
+    };
+    setTimeout(function () {
+        var str = '';
+        for (var j = 4; j < 6; j++) {
+            str += '<li>'+j+'</li>'
+        }
+        oUl.innerHTML += str;
+    }, 2000)
+
+</script>

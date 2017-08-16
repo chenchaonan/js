@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #oDiv1, #oDiv2, #oDiv3, #oDiv4 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height:100px;
+            background: red;
+        }
+        #oDiv2{
+            background: blue;
+        }
+        #oDiv3{
+            background: mediumpurple;
+        }
+        #oDiv4{
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv1"></div>
+<div id="oDiv2"></div>
+<div id="oDiv3"></div>
+<div id="oDiv4"></div>
+</body>
+</html>
+<script src="drag-index.js"></script>
+<script>
+    new $Drag('#oDiv1');
+    new $Drag('#oDiv2');
+    new $Drag('#oDiv3');
+    new $Drag('#oDiv4');
+</script>

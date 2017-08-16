@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body, html {
+            font-size: 14px;
+            color: #000;
+            padding: 5px 20px;
+            background: #ededed;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+
+        #container {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        ul {
+            float: left;
+            /*width: 20%;*/
+            padding: 3px;
+            box-sizing: border-box;
+        }
+
+        ul li {
+            position: relative;
+            cursor: pointer;
+            width: 236px;
+            margin: 10px;
+            border: 1px solid #ededed;
+            border-radius: 4px;
+            box-sizing: border-box;
+            text-align: center;
+            background: #fff;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+        }
+
+        ul li img {
+            max-width: 100%;
+            max-height: 100%;
+            opacity: 0.3;
+        }
+
+        ul li a span {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: none;
+            width: 60px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #E53E49;
+            color: #fff;
+            border-radius: 2px;
+            border: 1px solid #C90000;
+        }
+
+        ul li a:hover span {
+            display: block;
+        }
+
+        /*ul a span:hover {*/
+        /*background: red;*/
+        /*}*/
+
+        ul li p {
+            margin: 10px;
+        }
+
+        #back {
+            position: fixed;
+            z-index: 2;
+            right: 10px;
+            bottom: 50px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            background: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="back">回到顶部</div>
+<div id="container">
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var container = document.getElementById('container');
+    var oUls = container.getElementsByTagName('ul');
+    var oImgs = container.getElementsByTagName('img');
+    var arrUls = utils.listToArray(oUls);
+
+    //获取数据
+    function getData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'data.json', true);
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+                var data = this.response;
+                bindData(data);
+            }
+        };
+        xhr.send();
+    }
+    getData();
+
+    //绑定数据
+    function bindData(data) {
+        for (var i = 0; i < 50; i++) {
+            var ind = Math.round(Math.random() * 11);
+            var cur = data[ind];
+            var oLi = document.createElement('li');
+            var oa = document.createElement('a');
+            oLi.appendChild(oa);
+
+            var sp = document.createElement('span');
+            sp.innerHTML = '采集';
+            oa.appendChild(sp);
+
+            var img = document.createElement('img');
+            //把真实的src地址，保存在real属性上
+            img.setAttribute('real', cur.src);
+
+            //获取随机高度
+            img.style.height = Math.round(Math.random() * 300 + 200) + 'px';
+//            img.style.height = cur.height;
+            oa.appendChild(img);
+
+            var op = document.createElement('p');
+            op.innerHTML = cur.title;
+            oa.appendChild(op);
+
+            //根据ul高度进行排序
+            arrUls.sort(function (a, b) {
+                return utils.getCss(a, 'height') - utils.getCss(b, 'height');
+            });
+
+            //将创建的li插入到高度最小的ul里面
+            arrUls[0].appendChild(oLi);
+        }
+        delayImg();//首屏加载
+
+    }
+
+    //延迟加载
+    function delayImg() {
+        for (var i = 0; i < oImgs.length; i++) {
+            var cur = oImgs[i];
+            if (cur.flag) continue;
+            checkImg(cur);
+        }
+    }
+
+    function checkImg(img) {
+        var imgH = img.offsetHeight;
+        var imgT = utils.offset(img).top;
+
+        var winH = utils.win('clientHeight');
+        var sTop = utils.win('scrollTop');
+
+        if (winH + sTop >= imgH / 2 + imgT) {//已经出现在窗口中
+            var imgSrc = img.getAttribute('real');
+            //检测图片的有效性
+            var temp = new Image;
+            temp.src = imgSrc;
+            temp.onload = function () {
+                img.flag = true;
+                img.src = imgSrc;
+                fadeIn(img);
+            };
+            temp.onerror = function () {
+                img.flag = true;
+            }
+        }
+    }
+
+    function fadeIn(img) {
+        var op;
+        img.timer = setInterval(function () {
+            op = utils.getCss(img, 'opacity');
+            if (op >= 1) {
+                utils.setCss(img, 'opacity', 1);
+                clearInterval(img.timer);
+                return;
+            }
+            utils.setCss(img, 'opacity', op += 0.2)
+        }, 100)
+    }
+
+    window.onscroll = function () {
+        delayImg();
+    };
+
+    //返回顶部
+    function backTop() {
+        var back = document.getElementById('back');
+        var time = 200;//自己规定的总时间
+        back.onclick = function () {
+            clearInterval(this.timer);
+            var duration = utils.win('scrollTop');
+            var speed = duration / 200;
+            var interval = 10;
+            var step = speed * interval;
+            this.timer = setInterval(function () {
+                duration -= step;
+                if (duration <= 0) {
+                    utils.win('scrollTop', 0);
+                    clearInterval(back.timer);
+                    return;
+                }
+                utils.win('scrollTop', duration)
+            }, interval);
+        };
+        var winH = utils.win('clientHeight');
+        window.onscroll = function () {
+            var sTop = utils.win('scrollTop');
+            back.style.display = sTop > winH / 2 ? 'block' : 'none';
+            delayImg();
+        }
+    }
+    backTop();
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

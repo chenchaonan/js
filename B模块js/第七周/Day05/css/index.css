@@ -1,0 +1,41 @@
+#container{
+    max-width:640px;
+    margin: 0 auto;
+}
+#container .swiperContainer{
+    width: 100%;
+}
+#container .swiperContainer .swiper-slide{
+    /*font-size: 0;*/
+}
+#container .swiperContainer .swiper-slide img{
+    display: block;
+    width: 100%;
+}
+#navList{
+    background: #f5f5f5;
+}
+#navList ul li{
+    overflow: hidden;
+    padding: 10px 0;
+}
+#navList ul li a{
+    float: left;
+    text-align: center;
+    width: 20%;
+    color:#000;
+}
+#navList ul li img{
+    width: 0.58rem;
+    height: 0.58rem;
+}
+#navList ul li span{
+    display: block;
+}
+.text{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:3;
+}

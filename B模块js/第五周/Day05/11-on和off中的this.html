@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">button</button>
+</body>
+</html>
+<script>
+    var btn = document.getElementById('btn');
+
+    function on(ele, type, handel) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handel, false);
+        } else {//IE6-8
+            var events;//创建一个私有变量
+            var Fn = function (e) {
+                fn.call(ele, e);
+            };
+            //定义一个事件池，用来存储处理函数，以方便后边删除用到。
+            //先判断有没有，没有的话再创建。
+            if (!ele['bind' + type]) {
+                ele['bind' + type] = [];
+            }
+            //防止重复绑定
+            if (events) {
+                for (var i = 0; i < events.length; i++) {
+                    if (events[i]._event === handel) return;
+                }
+
+            }
+            //定义一个变量用来保存传进来的函数的集合
+            events = ele['bind' + type];
+            ele.attachEvent('on' + type, Fn);
+
+            //给传递进来的函数添加自定义属性，记录每次传递进来的是哪一个，也就是唯一标识。
+            Fn._event = handel;
+            events.push(Fn);
+        }
+    }
+
+    function off(ele, type, handel) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(ele, handel, false)
+        } else {
+            var events = ele['bind' + type];
+            //判断events是否属于这个数组
+            if (events instanceof Array) {
+                //用for循环遍历事件池中的每一项,找出和events属性值相同的所有元素
+                for (var i = 0; i < events.length; i++) {
+                    var Fn = events[i];
+                    if (Fn._event === handel) {
+                        ele.detachEvent('on' + type, Fn);
+                    }
+                }
+            }
+        }
+    }
+
+
+    function fn1() {
+        console.log('fn1');
+    }
+
+    function fn2() {
+        console.log('fn2');
+    }
+
+    function fn3() {
+        console.log('fn3');
+    }
+
+    //改变this指向
+    function handelThis(context, fn) {
+        //传形参e是因为把返回的函数作为事件处理函数复制给了点击事件，函数执行的时候要有事件对象。
+        return function (e) {
+            fn.call(context, e);
+        }
+    }
+</script>

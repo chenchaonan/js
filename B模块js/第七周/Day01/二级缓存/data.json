@@ -1,0 +1,10 @@
+{
+  "list": [
+    {"img": "images/1.jpg", "brand": "小米6", "price": "3600元起"},
+    {"img": "images/2.jpg", "brand": "小米6", "price": "3600元起"},
+    {"img": "images/3.jpg", "brand": "小米6", "price": "3600元起"},
+    {"img": "images/4.jpg", "brand": "小米6", "price": "3600元起"},
+    {"img": "images/5.jpg", "brand": "小米6", "price": "3600元起"},
+    {"img": "images/6.jpg", "brand": "小米6", "price": "3600元起"}
+  ]
+}

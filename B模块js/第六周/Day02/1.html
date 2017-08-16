@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        /*a标签样式*/
+        a{
+            float: left;
+            width: 50px;
+            height: 50px;
+            border:1px solid lawngreen;
+            margin-left: 10px;
+            text-align: center;
+            line-height: 50px;
+            cursor: hand;
+            text-decoration: none;
+            background: red;
+        }
+        .toRed{
+            background-color: red;
+            background: none;
+        }
+    </style>
+    <title></title>
+    <!--用Jquery所以要引入这个-->
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+
+        //这是原生的JS代码实现
+        //文档加载时候执行
+        window.onload=function(){
+
+//获取到所有的a标签 我的情况下这个适用一些 个人最好给a标签写上name属性值
+//此时aArray是个数组
+            var aArray = document.getElementsByTagName("a");
+//遍历节点
+            for(var i in aArray){
+//获取每个a标签并且绑定单击事件
+                aArray[i].onclick = function(){
+//获取当前有toRed样式的节点 注意是个数组
+                    var aDom = document.getElementsByClassName("toRed");
+//下面两句是Jquery的知识了
+//aDom[0]表示的是有toRed样式的节点
+                    $(aDom[0]).removeClass("toRed");
+//移除样式
+                    $(this).addClass("toRed");
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<!--如下为四个a标签按钮 -->
+<a href="javascript:void(0);">1</a>
+<a href="javascript:void(0);">2</a>
+<a href="javascript:void(0);">3</a>
+<a href="javascript:void(0);">4</a>
+</body>
+</html>

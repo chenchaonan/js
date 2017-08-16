@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    function fn([x,y=1,z]) {
+        console.log(x, y, z);
+    }
+    fn([1,,3]);
+    function fn(x,z=11,y=10) {
+        //默认值最好写在后面
+        console.log(x, y, z);
+    }
+    fn(1,2);
+    //函数的length是没有默认值的形参的长度
+    console.log(fn.length);
+
+    function FF() {
+
+    }
+    console.log((new FF()).constructor.name);
+
+
+    console.log("str".constructor.name);
+
+
+    //anonymous: 通过构造函数的方式创建一个函数的名字
+    console.log(new Function("wd", "let w=wd;return w").name);
+
+//    function fn(wd) {
+//        let w=wd;
+//        return w
+//    }
+    //函数名:bound fn
+    let ff=fn.bind(null);
+    console.log(ff.name);
+
+
+</script>

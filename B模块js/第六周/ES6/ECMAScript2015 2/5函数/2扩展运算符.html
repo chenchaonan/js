@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    let str="1234";
+    console.log(str.split(''));
+    console.log([...str]);
+    //...将类数组转为数组,或者将数组转为非数组
+
+    function fn1() {
+        return [...arguments];
+    }
+
+    console.log(fn1(1, 2, 3, 4, 5));
+    function fn2(...arr) {
+        return arr;
+    }
+    console.log(fn2(1, 2, 3, 4, 5));
+
+    let a1=[1,2,3];
+    let a2=['1',"2","3"];
+    let a3=["aa","bb","cc"];
+    console.log(a1.concat(a2, a3));
+    console.log([...a1,...a2,...a3]);
+
+    console.log(...a1);
+
+    Math.max.apply(null,a1);
+    eval('Math.max('+a1+")");
+    Math.max(...a1);
+    //假设法
+    //sort
+
+
+    //函数名name
+    //bound fn1
+    //anonymous
+    let ss=fn1.bind(null);
+    console.log(fn1.bind(null).name);
+    console.log(ss.name);
+
+    console.log(new Function("a", "return 1").name);;
+    console.log(new Function("a", "return 1").name);;
+    console.log(fn1.name);
+</script>

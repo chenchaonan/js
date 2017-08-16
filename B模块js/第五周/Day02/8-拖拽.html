@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拖拽</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #drag {
+            position: absolute;
+            top:0;
+            left:0;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="drag"></div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script type="text/javascript">
+    var drag = document.getElementById('drag');
+    //记录鼠标在元素中的位置
+    drag.onmousedown = function (e) {
+        e = e || window.event;
+        this.l = e.clientX - this.offsetLeft;
+        this.t = e.clientY - this.offsetTop;
+        //console.log(this.l, this.t);
+        //实时计算出此时元素的位置
+        this.onmousemove = function (e) {
+            e = e || window.event;
+            this.style.left = e.clientX - this.l + 'px';
+            this.style.top = e.clientY - this.t + 'px';
+        };
+        //结束拖拽
+        this.onmouseup = function () {
+            this.onmousemove = null;
+            this.onmouseup = null;
+        }
+    }
+</script>

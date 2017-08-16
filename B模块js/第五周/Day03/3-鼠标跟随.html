@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标移动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="outer"></div>
+</body>
+</html>
+<script>
+    var outer = document.getElementById('outer');
+    document.body.onmousemove = function (e) {
+        e = e || window.event;
+        //元素自身的宽度和高度
+        var boxW = outer.offsetWidth;
+        var boxH = outer.offsetHeight;
+        //窗口宽度和高度
+        var winW = document.documentElement.clientWidth || document.body.clientWidth;
+        var winH = document.documentElement.clientHeight || document.body.clientHeight;
+        //左右和上下最大的边界值
+        var maxL = winW - boxW;
+        var maxT = winH - boxH;
+        var l = e.pageX - outer.offsetWidth / 2;
+        var t = e.pageY - outer.offsetHeight / 2;
+        if (l < 0) {
+            l = 0;
+        } else if (l > maxL) {
+            l = maxL
+        }
+        if (t < 0) {
+            t = 0;
+        } else if (t > maxT) {
+            t = maxT;
+        }
+        outer.style.left = l + 'px';
+        outer.style.top = t + 'px';
+    }
+</script>

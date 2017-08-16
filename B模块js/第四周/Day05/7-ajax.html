@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+            type:'GET',
+            url:'data.json',
+            async:false,
+            dataType:'json',//html text jsonp跨域请求，实现响应回来的数据处理格式
+            success:function (res) {//指定请求成功的回调函数
+                console.log(res);
+            },
+            error:function (xhr,err) {//指定请求失败的回调函数
+                console.log(arguments);
+            }
+        });
+        //发送get请求
+        $.get('data.json',function (res) {
+            console.log(res);
+        });
+        $.post('data.json',function (res) {
+            console.log(res);
+        });
+        $.getJSON('data.json',function (res) {//只能请求json文件
+            console.log(res);
+        })
+        $.getScript('')
+    })
+</script>

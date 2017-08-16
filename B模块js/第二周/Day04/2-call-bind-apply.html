@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    'use strict';
+    //所有数据类型（普通函数，类（内置类，自定义类））都是Function实例
+    //所有对象数据类型（普通对象，实例，原型，函数）都有一个__proto__指向所属类的原型
+    //原型链的查找机制：先看自己私有有没有，如果没有就根据__proto__找到所属类的原型，根据原型对象__proto__一直找到Object.prototype
+    function fn() {
+
+    }
+    console.log(fn instanceof Function);
+    console.log(fn instanceof Object);
+    console.log(Function instanceof Function);
+
+
+    //call,bind,apply修改this指向
+    //call
+    //    var obj={};
+    //    function fn() {
+    //        console.log(this);
+    //    }
+    //    fn.call();//严格模式下，不传就是undefined,其余传什么就是什么
+    //    fn.call(null);
+    //    fn.call(undefined);
+    //    fn.call(obj,100,200);//将fn（call的this）里面的this修改为第一个参数obj，并让fn执行，
+
+    //apply
+//    var obj = {id: 24};
+//    function fn(a, b) {
+//        console.log(this);
+//    }
+//    fn();
+//    fn.apply(obj, [100, 200]);//将fn里面的this修改为obj，并让fn执行,传参的时候需要以数组集合的方式。
+
+    //bind修改this关键字，将this改造后的函数作为一个新函数返回。
+    var obj = {id: 24};
+    function fn(a, b) {
+        console.log(this);
+    }
+    fn();
+    var fe=fn.bind(obj);
+    //var fe=fn.bind(obj,10,20);//这个时候传参会写死
+    fe(100,200);//可以在新函数执行的时候传参数
+
+</script>

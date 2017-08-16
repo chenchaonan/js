@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //    function fn() {
+    //        var count=0;
+    //        ff=function () {
+    //            count++;
+    //            console.log(count);
+    //        }
+    //    }
+    //    fn();
+    //    ff();//1
+    //    ff();//2
+    //    ff();//3
+    //
+    //    fn();
+    //    ff();//1
+    //    ff();//2
+
+    //    function fn() {
+    //        var count = 0;
+    //        window.foor = function () {
+    //            count++;
+    //            console.log(count);
+    //        }
+    //    }
+    //    fn();
+    //    foor();//1
+    //    foor();//2
+
+    //    var foor;
+    //    (function fn() {
+    //        var count = 0;
+    //        foor = function () {
+    //            count++;
+    //            console.log(count);
+    //        }
+    //    })();
+
+    //    function foo(n) {
+    //        return function (c) {
+    //            n += c;
+    //            console.log(n);
+    //        }
+    //    }
+    //    var ff = foo(2);//第一个不销毁的栈内存，返回一个内部堆内存地址
+    //    ff(3);//5
+    //    ff(5);//10
+    //    foo(1)(9);//10，第二个不立即销毁的栈内存，第二个foo的n=10
+    //    //让foo的返回值直接在外部执行，没有任何外部变量接收。
+    //    ff(3);//13
+    //    ff = foo(3);//foo形成第三个不销毁的栈内存，第三个foo的n
+    //    ff(6);//9
+
+    function fn(n) {
+        function foo() {
+            n += n;
+            console.log(n);
+        }
+        return foo;
+    }
+    var f=fn(5);
+    f();//10
+
+    var f1=fn(10);//n=10
+    f1();//20
+
+    var f2=fn(5);
+    f2();//10
+    f();//20
+
+    f=fn(5);
+    f();//10
+
+    f=f1;
+    f();//40
+
+
+</script>

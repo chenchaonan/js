@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            left: 50px;
+            top: 0;
+            width: 120px;
+            height: 120px;
+            background: red;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var oDiv = document.getElementById('oDiv');
+    /**
+     * linear 匀速运动
+     * @param c 变化之
+     * @param d 过渡时间
+     * @param t 当前时间
+     * @param b 起始位置
+     * @returns {*}
+     */
+    function linear(c, d, t, b) {//根据当前时间计算此时left值应该是多少
+        return c / d * t + b; //当前时间，最终的left值
+    }
+    /**
+     * animate 动画
+     * @param curEle  目标元素（执行动画的元素）
+     * @param target  目标参数对象
+     * @param duration  过渡时间
+     */
+    function animate(curEle, target, duration) {
+        duration = duration || 2000;//处理默认时间
+        //变化值=目标值-起始值；
+        var begin = {};//保存相应属性的起始值
+        var change = {};
+        for (var k in target) {
+            begin[k] = utils.getCss(curEle, k);//计算出相应属性的起始值
+            change[k] = target[k] - begin[k];//计算出相应属性的变化值
+        }
+        var interval = 10;
+        var timer = null;//记录当前时间
+        var curVal;
+        curEle.timer = setInterval(function () {
+            timer += interval;
+            if (timer >= duration) {
+                utils.css(curEle, target);
+                clearInterval(curEle.timer);
+                return;
+            }
+            for (var k in target) {
+                curVal = linear(change[k], duration, timer, begin[k]);
+                utils.css(curEle, k, curVal)
+            }
+        }, interval)
+    }
+    animate(oDiv, {
+        left: 800,
+        top: 200,
+        opacity: 1
+    }, 2000)
+</script>

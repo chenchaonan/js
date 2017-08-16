@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            left: 50px;
+            top: 0;
+            width: 120px;
+            height: 120px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var oDiv = document.getElementById('oDiv');
+    //指定步长；
+    var step = 9;
+    //目标位置（最大的left值）
+    var maxLeft = utils.win('clientWidth') - oDiv.offsetWidth;
+
+    //总运动位置=目标位置-起始位置
+    //起始位置
+    var begin = utils.getCss(oDiv, 'left');
+    var change = maxLeft - begin;
+    var curLeft;
+
+    //边界问题，先累加再判断
+    oDiv.timer = setInterval(function () {
+        curLeft = utils.getCss(oDiv, 'left');
+        curLeft += step;
+        if (curLeft >= maxLeft) {
+            utils.setCss(oDiv, 'left', curLeft);
+            clearInterval(oDiv.timer);
+            return;
+        }
+        utils.setCss(oDiv, 'left', curLeft)
+    }, 10)
+</script>

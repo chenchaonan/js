@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表</title>
+    <style>
+        .list {
+            list-style: none;
+            width: 150px;
+            height: 250px;
+            padding: 10px;
+            border: 1px solid #000000;
+
+        }
+
+        .list li {
+            -webkit-user-select: none;
+            background: #e5e5e5;
+            color: red;
+            line-height: 35px;
+            text-align: center;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="list" class="list">
+    <li draggable="true">11</li>
+    <li draggable="true">22</li>
+    <li draggable="true">33</li>
+    <li draggable="true">44</li>
+    <li draggable="true">55</li>
+</ul>
+<ul id="list2" class="list"></ul>
+</body>
+</html>
+<script>
+    var list = document.getElementById('list');
+    var list2 = document.getElementById('list2');
+    var tar;
+    list.ondragstart = function (e) {
+        e = e || window.event;
+        tar = e.target || e.srcElement;
+    };
+    list2.ondragover = function (e) {
+        e = e || window.event;
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    };
+    list2.ondrop = function () {
+        this.appendChild(tar);
+    }
+</script>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <!--me:vp+tab-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--
+    width = device-width 视图宽度 设备宽度
+    user-scalable=no;是否允许用户缩放
+    initial-scale=1.0;  初始缩放比例
+     maximum-scale=1.0; 最大缩放比例
+     minimum-scale=1.0; 最小缩放比例
+    -->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        ul {
+            padding: 10px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e5e5e5;
+            height: 80px;
+        }
+
+        #newList li div:nth-child(1) {
+            position: absolute;
+            width: 100px;
+            height: 80px;
+        }
+
+        #newList li div:nth-child(1) img {
+            background-size: 100%;
+            width: 100%;
+            height: 100%;
+        }
+
+        #newList li div:nth-child(2) {
+            margin-left: 110px;
+        }
+
+        #newList li div h3 {
+            font-size: 16px;
+            /*d但行省略*/
+            -ms-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        #newList li div p {
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<ul id="newList">
+    <!--<li>-->
+    <!--<a href="#">-->
+    <!--<div><img src="./images/1.jpeg" alt=""></div>-->
+    <!--<div>-->
+    <!--<h3>标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</h3>-->
+    <!--<p> 新京报快讯 昨日凌晨6时许，江苏省滨海县黄海海域北，滨海北区H2#400MW海上风电场工程项目海上升压站一层平台35KV电缆发生爆燃。</p>-->
+    <!--</div>-->
+    <!--</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#">-->
+    <!--<div><img src="./images/1.jpeg" alt=""></div>-->
+    <!--<div>-->
+    <!--<h3>标题</h3>-->
+    <!--<p> 新京报快讯 昨日凌晨6时许，江苏省滨海县黄海海域北，滨海北区H2#400MW海上风电场工程项目海上升压站一层平台35KV电缆发生爆燃。</p>-->
+    <!--</div>-->
+    <!--</a>-->
+    <!--</li>-->
+</ul>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    //获取数据
+    var newList = document.getElementById('newList');
+    var oImgs = newList.getElementsByTagName('img');
+    function getData(callBack) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', './data.json');
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && /^2\d{2}&/.test(this.response)) {
+                typeof callBack === 'function' ? callBack(this.response) : null;
+            }
+        };
+        xhr.send();
+    }
+    getData(bindData);
+
+    //绑定数据
+    function bindData(data) {
+        var str = '';
+
+    }
+
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+autofocus 自动获取焦点
+autocomplete 自动补全功能
+required value 为空验证，必须填写
+pattern 验证是否符合正则表达式
+placeholder 填写提示信息
+-->
+<form action="">
+    <!--<input type="text" autofocus="true">-->
+    <!--<input type="text" name="user" autocomplete="off">-->
+    <!--<input type="text" required>-->
+    <!--<input type="text" pattern="^\d{3}$">-->
+    <!--<input type="text" placeholder="请输入用户名">-->
+    <input id="inp" type="text" value="请输入用户名" style="color:#ccc;">
+    <input type="submit" value="提交">
+</form>
+<script>
+    var inp = document.getElementById('inp')
+    inp.onfocus = function () {
+        if(this.value = '请输入用户名'){
+            this.value = '';
+            this.style.color = '#000';
+        }
+    }
+    inp.onblur = function () {
+        if(!this.value){
+            this.value = '请输入用户名';
+            this.style.color = '#ccc';
+        }
+    }
+</script>
+</body>
+</html>

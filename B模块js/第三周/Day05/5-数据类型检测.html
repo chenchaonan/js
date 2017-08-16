@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据类型检测</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //1.typeof 缺陷无法细分Object下的类型
+    //    console.log(typeof 123);
+    //    console.log(typeof null);
+    //    console.log(typeof undefined);
+    //    console.log(typeof '');
+
+    //2.instanceof  检测一个实例（对象）是否属于这个类，根据这个类
+    //不可以直接检测基本数据类型
+
+
+    var arr = [];
+    console.log(arr.constructor);
+
+    var reg = /\d/;
+    console.log(reg.constructor);
+
+    //3.constructor 指向可能会被改变，所以通过构造函数判断是不准确的。
+
+    //4.Object.prototype.toString.call();
+
+    // Array.prototype.toString();将数组转化成字符串
+    console.log([123].toString());
+
+    //String.prototype.toString();
+    console.log('123'.toString());
+
+    // Number.protoType.toString()
+    console.log((12).toString());
+
+    //().toString();将前面的数字转化成指定进制,返回值都是字符串形式
+    console.log((123).toString(2));
+    console.log((101).toString(16));
+
+
+    //Date.prototype.toString();
+    var now = new Date();
+    console.log(typeof now);
+    console.log(now.toString());
+    console.log(now.toISOString());
+    console.log(now.toDateString());
+    console.log(now.toJSON());
+    console.log(now.toLocaleTimeString());
+
+
+    //[object Number]//检测实例类型object，固定的，第二个是这个值所属类型的信息
+    console.log(Object.prototype.toString.call(1234));
+    console.log(Object.prototype.toString.call(/\d/));
+    console.log(Object.prototype.toString.call([]));
+</script>

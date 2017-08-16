@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<p id="op">这是一个p标签</p>-->
+<p class="op">这是一个p标签</p>
+<p class="op">这是一个p标签</p>
+<p class="op">这是一个p标签</p>
+<i>11</i>
+<i>22</i>
+<i>33</i>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $(function () {
+        var h3 = document.createElement('h3');
+        h3.innerHTML = '这是h3';
+        document.body.appendChild(h3);
+//
+//        //创建节点
+        var str = '<h3>hello</h3>';
+        console.log($(str));
+//        document.body.appendChild($(str)[0]);
+//
+//        //内部添加
+//        //append 将内容添加到容器内部的末尾
+//        $(document.body).append($(str));
+//        $(document.body).append(str);
+        var say = 'hello word';
+//        $(document.body).append('<h3>' + say + '</h3>')
+//        $(document.body).append($('p'));
+
+//        //appendTo添加到容器内部末尾，写法和append相反，appendTo是jQuery原型上的方法，所以得把字符串包装成jq对象。
+//        $(str).appendTo('#op');//可以是选择器
+//        $(str).appendTo(document.body)
+//
+//        //prepend 添加到内部的开头
+//        $('#op').prepend(str);
+//        $('#op').prepend($(str));
+//
+//        //prependTo添加到容器内部的开头和prepend写法相反
+//        $(str).prependTo($('#op'));
+
+
+//        //外部添加
+//        //after 添加到指定元素的后边
+//        $('#op').after(str);
+//        $('#op').after($(str));
+//        $('#op').after(h3);//操作原有的就是移动标签位置
+
+//        //before 添加到指定容器的前面
+//        $('#op').before(str);
+//        $('#op').before($(str));
+//        $('#op').before($('<h3>'+say+'</h3>'));
+
+//        //包裹节点
+//        //wrap 包裹每一个，外层包裹
+//        $('i').wrap('<h3></h3>');
+//        //wrapAll 包裹所有，外层包裹
+//        $('i').wrapAll('<h3>包裹节点</h3>');
+//
+//        //wrapInner 包裹内部节点
+//        $('#op').wrapInner('<i></i>');
+
+
+//        //替换
+//        //replace
+//        $('h3').replaceAll('.op');
+//        //replaceWidth
+//        $('.op').replaceWith(h3);
+
+
+//        //删除
+//        remove 不会保留事件处理程序
+//        detach 保留时间处理程序
+//        var childs;
+//        setTimeout(function () {
+//            //childs = $('.op').remove();
+//            childs = $('.op').detach();
+//            console.log(childs);
+//        }, 1000);
+//
+//        setTimeout(function () {
+//            $('body').appendTo(childs);
+//            console.log(childs);
+//        },5000)
+
+        //clone 复制节点
+
+        //清空节点
+        //empty
+
+    })
+</script>

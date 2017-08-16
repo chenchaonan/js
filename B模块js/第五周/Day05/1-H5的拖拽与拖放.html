@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #img {
+            -webkit-user-drag: flase;
+        }
+
+        #oDiv {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        #container {
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<img id="img" draggable="false" src="img/small.jpg" alt="">
+<div draggable="true" id="oDiv"></div>
+<div id="container"></div>
+</body>
+</html>
+<script>
+    /*
+    * 拖拽元素事件
+    * */
+    var oDiv = document.getElementById('oDiv');
+    var tar;
+    oDiv.ondragstart = function () {//开始拖拽 类似onmousedown
+        console.log('start');
+    };
+    oDiv.ondrag = function () {//拖拽中，类似onmousemove
+        console.log('drag');
+    };
+    oDiv.ondragend = function () {
+        console.log('end');
+    }
+
+    /*
+    * 目标元素事件
+    * ondragenter
+    * */
+    var outer = document.getElementById('container');
+    outer.ondragenter = function () {//拖拽元素进入目标元素时候触发，类似于mouseenter
+        console.log('enter');
+    };
+    outer.ondragover = function (e) {//类似于mousemove
+        e.preventDefault();//阻止默认行为，才会触发ondrop事件，所有元素默认都不会
+        console.log('over');
+    };
+    outer.ondragleave = function () {//拖拽元素离开目标元素时触发
+        console.log('leave');
+    };
+    outer.ondrop = function () {
+        this.append(tar);
+        console.log('drop');
+    }
+
+</script>

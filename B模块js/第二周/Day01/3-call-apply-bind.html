@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 'use strict';
+    //Function原型上的属性和方法apply，bind，call，caller
+    //caller:每个函数都有这个属性。
+    //callee:arguments上的属性。
+    //    function fn() {
+    //        console.log(fn.caller);
+    //        console.log(arguments.callee);
+    //    }
+    //    fn();
+
+
+    //Function.prototype call apply bind(任何一个函数实例都能调用)
+    //    function fe() {
+    //
+    //    }
+    //    console.log(fe instanceof Function);
+
+    //1.call 修改this关键字
+    //var obj = {id: 24};
+    //    function fe(n, m, c) {
+    //        //console.log(n, m, c);
+    //        console.log(this);
+    //        console.log(arguments);
+    //    }
+    //fe();
+    //fe.call(obj);//通过fe这个函数的原型链，找到Function.prototype的call方法，让它执行。
+    //   fe.call(obj, 10, 20, 30);//将fe中的this修改为call方法中的第一个实参，并让fe执行。
+    //第一个参数就是要修改的指定this关键字。
+    //call方法中从第二个开始，就是给我们的fe传参
+
+    //    fe.call(obj, 10, 20, 30);//call方法用来修改fe（call的this）的this
+    //    function fn() {
+    //        console.log(this);
+    //    }
+    //    fn.call(obj);
+    //    obj.ff=fn;
+    //    obj.ff.call();
+
+
+    //    function fe() {
+    //        console.log(this);
+    //
+    //    }
+    //    fe.call();//window
+    //    fe.call(null);//window
+    //    fe.call(undefined);//window
+    //    fe.call(12);//实例化成一个对象
+    //    fe.call(obj);//obj
+
+    //call的第一个形参不传或者传的是null，undefined，里面的this都是window
+
+
+    //严格模式下：
+    //    fe.call();//undefined
+    //    fe.call(null);//undefined
+    //    fe.call(123);
+
+
+    //2.apply
+    var obj = {id: 30};
+    function fn() {
+        console.log(this);
+    }
+    console.log(fn.apply);//根据原型链找到Function的原型上的apply属性方法
+    fn.apply(obj, [10, 20]);//将fn中的this、修改为apply中的第一个参数，并让fn执行
+
+    //call和apply的区别
+    //call方法从第二个实参开始一个一个残敌进去
+    //apply把要传的实参放到一个数组集合中，由apply第二个实参位置传递进去
+
+    fn.apply();//在严格模式下和call相同，返回undefined
+
+
+    //3.bind
+    var obj = {id: 30};
+    function fn() {
+        console.log(this);
+    }
+    var foo = fn.bind(obj);//将fn定义部分函数的this修改掉，病返沪i 一个新的函数，但并不会让它执行。
+    console.log(foo == fn);
+    foo();//obj this被包装后的函数
+    fn();
+
+
+    //通过call apply bind修改后的this为主。
+    //bind将this修改后会将改造后的新函数返回，何时执行，就何时调用，需要手工调用。
+    //bind有兼容性，call和apply没有，并且常用。
+
+</script>

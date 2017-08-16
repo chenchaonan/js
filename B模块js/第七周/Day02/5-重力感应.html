@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<h3>摇一摇</h3>
+<script type="text/javascript">
+    console.log(window.DeviceMotionEvent);
+    if (window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', handle, false)
+    }
+
+    var x = y = z = prevX = prevY = prevZ = null;
+    var speed = 20;
+    function handle(e) {
+        var Gravity = e.accelerationIncludingGravity;
+        x = Gravity.x;
+        y = Gravity.y;
+        z = Gravity.z;
+        if (Math.abs(x - prevX) > speed || Math.abs(y - prevY) > speed || Math.abs(z - prevZ) > speed) {
+            alert('fujin')
+        }
+    }
+</script>
+</body>
+</html>

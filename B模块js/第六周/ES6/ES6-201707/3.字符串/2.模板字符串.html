@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<ul id="list">
+    <!--<li>-->
+        <!--<span>姓名:</span>-->
+        <!--<span>年龄:</span>-->
+    <!--</li>-->
+    <!--<li></li>-->
+    <!--<li></li>-->
+    <!--<li></li>-->
+</ul>
+</body>
+</html>
+<script type="text/javascript">
+
+    let c="c1";
+    let str1="<div class='"+c+"'></div>";
+
+    //变量写在${变量}  ,表达式
+    function fn() {
+        return "c1"
+    }
+    let str=`<div class="${c+1}">1111
+<span></span>
+<div></div>
+<p></p>
+</div>`;
+    let str2=`<div class="${fn()}">1111</div>`;
+    //document.body.innerHTML=str;
+
+    let str3=`\``;
+    console.log(str3);
+    let str4='I\'m a student';
+    console.log(str4);
+    console.log("ssss\nssss");
+
+    let ary=[{name:"a",age:12},{name:"b",age:22},{name:"c",age:32},{name:"d",age:42}];
+
+    let ss=``;
+    ary.forEach(function (item,index) {
+        ss+=`<li>
+            <span>姓名:${item.name}</span>
+            <span>年龄:${item.age}</span>
+        </li>`;
+    });
+    let list=document.getElementById("list");
+    list.innerHTML=ss;
+    console.log(list);
+
+
+</script>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择器</title>
+</head>
+<body>
+<div id="oDiv" class="oDiv2"></div>
+<span>111</span>
+</body>
+<ul class="oUl">
+    <li id="one">11</li>
+    <li>22</li>
+    <li>33
+        <ul>
+            <li>44</li>
+            <li id="two">55</li>
+        </ul>
+    </li>
+</ul>
+<ul class="oUl">
+    <li>11</li>
+    <li>22</li>
+    <li>33</li>
+</ul>
+
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $(function () {
+        //选择器 跟css中的选择器一样
+        console.log($('#oDiv'));//id选择器
+        console.log($('.oDiv2'));//class选择器
+        console.log($('*', document.body));//通配符选择器
+        console.log($('#oDiv,span'));//群组选择器
+        console.log($('#oUl li'));//后代选择器
+        console.log($('#oUl>li'));
+        console.log($('#oUl>li#one'));//子代选择器
+        console.log($('#oUl #one+'));//获取弟弟 next
+        console.log($('#oUl #one~'));//获取弟弟 nextAll
+
+        console.log($('#oUl #one').next());
+        console.log($('#oUl #one').nextAll());
+        //jq原型上的方法只有jq对象才能使用
+
+        console.log($('.oUl li').eq(3));//根据指定索引返回jq对象
+        console.log($('.oUl li').get(3));//根据指定索引返回原生js对象
+
+        //后代元素过滤器
+        console.log($('.oUl li:first-child'));//每个父级容器中的第一个子节点
+        console.log($('.oUl li:last-child'));//每个父级容器中的最后一个子节点
+        console.log($('.oUl li:nth-child(2)'));
+
+    });
+</script>

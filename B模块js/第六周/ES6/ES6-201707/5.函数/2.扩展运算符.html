@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+function fn() {
+    return [...arguments]
+}
+
+     //1.将非数组变为数组
+let str="12345";
+console.log([...str]);
+
+
+//2.将数组变成非数组
+    let ary=[1,2,3];
+
+console.log(...ary);
+//可以替代apply方法
+console.log(Math.max(...ary));
+</script>

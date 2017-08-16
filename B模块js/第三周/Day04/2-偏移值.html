@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>偏移值</title>
+    <style>
+        #oDiv {
+            position: relative;
+            height: 300px;
+            width: 300px;
+            border: 1px solid red;
+        }
+
+        #center {
+
+            width: 50px;
+            height: 50px;
+            border: 1px solid red;
+            margin: 124px;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv">
+    <div id="center"></div>
+</div>
+</body>
+</html>
+<script>
+    /*
+     * 1.offsetLeft 左偏移 当前元素的外边框距离父级参照物的左偏移     只读
+     * 2.offsetTop  上偏移 当前元素的外边框距离父级参照物的上偏移     只读
+     *
+     * 3.offsetParent   只读
+     * 主流浏览器，父级参照物是body，IE6-7父级参照物就是父级节点，
+     * 父级参照物可以通过定位position来改变
+     * */
+    console.log(oDiv.offsetHeight);
+    console.log(oDiv.offsetParent);//body
+    console.log(center.offsetParent);
+
+    function offset(curEle) {
+        var l = curEle.offsetLeft;
+        var t = curEle.offsetTop;
+        var p = curEle.offsetParent;
+        while (p.nodeName !== 'BODY') {
+            //如果父级参照物不是body继续累加
+            //在IE8里面偏移值是包含边框的，indexOf返回的是索引，如果存在则返回索引，不存在就返回-1
+            if (navigator.userAgent.indexOf('MSIE 8.0') === -1) {
+                l += p.clientLeft;
+                t += p.clientTop;
+            }
+            l += p.offsetLeft;
+            t += p.offsetTop;
+            p = p.offsetParent;
+        }
+        return {
+            left:l,top:t
+        }
+    }
+</script>

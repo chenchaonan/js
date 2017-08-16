@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #oDiv {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            border: 1px solid red;
+        }
+
+        #oDiv img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .move {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 150px;
+            height: 150px;
+            background: #000000;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"><img src="img/small.jpg" alt=""></div>
+<div id="oDiv1"><img src="img/big.jpg" alt=""></div>
+</body>
+</html>
+<script>
+    var oDiv = document.getElementById('oDiv');
+    var big
+    oDiv.onmouseenter = function () {
+        if (!this.move) {
+            this.move = document.createElement('div');
+            this.move.className = 'move';
+            this.appendChild(this.move);
+            //获取元素自身的宽高
+            this.moveW = this.move.offsetWidth;
+            this.moveH = this.move.offsetHeight;
+            //获取最大的left和top值（边界值）
+            this.maxL = this.clientWidth - this.moveW;
+            this.maxT = this.clientHeight - this.moveH;
+        }
+        this.move.style.display = 'block';
+    };
+    oDiv.onmousemove = function (e) {
+        e = e || window.event;
+        var l = e.clientX -
+        if(){
+
+        }
+    }
+</script>

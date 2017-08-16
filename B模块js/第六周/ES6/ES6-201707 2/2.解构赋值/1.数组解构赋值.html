@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+let [a,b]=[1,2];
+console.log(a, b);
+let ary=[1,2,3,4];
+let [x,y,z]=ary;
+console.log(x, y, z);
+//嵌套
+    let [[[[n]]], [m]]=[[[[1]]],[2]];
+console.log(n, m);
+//省略赋值
+    let [d,,f]=[1,2,3];
+console.log(d, f);
+//不定参数
+    let[,,,,...l]=[1,2,3,4,5];
+console.log(l);
+//默认值
+
+//只有解构赋值为undefined时候,才会走默认值
+    let[v=(function () {
+        console.log("哈哈");
+        return 1
+    })(),w=2]=[undefined];
+console.log(v, w);
+
+
+
+//var ary1=[function () {
+//    console.log(this);
+//},{a:ary1[0]}];
+//let [fn,mn,ff=ary1[0]()]=ary1;
+//fn();
+//console.log(ff);//undefined
+//mn.a();
+
+//var dd=dd; dd=undefined
+//let dd=dd; dd is not defined
+
+
+//    var obj={
+//        a:1,
+//        b:obj
+//    };
+//console.log(obj);
+
+//let obj={
+//    a:obj
+//}
+
+
+</script>

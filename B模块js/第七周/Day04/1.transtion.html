@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .oDiv{
+            display: none;
+            width: 100px;
+            height: 100px;
+            background: red;
+            -webkit-transition: all 1s linear;
+            -moz-transition: all 1s linear;
+            -ms-transition: all 1s linear;
+            -o-transition: all 1s linear;
+            transition: all 1s linear;
+        }
+        .oDiv:hover{
+            width: 400px;
+        }
+        .oDiv.move{
+            display: block;
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+<!--
+
+页面刚开始加载的时候没有过度效果
+隐藏元素切换显示的时候没有过渡效果
+-->
+<button id="btn">button</button>
+    <div class="oDiv"></div>
+</body>
+</html>
+<script>
+    var btn= document.getElementById('btn');
+    btn.onclick = function () {
+        oDiv.className = 'move'
+    }
+</script>

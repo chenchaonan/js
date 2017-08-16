@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格</title>
+    <style>
+        #table {
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 10px;
+            border-color: darkgray;
+            border-radius: 10px;
+            box-shadow: 1px 1px 20px 3px;
+        }
+
+        #table tr {
+            height: 35px;
+            line-height: 35px;
+        }
+
+        #table thead tr {
+            color: #fff;
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+<table id="table" border="1" cellspacing="0">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>pop</th>
+        <th>hot</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--<tr>-->
+    <!--<td>张韶涵</td>-->
+    <!--<td>2000</td>-->
+    <!--<td>240</td>-->
+    <!--</tr>-->
+    </tbody>
+</table>
+</body>
+</html>
+
+<script>
+    var table = document.getElementById('table');
+    var tBody = table.tBodies[0];
+    var Rows = tBody.rows;
+
+    var tHead = table.tHead;
+    var tHeadrows = tHead.rows[0];
+    var Cols = tHeadrows.cells;
+
+    //1.获取ajax
+    function getData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'package.json', true);
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                //console.log(this.response);
+                var data = this.response;
+                bindData(data);
+            }
+        };
+        xhr.send();
+    }
+    getData();
+
+    //2.绑定数据
+    function bindData(data) {
+        var str = '';
+        for (var i = 0; i < data.length; i++) {
+            var cur = data[i];
+            str += '<tr pin='+cur.pin+'>';
+            str += '<td>' + cur.name + '</td>';
+            str += '<td>' + cur.pop + '</td>';
+            str += '<td>' + cur.hot + '</td>';
+            str += '</tr>';
+        }
+        tBody.innerHTML = str;
+        bindEvent();
+    }
+    //3.绑定事件
+    function bindEvent() {
+        var listArray = [].slice.call(Rows, 0);
+        //console.log(listArray);
+        for (var i = 0; i < Cols.length; i++) {
+            Cols[i].index = i;
+            Cols[i].flag = -1;
+            Cols[i].onclick = function () {
+                var that = this;
+                this.flag *= -1;
+                listArray.sort(function (a, b) {
+                    var p1 = a.cells[that.index].innerHTML;
+                    var p2 = b.cells[that.index].innerHTML;
+                    if(isNaN(p1)){
+                        return a.getAttribute('pin').localeCompare(b.getAttribute('pin')) * that.flag;
+                    }
+                    return (p1 - p2) *that.flag;
+
+                });
+                var frg = document.createDocumentFragment();
+                for (var k = 0; k < listArray.length; k++) {
+                    frg.appendChild(listArray[k])
+                }
+                tBody.appendChild(frg);
+            }
+        }
+    }
+</script>

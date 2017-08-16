@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="Swiper-3.4.2/dist/css/swiper.min.css">
+    <style type="text/css">
+        #swiper1 {
+            width: 700px;
+            height: 350px;
+        }
+         #swiper1 .swiper-wrapper img{
+             width: 100%;
+             height: 100%;
+         }
+    </style>
+</head>
+<body>
+<div class="swiper-container" id="swiper1">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img class="swiper-lazy" data-src="images/1.jpg" alt="">
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img class="swiper-lazy" data-src="images/2.jpg" alt="">
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img class="swiper-lazy" data-src="images/3.jpg" alt="">
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img class="swiper-lazy" data-src="images/4.jpg" alt="">
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+    </div>
+    <!-- 分页器 -->
+    <div class="swiper-pagination" id="swiper-pagination"></div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <div class="swiper-scrollbar" id="swiper-scrollbar"></div>
+</div>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="Swiper-3.4.2/dist/js/swiper.jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+            new Swiper('#swiper1', {
+//                  direction: 'vertical', // horizontal(默认) 水平  vertical 垂直
+                  loop: true, // 无缝滚动
+//                  autoplay: '500',  // 自动切换
+                  autoplayDisableOnInteraction: false, // 用户操作过后 是否 禁止 自动切换
+//                  autoplayStopOnLast: true,
+//                  speed: 100, // 平滑过渡时间
+                  initialSlide: 1, // 设定初始显示的slide的索引 number
+                  pagination: '#swiper-pagination', // 分页器
+                  scrollbar: '#swiper-scrollbar', // 滚动条
+                  scrollbarHide: true,
+                  prevButton: '.swiper-button-prev', //
+                  nextButton: '.swiper-button-next',
+//                  watchSlidesProgress: true,
+//                  watchSlidesVisibility: true
+                freeMode: true,
+                lazyLoading: true
+            });
+    })
+</script>
+</body>
+</html>

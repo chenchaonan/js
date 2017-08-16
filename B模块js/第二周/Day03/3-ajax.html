@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+<button id="btn">查询</button>
+<button id="btn1">拼音</button>
+<button id="btn2">人气</button>
+<ul id="oUl"></ul>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var oLis =document.getElementsByTagName('li');
+    var btn1=document.getElementById('btn1');
+
+    btn.onclick = function () {
+        getData();
+    };
+
+    //获取数据
+    function getData(data) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', './package.json', true);
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                var date = this.responseText;
+                date = "JSON" in window ? JSON.parse(date) : eval('(' + date + ')');
+                bindData(date);
+
+
+            }
+        };
+        xhr.send();
+    }
+
+
+    //数据绑定
+    function bindData(res) {
+        var str = '';
+        for (var i = 0; i < res.length; i++) {
+            var cur = res[i];
+            str += '<li pin="' + cur.pin + '" pop="' + cur.pop + '">';
+            //str += '<img src="+cur.img+">';
+            str += '<span>歌手：' + cur.name + '</span>';
+            str += '<span>人气：' + cur.pop + '</span>';
+            str += '</li>';
+        }
+        oUl.innerHTML = str;
+        arrSort();
+
+    }
+    //将li转成数组
+
+
+
+
+
+
+
+
+
+//    function arrSort() {
+//        var arrList=[].slice.call(oLis);
+//        oUl.flag = -1;
+//        btn1.onclick = function () {
+//            oUl.flag *= -1;
+//            arrList.sort(function (a, b) {
+//                var p1 = a.getAttribute('pin');
+//                var p2 = b.getAttribute('pin');
+//                return p1.localeCompare(p2) * oUl.flag;
+//            });
+//
+//            var frg = document.createDocumentFragment();
+//            for (var i = 0; i < arrList.length; i++) {
+//                frg.appendChild(arrList[i])
+//            }
+//            oUl.appendChild(frg);
+//        }
+//    }
+
+
+
+</script>

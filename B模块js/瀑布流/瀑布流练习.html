@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body, html {
+            padding: 0 30px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        ul {
+            width: 25%;
+            float: left;
+            box-sizing: border-box;
+        }
+
+        ul li {
+            width: 100%;
+            height: auto;
+        }
+
+        ul li img {
+            width: 100%;
+            border: 1px solid red;
+            opacity: 0.2;
+            filter: alpha(opacity=20);
+        }
+
+        #back {
+            position: fixed;
+            right: 10px;
+            bottom: 30px;
+            width: 70px;
+            height: 40px;
+            background: #000;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            color: #fff;
+            padding-top: 20px;
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+<div id="back">回到顶部</div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var oUl = document.getElementsByTagName('ul');
+    var oImgs = document.getElementsByTagName('img');
+    var arroUls = utils.listToArray(oUl);
+    //获取数据
+    function getData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'data.json');
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+                var data = this.response;
+                bindData(data);
+            }
+        };
+        xhr.send();
+    }
+    getData();
+    //绑定数据
+    function bindData(data) {
+        for (var i = 0; i < 50; i++) {
+            var ind = Math.round(Math.random() * 11);
+            var cur = data[ind];
+            var oLi = document.createElement('li');
+            var oImgs = document.createElement('img');
+            oImgs.setAttribute('real', cur.src);
+            oImgs.style.height = Math.round(Math.random() * 300 + 200) + 'px';
+            oLi.appendChild(oImgs);
+            arroUls.sort(function (a, b) {
+                return utils.getCss(a, 'height') - utils.getCss(b, 'height');
+            });
+            arroUls[0].appendChild(oLi);
+        }
+        delayImg()
+    }
+    //延时加载
+    function delayImg() {
+        for (var i = 0; i < oImgs.length; i++) {
+            var cur = oImgs[i];
+            if (cur.flag) continue;
+            checkImg(cur);
+        }
+
+    }
+    //检测图片
+    function checkImg(img) {
+        var winH = utils.win('clientHeight');
+        var sTop = utils.win('scrollTop');
+        var imgH = img.offsetHeight;
+        var imgT = utils.offset(img).top;
+        if (winH + sTop >= imgH / 2 + imgT) {
+            var imgSrc = img.getAttribute('real');
+            var temp = new Image;
+            temp.src = imgSrc;
+            temp.onload = function () {
+                img.src = imgSrc;
+                img.flag = true;
+                fadeIn(img);
+            };
+            temp.onerror = function () {
+                img.flag = true;
+            }
+        }
+    }
+    window.onscroll = function () {
+        delayImg();
+    };
+    //渐变
+    function fadeIn(img) {
+        var op;
+        img.timer = setInterval(function () {
+            op = utils.getCss(img, 'opacity');
+            if (op >= 1) {
+                utils.setCss(img, 'opacity', 1);
+                clearInterval(img.timer);
+                return;
+            }
+            utils.setCss(img, 'opacity', op += 0.2)
+        }, 120)
+    }
+    //回到顶部
+    function backTop() {
+        var back = document.getElementById('back');
+        var time = 200;
+        back.onclick = function () {
+            clearInterval(this.timer);
+            var duration = utils.win('scrollTop');
+            var speed = duration / 200;
+            var interval = 10;
+            var step = speed * interval;
+            this.timer = setInterval(function () {
+                duration -= step;
+                if (duration <= 0) {
+                    utils.win('scrollTop', 0);
+                    clearInterval(back.timer);
+                    return;
+                }
+                utils.win('scrollTop', duration);
+            }, interval);
+        };
+        var winH = utils.win('clientHeight');
+        window.onscroll = function () {
+            var sTop = utils.win('scrollTop');
+            back.style.display = sTop > winH / 2 ? 'block' : 'none';
+            delayImg();
+        }
+    }
+    backTop();
+
+
+</script>

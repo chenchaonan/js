@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+</body>
+</html>
+<script type="text/javascript">
+//{}一个大括号就是一个块级作用域
+//注意:{}想表示对象一定不要放在行首,或者使用()包起来例如:eval()
+    obj={};
+    function fn() {
+
+    }
+    //if(){};
+    //for(){};
+  //({a:1,b:2})
+   //console.log((1, 2));
+
+
+    //eval()
+   let url="www.baidu.com?name=a&age=2&sex=1";
+    //({name:'a',age=2',sex:'1+"'"})
+    function getURL(url) {
+        return eval("({"+url.split("?")[1].replace(/&/g,"',").replace(/=/g,":'")+"'})")
+    };
+    console.log(getURL(url));
+
+    let ary=[1,2,12,34,15];
+
+    //Math.max.apply(null,ary);
+
+console.log(ary.toString());
+console.log(eval("Math.max(" + ary + ")"));
+new Date();
+new Number(1);
+new String("1223");
+
+console.log(new Function("str", "return str")(3));
+let json='[{"name":"a"},{"name":"a"}]';
+console.log(new Function("json", "return" + json)(json));
+
+
+let lis=document.getElementsByTagName("li");
+for(let i=0;i<lis.length;i++){
+    lis[i].onclick=function () {
+        alert(i);
+    }
+}
+var a=0;
+if(a){
+    //console.log(a);
+    let a=2;
+    console.log(a);
+    function ff() {};
+}
+console.log(ff);
+//自执行函数{}
+
+{console.log("自执行函数")}
+
+
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>认识jq</title>
+</head>
+<body>
+
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script type="text/javascript">
+    //jq版本
+    /*
+    * 1.x.x  兼容ie6-8
+    * 2.x.x 不兼容ie6-8
+    * 3.x.x 怒兼容ie6-8
+    *
+    *
+    * $冲突问题
+    * 1.直接使用jQuery
+    * 2.准让$的使用权
+    * 3.将$作为私有变量，不和全局冲突
+    * */
+
+    /*
+    * window.onload和$(document).ready
+    * 1.执行条件问题
+    * onload等页面中所有资源文件（图片，字体，DOM）
+    * ready只有DOMDOM结构加载完就执行。
+    *
+    * 2.
+    * onload  DOM0级事件，定义多次，只执行最后一次，ready可以执行多次
+    * 
+    * 3.简写
+    * */
+    $(document).ready(function () {
+
+    });
+    $(function () {
+        
+    })
+</script>

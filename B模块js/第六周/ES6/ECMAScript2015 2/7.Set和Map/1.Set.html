@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    let set1=new Set([0,NaN,NaN,1,1,1,2,2,2,{},{}]);
+    //是一个类似数组的对象
+    //size属性  去重后的个数
+    console.log(set1.size);
+    console.log(set1.length);
+    console.log(set1);
+
+
+    console.log([...set1]);
+
+
+    function fn(ary) {
+        return [...new Set(ary)];
+        //return Array.from(new Set(ary))
+    }
+    //使用filter去重
+    let ary=[1,2,3,1,2,3,4];
+    let ary1=ary.filter((item,index)=>{
+        return !ary.slice(0,index).includes(item)
+    });
+    console.log(ary1);
+
+    //Set原型上的方法
+    console.log(Set.prototype);
+
+    //add  clear  delete  has
+
+    set1.add(10);
+    console.log(set1);
+    console.log(set1.has(NaN));
+    //set1.clear();
+    //console.log(set1);
+
+    let set2= new Set([1,2,3,4,5]);
+    let set3= new Set([3,4,5,6,7]);
+    //并集[1,2,3,4,5,6,7]
+    [...new Set([...set2,...set3])];
+    //交集[3,4,5]
+    console.log([...set2].filter((item) => set3.has(item)));
+    //差集[1,2]
+    console.log([...set2].filter((item) => !set3.has(item)));
+
+    let set4=[...[...set2].filter((item) => !set3.has(item)),...[...set3].filter((item) => !set2.has(item))];
+    console.log(set4);
+
+
+    //遍历的
+    //keys  values entries forEach
+    for(let key of set1.keys()){
+        console.log(key);
+    }
+    for(let key of set1.values()){
+        console.log(key);
+    }
+    for(let [key,val] of set1.entries()){
+        console.log(key,val);
+    }
+    for (let key of set1){
+        console.log(key);
+    }
+
+
+
+
+
+</script>

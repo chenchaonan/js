@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型式继承</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //原型式继承
+    //Object.create();//创建一个新对象，然后让这个新对象的__proto__指向这个传递进来的参数。
+    //    var obj1={name:2,id:1};
+    //    var obj2=Object.create(obj1);
+    //    console.log(obj2);
+
+    function A() {
+        this.a = 'a';
+        this.say = function () {
+            console.log('say');
+        }
+    }
+    A.prototype.mess = 'mess';
+    B.prototype = new A;
+
+    //创建一个新对象，作为子类的原型对象，并且这个对象的__proto__=A.prototype。
+    //继承父类的公有属性作为子类的公有属性。
+    //将子类的原型对象重构为Fn的实例，并且这个实例的__proto__=A.prototype;
+    B.prototype = Object.create(A.prototype);
+    var b = new B;
+    console.log(b);
+
+
+
+    Object.myCreate = function (o) {
+        //创建一个临时的构造函数
+        function Fn() {
+
+        }
+        //让这个临时的构造函数的原型等于对象o；
+        Fn.prototype = o;
+        return new Fn;
+    }
+
+
+</script>

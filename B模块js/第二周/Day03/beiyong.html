@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+btn1.cn = 'pin';
+btn2.cn = 'pop';
+btn1.onclick = btn2.onclick = arrSort;
+oUl.flag = -1;
+function arrSort() {
+var that = this;
+oUl.flag *= -1;
+arrList.sort(function (a, b) {
+var p1 = a.getAttribute(that.cn);
+var p2 = b.getAttribute(that.cn);
+if (isNaN(p1)) {
+return (p1.localeCompare(p2)) * oUl.flag;
+}
+return (p1 - p2) * oUl.flag;
+});
+var frg = document.createDocumentFragment();
+for (var i = 0; i < arrList.length; i++) {
+frg.appendChild(arrList[i]);
+}
+oUl.appendChild(frg);
+
+}
+</body>
+</html>

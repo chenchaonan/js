@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left:0;
+            top:0;
+        }
+
+        #oDiv1 {
+            top:100px;
+            background: red;
+        }
+
+        #oDiv2 {
+            top:200px;
+            background: blueviolet;
+        }
+
+        #oDiv3 {
+            top:300px;
+            background: pink;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv1"></div>
+<div id="oDiv2"></div>
+<div id="oDiv3"></div>
+</body>
+</html>
+<script src="Drag.js" type="text/javascript"></script>
+<script src="fire.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var oDiv1 = document.getElementById('oDiv1');
+    var oDiv2 = document.getElementById('oDiv2');
+    var oDiv3 = document.getElementById('oDiv3');
+    Event.on(oDiv1, 'drop', drop);
+    Event.on(oDiv2, 'fly', fly);
+    Event.on(oDiv3, 'drop', drop);
+    Event.on(oDiv3, 'fly', fly);
+    new $Darg('#oDiv1');
+    new $Darg('#oDiv2');
+    new $Darg('#oDiv3');
+</script>

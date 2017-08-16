@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    //let m1=new Map([[键,值]]);
+    let m1=new Map([["a","A"],[1,1],[[1,2],[1,2]],[{a:"a"},10]]);
+    console.log(m1);
+    //对象的属性名只能是字符串,不是的话会转为字符串
+    let ary=[1,2];
+    let o={a:"a"};
+    let obj={
+        a:1,
+        [ary]:1,
+        [o]:{1:1}
+    };
+    console.log(obj);
+    obj["a"];
+    console.log(obj["1,2"]);
+    console.log(obj["[object Object]"]);
+    console.log(o.toString());//[object Object]
+    //Map这种数结构解决了对象的属性名（键）可以是任何数据类型的
+
+
+    console.log(Map.prototype);
+
+    //Map实例的公有方法
+    //set get has delete clear
+
+    //set(键，值) 返回值是Map对象所以可以实现练市写法
+    console.log(m1.get("a"));
+    m1.set(o,1);
+    m1.set(ary,"ary");
+    console.log(m1);
+    console.log(m1.get(o));
+
+
+    //keys values entries
+
+    for(let key of m1.keys()){
+        console.log(key);
+    }
+
+    for(let val of m1.values()){
+        console.log(val);
+    }
+    for(let [key,val] of m1.entries()){
+        console.log(key,val);
+    }
+
+    m1.forEach((val,key,map)=>{
+        //%s  占位符
+        console.log("val: %s ,key: %s ",val,key)
+    });
+    console.dir(console);
+
+
+    //forEach 第二个参数可以修改this,改第一个参数函数的this
+
+    const objo={
+        a:function (val,key) {
+            console.log("val: %s ,key: %s ",val,key)
+        }
+    };
+    m1.forEach(function(val,key){
+        this.a(val,key)
+    },objo);
+
+    let str='[{"a":"A"},{"b":"B"}]';
+    let fn1=new Function("str","return "+str);
+    console.log(fn1(str));
+
+</script>

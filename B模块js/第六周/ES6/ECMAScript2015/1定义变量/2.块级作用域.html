@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    //{}:块级作用域
+    function fn() {
+        let a=0;
+    }
+    if(1){
+        let a=1
+    }
+    //console.log(a);报错的
+    for(let i=0;i<10;i++){
+        console.log(i);
+    }
+    //console.log(i);报错
+
+
+    (function () {
+
+    })();
+    //{}:自执行函数
+    {
+        let b=0;
+        console.log(b);
+    }
+
+    //let 定义的变量不会给window当做属性
+    var aa=0;
+    console.log(window.aa);
+    let bb=0;
+    console.log(window.bb);
+    function ff() {
+        console.log(this);
+    }
+    ff();
+    //{o='qq',a='aa'}
+    //eval("({o:'qq',a:'aa'})");
+    //eval("{o='qq';a='aa';console.log(1)}");
+
+    //let {x,y}={x:1,y:2};
+    let x,y;
+    //{}表示对象的时候不可以写在行首
+    ({x,y}={x:1,y:2});
+    ({x,y})={x:1,y:2};
+    console.log(x, y);
+    //([a])=[1]
+</script>

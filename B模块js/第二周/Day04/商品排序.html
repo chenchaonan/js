@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品排序</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            float: left;
+            list-style: none;
+            width: calc(100% / 4);
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        ul li h3，ul li p {
+            text-align: center;
+        }
+
+        ul li img {
+            width: 100%;
+        }
+        button{
+            width:80px;
+            height:35px;
+            line-height: 35px;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<button>拼音</button>
+<button>价格</button>
+<button>销量</button>
+<ul id="oUl">
+
+</ul>
+</body>
+</html>
+<script>
+    var oUl=document.getElementById('oUl');
+    var oLis=document.getElementsByTagName('li');
+    //1.获取数据
+    function getData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'product.json');
+        xhr.responseType = "json";
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 ? this.status === 200) {
+                console.log(this.response);
+                bindData()
+            }
+        }
+    }
+    //2.数据绑定
+    function bindData(data) {
+        var str = '';
+        for (var i = 0; i < data.length; i++) {
+            var cur = data[i];
+            str +='<li>';
+            str+='<img src='+cur.img+'>';
+            str+='<h3>¥'+cur.price+'</h3>';
+            str +='</li>';
+        }
+    }
+
+
+</script>

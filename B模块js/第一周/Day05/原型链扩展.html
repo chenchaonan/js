@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //console.log([1, 2, 3, 4, 5].slice());
+    //    var arr=[1,2,5,4,3];
+    //    arr.slice();
+    //    console.log(arr.__proto__ === Array.prototype);
+
+    //因为arr是Array实例，所以可以使用Array的内置类原型上的方法。
+    //    console.log(arr instanceof Array);
+    //
+    //    console.log(arr.slice(2));//截取
+    //    console.log(arr.slice(2).sort());//排序
+    //    console.log(arr.slice(2).sort().concat(100));//拼接
+
+
+    function Fn() {
+
+    };
+    Fn.prototype = function () {
+        constructor:fn,
+                add:function () {
+            console.log('add');
+        },
+        say:function(){
+            console.log('nihao');
+        }
+
+    };
+
+    var fe = new Fn();
+</script>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标跟随</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid lightblue;
+            margin: 0 auto;
+        }
+
+        #inner {
+            position: absolute;
+            display: none;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: lightblue;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner"></div>
+</div>
+</body>
+</html>
+<script>
+    var outer = document.getElementById('outer');
+    var inner = document.getElementById('inner');
+
+    outer.onmouseenter = function () {
+        inner.style.display = 'block';
+    };
+
+    outer.onmousemove = function (e) {
+        e = e || window.event;
+        var maxL = outer.clientWidth - inner.offsetWidth;
+        var maxT = outer.clientHeight - inner.offsetHeight;
+        var l = e.pageX - this.offsetLeft - this.clientLeft - inner.offsetWidth / 2;
+        var t = e.pageY - this.offsetTop - this.clientTop - inner.offsetHeight / 2;
+        if (l < 0) {
+            l = 0;
+        } else if (l > maxL) {
+            l = maxL
+        }
+        if (t < 0) {
+            t = 0;
+        } else if (t > maxT) {
+            t = maxT;
+        }
+        inner.style.left = l + 'px';
+        inner.style.top = t + 'px';
+    };
+    outer.onmouseleave = function () {
+        inner.style.display = 'none';
+    }
+</script>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            left: 50px;
+            top: 0;
+            width: 120px;
+            height: 120px;
+            background: red;
+        }
+    </style>
+
+</head>
+<body>
+<div id="oDiv"></div>
+</body>
+</html>
+<script src="../utils.js"></script>
+<script type="text/javascript">
+    //匀速公式
+    function linear(t, d, c, b) {
+        return c / d * t + b
+    }
+    function animate(options) {
+        var ele = options.ele;
+        var taget = options.target;
+        var duration = options.duration || 2000;
+        var callBack = options.callBack;
+
+        var begin = {};
+        var change = {};
+
+        for (var k in taget) {
+            if (taget.hasOwnProperty(k)) {
+                taget[k] = utils.getCss(curLeft, k);
+                change[k] = taget[k] - begin[k];
+            }
+        }
+
+    }
+    //用对象的形式传参数，避免了少传或者位置不对应的问题，可以通过对象名.属性名来访问。
+    animate({
+        ele: oDiv,
+        target: {
+            left: 400,
+            top: 400,
+        },
+        duration: 1000,
+        callBack: function () {
+
+        }
+    })
+</script>

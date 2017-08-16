@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<img src="" alt="" id="img1">
+<button id="btn1">播放</button>
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    console.dir(window==self);
+    var a=1;
+    console.log(self.a);
+
+    let img1=document.getElementById("img1");
+    let btn1=document.getElementById("btn1");
+
+    fetch("bg.png").then(function (res) {
+        //图片,音频视频
+        res.blob().then((e)=>{
+            //e是Blob对象
+            console.log(e);
+            img1.src=URL.createObjectURL(e);
+        })
+    });
+    fetch("bg.png").then(function (res) {
+        //图片,音频视频
+        return res.blob()
+    }).then((e)=>{
+        //e是Blob对象
+        img1.src=URL.createObjectURL(e);
+    });
+
+    var audio=new AudioContext();
+    var s=audio.createBufferSource();
+    function getMp3() {
+        var res=new Request("music.mp3");
+        fetch(res).then((res)=>{
+            res.arrayBuffer().then((buffer)=>{
+                audio.decodeAudioData(buffer,(decode)=>{
+                    s.buffer=decode;
+                    s.connect(audio.destination);
+                })
+            })
+        })
+    }
+    btn1.onclick=function () {
+       getMp3();
+       s.start(0);
+       this.setAttribute("disabled","disabled")
+    }
+</script>

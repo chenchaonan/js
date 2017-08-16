@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <style>
+        html, body {
+            background: #ededed;
+            padding: 5px 10px;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        #container {
+            width: 100%;
+        }
+
+        #container ul {
+            width: 20%;
+            float: left;
+            padding: 6px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        ul li {
+            position: relative;
+            background: #fff;
+            padding-bottom: 10px;
+            margin: 5px 0;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        ul li a:hover span {
+            display: block;
+        }
+
+        span {
+            display: none;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 55px;
+            height: 35px;
+            background: red;
+            border-radius: 4px;
+            color: #fff;
+            line-height: 35px;
+            text-align: center;
+        }
+
+        p {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="back">返回顶部</div>
+<div id="container">
+    <ul>
+        <!--<li>-->
+        <!--<a href="#">-->
+        <!--<img src="./img/1.png" alt="">-->
+        <!--<span>采集</span>-->
+        <!--</a>-->
+        <!--<p>标题标题标题标题标题标题标题标题标题标题</p>-->
+        <!--</li>-->
+    </ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var container = document.getElementById('container');
+    var oUls = document.getElementsByTagName('ul');
+    var oImgs = document.getElementsByTagName('img');
+    var arrUls = utils.listToArray(oUls);
+    //获取数据
+    function getData() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'data.json');
+        xhr.responseType = 'json';
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4 && /^2\d{2}$/.test(this.status)) {
+                var data = this.response;
+                bindData(data)
+            }
+        };
+        xhr.send();
+    }
+    getData();
+
+    //绑定数据
+    function bindData(data) {
+        for (var i = 0; i < 50; i++) {
+            var ind = Math.round(Math.random() * 11);
+            var cur = data[ind];
+            var oLi = document.createElement('li');
+            var oa = document.createElement('a');
+            oLi.appendChild(oa);
+
+            //添加span
+            var sp = document.createElement('span');
+            sp.innerHTML = '采集';
+            oa.appendChild(sp);
+
+            //添加img
+            var img = document.createElement('img');
+            //把真实的src地址保存在real属性上
+            img.setAttribute('real', cur.src);
+
+            //获取随机高度
+            img.style.height = Math.round(Math.random() * 300 + 200) + 'px';
+            oa.appendChild(img);
+
+            //添加p标签
+            var op = document.createElement('p');
+            op.innerHTML = cur.title;
+            oLi.appendChild(op);
+
+            //根据ul的高度排序
+            arrUls.sort(function (a, b) {
+                return utils.getCss(a, 'height') - utils.getCss(b, 'height');
+            });
+            arrUls[0].appendChild(oLi);
+        }
+        delayImg();
+    }
+
+    //延迟加载
+    function delayImg() {
+        for (var i = 0; i < oImgs.length; i++) {
+            var cur = oImgs[i];
+            if (cur.flag) continue;
+            checkImg(cur);
+        }
+    }
+
+    //获取图片
+    function checkImg(img) {
+        var imgH = img.offsetHeight;
+        var imgT = utils.offset(img).top;
+
+        var winH = utils.win('clientHeight');
+        var sTop = utils.win('scrollTop');
+
+        if (winH + sTop >= imgH / 2 + imgT) {//已经出现在窗口中
+            var imgSrc = img.getAttribute('real');
+            //检测图片的有效性，先创建一个临时存储图片的位置
+            var temp = new Image;
+            temp.src = imgSrc;
+            temp.onload = function () {
+                img.flag = true;
+                img.src = imgSrc;
+                fadeIn(img);
+            };
+            temp.onerror = function () {
+                img.flag = true;
+            }
+        }
+    }
+    //图片慢慢显示
+    function fadeIn(img) {
+        var op;
+        img.timer = setInterval(function () {
+            op = utils.getCss(img, 'opacity');
+            if (op >= 1) {
+                utils.setCss(img, 'opacity', 1);
+                clearInterval(img.timer);
+                return;
+            }
+            utils.setCss(img, 'opacity', op += 0.2)
+        })
+    }
+    window.onscroll = function () {
+        delayImg();
+    }
+</script>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .oDiv{
+            width:60px;
+            height:35px;
+            background: red;
+            color:#FFF;
+        }
+        .active{
+            background: darkgoldenrod;
+        }
+    </style>
+</head>
+<body>
+<div class="oDiv" id="oDiv">按钮</div>
+</body>
+</html>
+<script>
+    var oDiv = document.getElementById('oDiv');
+    oDiv.onclick = function () {
+        addClass('.active');
+    }
+</script>

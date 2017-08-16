@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    /*
+    * 正则：由元字符和修饰符组成，处理字符串，匹配验证，捕获的规则。
+    * 元字符：//两个斜杠之间的就是元字符，分特殊元字符和量词元字符普通元字符
+    * 1.特殊元字符
+    * \   转义字符转换为本来的意义
+    * .   匹配 除了\n意外的任意字符
+    * \n  匹配换行符
+    * \d  0-9之间的任意一个数字
+    * \D  除了0-9之间的任意数字之外的任意字符
+    * \b  匹配边界
+    * \B  非边界 '123 a12' /\B\d/匹配开头边界不是数字的，
+    * \w  数字，字母，下划线中的任意一个字符
+    * \W  除了数字，字母，下划线之外的任意一个字符
+    * \s  匹配空格符
+    * \S  匹配非空格
+    * [xyz]匹配xyz三者中的任意一个
+    *[^xyz]除了xyz三个意外的任意字符
+    * `                                             配a-z之间的任意一个字母
+    * [^a-z]除了a-z中的任意一个字符
+    * x|y x或者y
+    * （） 分组。改变优先级，划分小正则
+    * ^   以某一个元字符开头
+    * $   以某一个元字符结尾
+    * ?:  只匹配 不捕获
+    * ?=  正向预查
+    * ？！负向元字符
+    *
+    * 2.量词元字符
+    * ？ 出现零到一次
+    * *  出现零到多次
+    * +  出现一到多次
+    * {n}  出现n次  /a{2}/ /1aa1/ a出现2次
+    * {n,} 出现n到多次，至少n次
+    * {n,m}出现n到m次
+    *
+    * 3.修饰符
+    * i ignoreCase忽略大小写
+    * g global 全局
+    * m mutiline逐行匹配
+    *
+    * */
+//    var reg=new RegExp();
+//    console.dir(reg);
+//    console.dir(RegExp);
+
+    var str='li1li2li3';
+    str=str.replace(/\d/g,function () {
+        return 'AA'
+    });
+    console.log(str);
+
+
+    //创建方式
+    //字面量创建:不能进行字符串的拼接
+//    var reg=/a\d+/ig;
+//
+//    //实例创建：可以拼接字符串
+//    var reg2 = new RegExp('a\\d+','ig');
+//    //实例创建中特殊元字符\d==>\\d
+//    console.log(reg,reg2);
+
+
+    var cn='hello';
+
+
+    var reg=new RegExp(''+cn+'','ig');
+    console.log(reg);// ==>/hello/gi
+
+
+</script>

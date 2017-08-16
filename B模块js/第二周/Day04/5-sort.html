@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sort</title>
+</head>
+<body>
+<!--<ul>-->
+    <!--<li>33</li>-->
+    <!--<li>22</li>-->
+    <!--<li>11</li>-->
+    <!--<li>44</li>-->
+    <!--<li>55</li>-->
+<!--</ul>-->
+<ul>
+    <li>c</li>
+    <li>d</li>
+    <li>a</li>
+    <li>b</li>
+    <li>e</li>
+</ul>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    //    var arr = [20, 10, 30, 50, 40];
+    //    arr.sort(function (a, b) {
+    //        //a 当前项
+    //        //b 后一项
+    //        return a - b
+    //        // 差大于0 说明a>b,a和b交换位置（只关心return的是>0还是<=0）
+    //    });
+    //    console.log(arr);
+    //
+    //
+    //    arr.sort(function (a, b) {
+    //        return 1;//每次都会交换位置
+    //    })
+    var oLis = document.getElementsByTagName('li');
+    var listArr = utils.likeToArray(oLis);
+    //数字排序
+//    listArr.sort(function (a, b) {
+//        return a.innerHTML - b.innerHTML;//从小到大
+//    });
+
+    //字符串排序
+    listArr.sort(function (a, b) {
+        return a.innerHTML.localeCompare(b.innerHTML)
+    });
+    console.log(listArr);
+</script>

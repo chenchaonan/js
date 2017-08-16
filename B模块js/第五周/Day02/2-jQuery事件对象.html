@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery事件对象</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #outer {
+            width: 200px;
+            height: 200px;
+            background: lightskyblue;
+        }
+
+        #div {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="div"></div>
+</div>
+<a href="" id="link">链接</a>
+<a href="javascript:;" id="link1">链接</a>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $(function () {
+        $('#outer').click(function () {
+            console.log(outer);
+        });
+        $('#div').click(function (e) {
+            console.log(e);
+            e.stopPropagation();//阻止冒泡行为
+        });
+        $('#link').click(function (e) {
+            e.preventDefault();//阻止默认行为
+        })
+    })
+</script>

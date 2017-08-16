@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+
+    class C1{
+        constructor(){
+            //类本身
+            this.x=1;
+        };
+        f(){}
+    }
+    class C2 extends C1{
+        constructor(){
+            //这里是父类C1本身
+            super();
+            this.z=1
+        };
+    }
+    let c2=new C2;
+    console.log(c2);
+
+    console.log(c2.__proto__ == C2.prototype);
+    console.log(C2.prototype.__proto__ == C1.prototype);
+</script>

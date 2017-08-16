@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function Per() {
+        this.id = 1;
+        this.name = 'zhufeng';
+    }
+    var per1 = new Per();
+    console.log(per1);
+
+
+    function User(name, age) {//类中this.xxx就是给当前实例对象添加私有属性
+        this.name=name;
+        this.age=age;
+    }
+    var user1 = new User('zhufeng', 18);
+    var user2 = new User('zhufeng2', 18);
+   // console.log(user1);
+   // console.log(user2);
+    //user1.say();
+
+    User.prototype.say=function () {
+        alert('my name is '+this.name+',年龄 '+this.age)
+    };
+//    user1.say();
+//    user2.say();
+  //  console.log(user1.say() === user2.say());
+
+
+    //工厂函数和构造函数模式的区别
+    //构造函数，通过new关键字，作为一个类执行，默认创建一个实例对象，形参赋值，预解释，代码从上而下执行，默认将实例对象返回，
+    //类中this是当前实例对象，this.xxx就是当前实例对象添加私有属性。
+</script>

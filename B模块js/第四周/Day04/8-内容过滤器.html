@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>内容过滤器</title>
+    <style>
+        div {
+            border: 1px solid darkorange;
+            height: 35px;
+            line-height: 35px;
+        }
+    </style>
+</head>
+<body>
+<div>123</div>
+<div></div>
+<div>中国</div>
+<div><span class="sp">111</span></div>
+<ul>
+    <li>11</li>
+    <li>22</li>
+    <li>33</li>
+    <li>44</li>
+</ul>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    //empty has contains parent
+    $(function () {
+        //console.log($('div:empty'));//empty 不包含任何子节点
+        //console.log($('div:has(.sp)').css('background','red'));//has 匹配是否包含指定选择器的容器
+        //console.log($('div:contains(中国)').css('background', 'yellow'));//根据内容过滤
+        //console.log($('div:parent').css('background','red'));//匹配作为父级的div（包含节点的元素）
+        //console.log($('ul').children(':contains(33)').css('background','red'));
+        //console.log($('ul:contains(3)').css('background', 'yellow'));
+
+    })
+</script>

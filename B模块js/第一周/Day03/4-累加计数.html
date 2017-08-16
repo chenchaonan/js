@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">0</button>
+</body>
+</html>
+<script>
+
+    //一
+    var btn = document.getElementById('btn');
+    //    btn.onclick = function () {
+    //        this.innerHTML = ++this.innerHTML;
+    //    }
+
+
+    //二
+    //    var count=0;
+    //    btn.onclick=function () {
+    //        this.innerHTML=++count;
+    //    }
+
+
+    //三，手工创建不销毁的作用域累加（不推荐使用，这样会形成不销毁的堆栈内存）
+    btn.onclick = (function () {
+        var count = 0;//保存不销毁的count
+        return function () {//返回内部函数，1。造成不销毁条件，2。通过这个内部函数，对私有变量count做修改。
+            btn.innerHTML = ++count;
+        }
+    })();
+
+    (function (count) {
+        btn.onclick = function () {
+            btn.innerHTML = ++count;
+        }
+    })(0);
+
+    //四，自定义属性
+    btn.count = 0;
+    btn.onclick=function () {
+        this.innerHTML=++count;
+    }
+</script>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //ajax:Async javascript And XML(可扩展标记语言，传输信息)；
+    //ajax 前后端交互的网页技术，可实现异步更新。在保证不重载整个页面的情况下，实现局部更新。
+
+    //1.创建ajax对象 XMLHttpRequest
+
+    var xhr = new XMLHttpRequest();
+    console.log(xhr);
+
+
+    //2.打开一个接口链接，建立链接。
+    // 请求方式 get，post（发送数据），delete，head，pull（发送更新的数据）
+    // 第一个参数，请求方式；
+    // 第二个参数，请求的URL地址;
+    // 第三个参数，是否异步，true异步（不写也代表异步），false同步。
+    //通过webstorm，浏览器访问到页面的时候，其实webstorm会默认搭建一个本地server服务器供我们访问。
+    xhr.open('get', './package.json', true);
+    xhr.responseType='json';//设置响应回来的数据按照json的格式处理。
+
+
+    //3.监听ajax状态和接收
+    xhr.onreadystatechange = function () {
+        //readystate ajax //状态 0 1 2 3 4
+        //http status http状态码 200 ok，302 重定向，404 not found，500 服务器错误
+        //this ==>xhr（操作的ajax对象）
+        //ajax请求成功，并且得到响应，
+        if (this.readyState === 4 && this.status === 200) {
+            //接收到响应回来的数据，文档形式。
+            console.log(this.responseText);//得到的是JSON字符串，利用JSON.parse转化成对象。
+            console.log(this.response);
+            console.log(JSON.parse(this.responseText));
+        }
+    };
+
+    //4.开始发送请求
+    xhr.send();
+
+
+
+
+
+    //js代码是单线程的，从上而下。同步，上面执行完成之后，后边的才执行。
+
+//    console.log(123);
+//    setTimeout(function () {//异步代码不会阻塞后边代码的执行，它会被放在异步队列里。
+//        console.log(456);
+//    }, 3000);
+//   console.log('后边的代码');
+</script>

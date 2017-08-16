@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dom</title>
+</head>
+<body>
+<ul>
+    <li class="li1   li2  ">11</li>
+    <li>22</li>
+    <li class=" li1 li3">33</li>
+    <li class="li1 li2">44</li>
+</ul>
+</body>
+</html>
+<script type="text/javascript">
+    // document.getElementsByClassName();//IE9以下没有这个方法
+    //var li3 = document.getElementsByClassName('li3');
+    //cn代表类名
+    //context 上下文
+    //    function getByclass(cn, context) {
+    //        context = context || document;//处理上下文
+    //        var eles = context.getElementsByTagName('*');//获取所有元素
+    //        var reg = new RegExp('\\b' + cn + '\\b');
+    //        var arr = [];
+    //        for (var i = 0; i < eles.length; i++) {
+    //            var cur = eles[i];
+    //            reg.test(cur.className) ? arr[arr.length] = cur : null;
+    //        }
+    //        return arr;
+    //    }
+    //    console.log(getByclass('li3'));
+
+    //通过类名获取元素
+    String.prototype.myTrim = function () {
+        var reg = /^\s+|\s+$/g;
+        return this.replace(reg, '');
+    };
+
+    function getByclass(cn, context) {
+        context = context || document;//处理上下文
+        var eles = context.getElementsByTagName('*');//获取所有的元素
+        var classList = cn.myTrim().split(/ +/);//去除空格并拆分成数组
+        for (var i = 0; i < classList.length; i++) {
+            var cur = classList[i];
+            var reg = new RegExp('\\b'+cur+'\\b');
+            var arr = [];
+            for (var j = 0; j < eles.length; j++) {
+                var ele = eles[j];
+                reg.test(ele.className) ? arr[arr.length] = ele : null;
+            }
+            eles = arr;//改变筛选范围
+        }
+        return arr;
+    }
+    console.log(getByclass('li1 li2'));
+</script>

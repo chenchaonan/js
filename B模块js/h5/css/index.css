@@ -1,0 +1,259 @@
+html {
+    font-size: 100px;
+    height: 100%;
+    background: #eee;
+}
+
+.container {
+    width: 100%;
+}
+
+/*header*/
+.header {
+    padding: 0 0.2rem;
+    background: #3076e8;
+    color: #fff;
+    height: 0.44rem;
+    line-height: 0.44rem;
+    overflow: hidden;
+}
+
+.header i {
+    float: left;
+    line-height: 0.44rem;
+}
+
+.header h4 {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    margin-left: -0.36rem;
+    font-size: 0.18rem;
+    font-weight: normal;
+}
+
+.header a {
+    float: right;
+    color: #fff;
+}
+
+/*header-pic*/
+.main {
+    border-bottom: 0.01rem solid #eee;
+}
+
+.main .mainHeader {
+    text-align: center;
+    padding: 0.15rem 0;
+    background: #fff;
+}
+
+.main .mainHeader .headPic a {
+    display: block;
+    width: 0.65rem;
+    height: 0.65rem;
+    border: 0.01rem solid #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 0.1rem auto;
+}
+
+.main .mainHeader img {
+    width: 100%;
+    height: 100%;
+}
+
+.main .mainHeader span {
+    display: inline-block;
+}
+
+.main .mainHeader span a {
+    position: relative;
+    color: #999;
+}
+
+/*headerPicList*/
+.main .mainHeader .headerPicList {
+    display: none;
+    position: absolute;
+    left: 50%;
+    margin: 0.16rem 0 0 -1.27rem;
+    width: 2.55rem;
+    height: 1.325rem;
+    padding: 0 0 0.14rem 0;
+    background: #fff;
+    border: 0.01rem solid #ccc;
+    border-radius: 0.05rem;
+    box-shadow: 0.01rem 0.02rem 0.06rem rgba(0, 0, 0, 0.2);
+}
+
+.main .mainHeader .headerPicList div {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    float: left;
+    margin: 0.14rem 0.2rem;
+}
+
+.main .mainHeader .headerPicList:before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    top: -0.15rem;
+    left: 0.8rem;
+    border-left: 0.1rem solid transparent;
+    border-right: 0.1rem solid transparent;
+    border-bottom: 0.15rem solid #ccc;
+}
+
+.main .mainHeader .headerPicList:after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 0;
+    height: 0;
+    top: -0.14rem;
+    left: 0.8rem;
+    border-left: 0.1rem solid transparent;
+    border-right: 0.1rem solid transparent;
+    border-bottom: 0.15rem solid #fff;
+}
+
+.main .mainHeader .tx:hover .headerPicList {
+    display: block;
+}
+
+/*personal data*/
+.main .per-data {
+    background: #fff;
+    border-top: 0.01rem solid #eee;
+}
+
+.main .per-data div {
+    margin-left: 0.2rem;
+}
+
+.main .per-data p {
+    height: 0.35rem;
+    line-height: 0.35rem;
+    /*padding-right: 0.1rem;*/
+}
+
+.main .per-data p:nth-child(1) {
+    border-bottom: 0.01rem solid #eee;
+    box-sizing: border-box;
+}
+
+.main .per-data p span {
+    display: inline-block;
+    color: #999;
+    width: 0.7rem;
+}
+
+.main .per-data p input {
+}
+
+.main .per-data div.line {
+    height: 0.08rem;
+    background: #eee;
+    margin: 0;
+}
+
+/*IP*/
+.main-ip .ipList {
+    background: #fff;
+    height: 0.75rem;
+    margin-top: 0.1rem;
+    overflow: hidden;
+    padding: 0.2rem 0.15rem;
+}
+
+.main-ip .ipList .ipPic,.main-ip .ipList .ipN ,.main-ip .desc{
+    float: left;
+}
+
+.main-ip .ipList .ipPic{
+    position: relative;
+    padding-right: 0.2rem;
+    border-right: 0.01rem solid #ccc;
+}
+.main-ip .ipList .ipPic:after{
+    position: absolute;
+    display: block;
+    content: '';
+    top:0.25rem;
+    left: 0.25rem;
+    background: url("../images/ip_5.png") no-repeat center;
+    width: 0.12rem;
+    height: 0.12rem;
+    border-radius: 50%;
+    background-size: 100%;
+
+}
+.main-ip .desc{
+    margin-right: 0.3rem;
+    /*width: 1.5rem;*/
+}
+.main-ip .ipList .ipPic div{
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 0.05rem;
+}
+.main-ip .ipList .ipPic span{
+    text-align: center;
+}
+.main-ip .ipList .ipPic img {
+    width: 100%;
+    height: 100%;
+}
+
+.main-ip .ipList .ipN{
+    text-align: center;
+    padding: 0.1rem;
+    /*margin: 0.05rem 0.1rem;*/
+}
+.main-ip .ipList .ipN h3{
+    font-size: 0.13rem;
+    color: #333;
+    font-weight: normal;
+}
+.main-ip .ipList .ipN a{
+    display: inline-block;
+    width: 0.26rem;
+    height: 0.14rem;
+    line-height: 0.14rem;
+    border-radius: 0.015rem ;
+    margin-top: 0.1rem;
+}
+.main-ip .ipList .ipN a:nth-of-type(1){
+    color: red;
+    border: 0.01rem solid red;
+}
+.main-ip .ipList .ipN a:nth-of-type(2){
+    color: #610094;
+    border: 0.01rem solid #610094;
+}
+.main-ip .ipList .desc{
+    position: absolute;
+    padding:  0.05rem 0.1rem 0.05rem 1.5rem ;
+    line-height: 0.2rem;
+    /*margin: 0.05rem 0;*/
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:3;
+    text-align: justify;
+}
+.main-ip .ipList i {
+    position: absolute;
+    color: #ccc;
+    right: 0.15rem;
+    line-height: 0.75rem;
+}

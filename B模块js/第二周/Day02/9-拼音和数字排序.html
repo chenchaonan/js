@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="btn1">字母</button>
+<button id="btn2">人气</button>
+<ul id="oUl">
+    <li pin="zhoujielun" pop="330043">
+        <span>周杰伦</span>
+        <span>人气：330043</span>
+    </li>
+    <li pin="chenyixun" pop="23043">
+        <span>陈奕迅</span>
+        <span>人气：23043</span>
+    </li>
+    <li pin="xuezhiqian" pop="435643">
+        <span>薛之谦</span>
+        <span>人气：435643</span>
+    </li>
+    <li pin="liudehua" pop="32043">
+        <span>刘德华</span>
+        <span>人气：32043</span>
+    </li>
+</ul>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    var oUl = document.getElementById('oUl');
+    var oLis = oUl.getElementsByTagName('li');
+    console.log(oLis);
+
+    var arrList = utils.likeToArray(oLis);
+    console.log(arrList);
+    oUl.flag = -1;
+    btn1.onclick = function () {
+        oUl.flag *= -1;
+        arrList.sort(function (a, b) {
+            var p1 = a.getAttribute('pin');
+            var p2 = b.getAttribute('pin');
+            return p1.localeCompare(p2) * oUl.flag;
+        });
+        //将排好序的内容添加到页面中
+        var frg = document.createDocumentFragment();
+        for (var i = 0; i < arrList.length; i++) {
+            frg.appendChild(arrList[i]);
+        }
+        oUl.appendChild(frg);
+    };
+
+    //人气
+    btn2.onclick = function () {
+        oUl.flag *= -1;
+        arrList.sort(function (a, b) {
+            var p1 = a.getAttribute('pop');
+            var p2 = b.getAttribute('pop');
+            return (p1 - p2) * oUl.flag;
+        });
+        //将排序好的内容添加到页面中
+        var frg = document.createDocumentFragment();
+        for (var i = 0; i < arrList.length; i++) {
+            frg.appendChild(arrList[i]);
+        }
+        oUl.appendChild(frg);
+    }
+</script>

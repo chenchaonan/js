@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布和订阅</title>
+</head>
+<body>
+<button id="btn">button</button>
+</body>
+</html>
+<script src="event.js"></script>
+<script>
+    //设计模式 发布／订阅 自定义事件
+    on(btn, 'click', fn1);
+    on(btn, 'click', fn2);
+    on(btn, 'click', fn3);
+
+    //发布
+    btn.onclick= function () {
+        fire(btn, 'click');
+    };
+
+    //订阅
+    function on(ele, type, fn) {
+        var events = ele['self' + type];
+        if (!(events instanceof Array)) {
+            events = ele['self' + type] = [];
+        }
+        events.push(fn);
+    }
+
+    console.log(btn['selfclick']);
+
+    //发布
+    function fire(ele, type) {
+        var events = ele['self' + type];
+        if (events instanceof Array) {
+            for (var i = 0; i < events.length; i++) {
+                events[i].call(ele);
+            }
+        }
+    }
+
+    //退订
+    function off(ele, type, fn) {
+        var events = ele['self' + type];
+        if (events instanceof Array) {
+            for (var i = 0; i < events.length; i++) {
+                if (events[i] === fn){
+                    events.splice(i,1);
+                    break;
+                }
+            }
+        }
+    }
+
+    function fn1() {
+        console.log('fn1');
+    }
+
+    function fn2() {
+        console.log('fn2');
+    }
+
+    function fn3() {
+        console.log('fn3');
+    }
+</script>

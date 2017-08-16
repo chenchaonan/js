@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #oDiv {
+            position: absolute;
+            left: 50px;
+            top: 0;
+            width: 120px;
+            height: 120px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var oDiv = document.getElementById('oDiv');
+    var duration = 2000;
+    var begin = utils.getCss(oDiv, 'left');
+    var change = utils.win('clientWidth') - oDiv.offsetWidth - begin;
+    console.log(change);
+    var maxLeft = utils.win('clientWidth') - oDiv.offsetWidth;
+    console.log(maxLeft);
+    var speed = change / duration;
+    var step = speed * 10;
+    var curLeft;
+    oDiv.timer = setInterval(function () {
+        curLeft = utils.getCss(oDiv, 'left');//每次获取当前的left
+        if (curLeft > maxLeft) {
+            utils.setCss(oDiv, 'left', maxLeft);
+            clearInterval(oDiv.timer);
+            return;
+        }
+        utils.setCss(oDiv, 'left', curLeft += step)
+    }, 10);
+</script>

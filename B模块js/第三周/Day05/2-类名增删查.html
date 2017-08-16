@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .li1 {
+            width: 100px;
+            height: 35px;
+            background: darkorange;
+        }
+
+        /*.li2 {*/
+        /*text-align: center;*/
+        /*line-height: 35px;*/
+        /*color: #fff;*/
+        /*}*/
+
+        .li3 {
+
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+    </style>
+</head>
+<body>
+<!--<button id="btn">btn</button>-->
+<div id="oDiv1" class="li3">123</div>
+</body>
+</html>
+<script>
+    var oDiv1 = document.getElementById('oDiv1');
+    var btn = document.getElementById('btn');
+    //    oDiv1.className = 'li1';
+    //    oDiv1.className+=' li2';
+    //
+    //    //es5提供的新api，不兼容IE
+    //    oDiv1.classList.add('li1','li2');//添加类名
+    //    oDiv1.classList.remove('li1');//删除类名
+    //
+    //    //切换类名，有就移除，没有就增加
+    //    btn.onclick=function () {
+    //        oDiv1.classList.toggle('li2')
+    //    };
+    //
+    //    console.log(oDiv1.classList.contains('li2'));
+
+    String.prototype.myTrim = function () {
+        var reg = /^\s+|\s+$/g;
+        return this.replace(reg, '');
+    };
+
+    //hasClass是否包含指定类名
+    function hasClass(curEle, cn) {
+        return new RegExp('\\b' + cn + '\\b').test(curEle.className);
+    }
+    //console.log(hasClass(oDiv1, 'li1'));
+
+
+    //addClass 增加类名
+    function addClass(curEle, cn) {
+        var list = cn.myTrim().split(/ +/);//将指定类名拆分成数组
+        for (var i = 0; i < list.length; i++) {//循环检测一个一个的添加
+            cn = list[i];
+            var str = !hasClass(curEle, cn) ? curEle.className += '' + cn : null;
+            curEle.className = str.replace(/ +/g, '');//去除多余空格
+        }
+    }
+        addClass(oDiv1,'li3')
+
+//    function removeClass(curEle, cn) {
+//        var list = cn.myTrim().split(/ +/);
+//        for (var i = 0; i < list.length; i++) {
+//            cn = list[i];
+//            //检测以下当前要移除的类名是否存在，如果不存在跳出此次循环。
+//            if (!hasClass(curEle, cn)) continue;
+//            var reg = new RegExp('(^| +)' + cn + '( +|&)');
+//            //移除指定类名并删除首尾空格
+//            var str = curEle.className = str.replace(reg, '').myTrim();
+//            curEle.className = str.replace(/ +/g, '');//去除多余空格
+//        }
+//    }
+//
+//
+//    //切换toggle 切换类名
+//    function toggle(curEle, cn) {
+//        var list = cn.myTrim().split(/ +/);
+//        for (var i = 0; i < list.length; i++) {
+//            cn = list[i];
+//            hasClass(curEle, cn) ? removeClass(curEle, cn) : addClass(curEle, cn);
+//        }
+//    }
+//    console.log(toggle(oDiv1, 'li3'));
+</script>

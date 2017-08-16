@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #container {
+            width: 100%;
+            height: 469px;
+            background: url("images/lotteryBg.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+        #lotteryWrap{
+            width: 100%;
+            height: 100%;
+        }
+        #lotteryWrap #lottery{
+            position: relative;
+            padding-top: 140px;
+        }
+        #lotteryWrap #rotate{
+            width: 285px;
+            height: 285px;
+            background: url("images/rotate.png") no-repeat center;
+            background-size: 100% 100%;
+            margin: 0 auto;
+        }
+        #lotteryWrap #lottery #indicator{
+            position: absolute;
+            left: 50%;
+            top:50%;
+            transform: translate3d(-50%,10%,0);
+            width: 80px;
+            height: 100px;
+            background: url("images/indicator.png") no-repeat center;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="lotteryWrap">
+        <div id="lottery">
+            <div id="rotate"></div>
+            <span id="indicator"></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

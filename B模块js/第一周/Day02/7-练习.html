@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function fn(n) {//n=10,n=12
+        var n = n;
+        return function (a) {//a=1,a=2
+            var a = a;
+            a++;
+            console.log(n += a);
+        }
+    }
+    var f=fn(10);
+    f(1);//12
+    f(2);//13
+
+
+    //自执行函数不会进行全局的预解释，函数内部会进行预解释
+    console.log(123);
+    (function () {
+        var num=100;
+        console.log(num);
+    })();
+    console.log(456);
+
+
+
+        var num = 20;
+        var obj = {
+            num: 30,
+            fn: (function (num) { // 接收自执行的返回值 作为fn这个属性的属性值
+                 num += 5;
+                return function () {
+                    console.log(num);//25
+                }
+            })(num)
+        };
+
+        obj.fn(num);
+</script>

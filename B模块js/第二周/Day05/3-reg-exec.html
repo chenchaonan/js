@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>reg</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //正则捕获就是把符合规则的内容捕获到。
+//    var reg=/\d/;
+//    console.log(reg.exec('a3'));//["3", index: 1, input: "a3"]
+    /*
+    * 第一项：正则捕获到的内容
+    * index 开始捕获到的索引位置
+    * input 捕获的原始字符串
+    * */
+
+    //正则的懒惰性和取消懒惰性
+    // 修饰符g取消懒惰性，会接着上次捕获后的位置继续捕获。
+//    var reg=/\d/;
+//    var str='hello123';
+//    console.log(reg.exec(str));//["1", index: 5, input: "hello123"]
+//    console.log(reg.exec(str));//["1", index: 5, input: "hello123"]
+
+//    var reg=/\d+/g;//+号可以查找连续的数字
+//    var str='hello123nihao456ccc789';
+//    console.log(reg.exec(str));//["123", index: 5, input: "hello123nihao456ccc789"]
+//    console.log(reg.lastIndex);//8
+//    console.log(reg.exec(str));//["456", index: 13, input: "hello123nihao456ccc789"]
+//    console.log(reg.lastIndex);
+//    console.log(reg.exec(str));//["789", index: 19, input: "hello123nihao456ccc789"]
+//    console.log(reg.lastIndex);
+//    console.log(reg.exec(str));//null
+//    console.log(reg.exec(str));//到头之后性0开始捕获
+
+//    var reg=/\d+/g;//+号可以查找连续的数字
+//    var str='hello123nihao456ccc789';
+//    console.log(reg.exec(str));
+//    reg.lastIndex = 8;//可以手工指定下一次的起始位置，需要加修饰符g才有效果、
+//    console.log(reg.exec(str));
+//    //全局匹配捕获的时候，test和exec都会导致lastIndex索引自动改变。
+
+
+    //match 字符串捕获方法,支持正则，必须加修饰符g取消懒惰性，才可以一次性的将匹配到的内容都捕获到，放到一个数组里。
+    var reg=/\d+/g;//+号可以查找连续的数字
+    var str='hello123nihao456ccc789';
+
+    console.log(str.match('123'));
+    console.log(str.match(reg));
+
+
+    //exec和match的区别
+    //1.exec正则的捕获方法,match是字符串的捕获方法。
+    //2.正则没有取消懒惰性的时候exec和match捕获到的内容一样。
+    //3.如果取消了懒惰性，exec需要捕获多次才能捕获完，match可以一次性的捕获到,并将捕获到的内容放到数组里。
+    //4.分组捕获区别：
+//        1）如果是匹配了全局加了g，Match无法捕获到分组
+//        2) 如果没有加g，exec和match捕获到的内容一样，也能把分组捕获到
+
+
+    //match里面也是调用了exec。原理
+    String.prototype.myMatch = function (reg) {
+        var res = reg.exec(this);
+        if (reg.global) {
+            var arr = [];
+            while (res) {
+                arr.push(res[0])
+            }
+            return arr.length ? arr : null;//全局匹配，如果没有捕获到应该返回null
+        }
+        return res;
+    };
+    console.log(str.myMatch(reg));
+
+
+    /*
+    * 正则实例属性
+    * flags：当前属性的修饰符
+    * global：是都有g修饰符（是否全局匹配），true有  false无
+    * ignoreCase：是否有i修饰符，（是否忽略大小写）
+    * multiline：是否有m修饰符（是否逐行匹配）
+    * source：正则的元字符内容
+    * */
+
+
+    //分组捕获 将大正则{(\d+)\}进行分组（大正则划分成小正则），
+    // 当大正则捕获到内容之后，小正则会再捕获到的内容中，再进行捕获。
+    //是第几个正则，就看左半边的括号
+//    var str = '{10}11';
+//
+//    var reg = /(\{(\d+)\})(\d+)/g;
+//    console.log(reg.exec(str));
+//    console.log(str.match(reg));
+
+
+    //默认情况下，只要进行了分组都会进行捕获
+    //?:写在分组的最前面，只匹配改分组，不进行分组捕获。
+    var str='12.1234';
+    var reg=/^[+-]?(?:\d|[1-9]\d+)(\.\d+)?$/;
+    console.log(reg.exec(str));
+</script>

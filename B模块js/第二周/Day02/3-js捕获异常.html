@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+</body>
+</html>
+<script>
+    //try catch finally
+
+    //    try{//第一种方案
+    //        //这里的代码不会报错的话，catch里面的代码就不会执行。
+    //        //如果有报错，才会执行catch里面的代码
+    //        console.log(a);
+    //    }catch (e){//第二种方案
+    //        console.log(e);e,捕获到的错误信息
+    //        console.log(e.message);//包含完整错误信息，包含错误类型，报错原因，报错位置
+    //
+    //        //手工抛出错误
+    //        //throw new ReferenceError(e.message);//手工抛出错误，引用错误
+    //        //throw new Error(e.message);//平常错误
+    //        //throw new TypeError(e.message);//抛出类型错误
+    //        //throw new TypeError('你是坏蛋');
+    //        console.log(123);
+    //    }finally {//不管是否报错，都会执行，不怎么用
+    //
+    //    }
+    //    console.log('后边的代码');
+
+
+    //如果第一种方案不兼容出现报错的话，就执行第二种方案，如果第一种方案正常，则不执行第二种方案。
+    var oLis = document.getElementsByTagName('li');
+    console.log(oLis);
+    //    var arr = [];
+    //    try {
+    //        [].slice.call(oLis, 0);
+    //    } catch (e){
+    //        for (var i = 0; i < oLis.length; i++) {
+    //        arr[arr.length] = oLis[i];
+    //        }
+    //        console.log(arr);
+    //    }
+
+
+    //封装成函数，方便使用
+    function liketoarray(likeAry) {
+        try {
+           return [].slice.call(likeAry, 0);//IE6-8不兼容，会报错
+        } catch (e) {
+            var arr=[];
+            for (var i = 0; i < likeAry.length; i++) {
+                arr.push(likeAry[i]);
+            }
+            return arr;
+        }
+    }
+    liketoarray();
+</script>

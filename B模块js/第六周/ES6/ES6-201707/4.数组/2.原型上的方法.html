@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    //copyWithin
+    let ary=[1,2,3,4,5];
+    //console.log(ary.copyWithin(3, 2));
+    //[1, 2, 3, 3,4]
+
+    //console.log(ary.copyWithin(2, 4))
+    console.log(ary.copyWithin(0, 3));
+
+    //fill(替换的值,开始替换的索引,结束的索引(不包括))
+    //常用来初始化一个数组;
+    let a1=[1,2,3,4];
+    a1.fill(null);
+    console.log(a1);
+
+    //一个有7个1的数组
+    console.log(Array(7).fill(1));
+
+    console.log([1, 2, 3, 4, 5].fill("a", 2,3));
+
+    //find  findIndex
+    let aa=[1,2,3,4];
+    aa.find(function (item,index) {
+        //遍历数组,执行这个函数,一旦返回值是true,停止查找,返回当前项 item
+        console.log(item);
+        return index;
+    });
+
+    let ary10=["a",2,3,1,2,3,1,2,3,1,7,2];
+    let ary11=ary10.filter(function (item,index) {
+        //返回值是true留下当前项,false删除当前项
+        //得到一个新数组,原来数组不变
+        return !isNaN(item)
+    });
+    console.log(ary11);
+
+
+    let ary12=[1,2,3,1,2,3,1,2,3,1,7,2];
+    let ary13=ary12.filter(function (item,index) {
+        return !ary12.slice(0,index).includes(item);
+    });
+
+    console.log(ary13);
+
+    //includes 判断数组中有没有这一项
+    console.log(ary12.includes(7));
+
+
+    console.log(ary10.findIndex(function (item, index) {
+        //返回值是当前索引;
+        return isNaN(item);
+    }));
+
+
+    //遍历 keys(),entries()
+
+    let ary666=["a","b"];
+    for(let key of ary666.keys()){
+        console.log(key);
+    }
+
+    //%s占位符
+    for(let [key,val] of ary666.entries()){
+        console.log("key :%s,val: %s",key,val);
+    }
+
+    console.log(console);
+
+
+</script>

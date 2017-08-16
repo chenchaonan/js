@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">button</button>
+</body>
+</html>
+<script>
+    var btn = document.getElementById('btn');
+
+    function on(ele, type, handle) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handle, false);
+        } else {
+            var events = ele['bind' + type];//定义一个变量先获取事件池，如果获取不到就创建
+            if (!(events instanceof Array)) {
+                events = ele['bind' + type] = [];
+                //ele.attachEvent放到if里面是因为事件池只需要一个执行者就可以，所以放在初次创建事件池的时候最合理。
+                //管理者 任务 当相关行为触发的时候找到对应的事件池，通知里面的函数按照顺序执行。
+                ele.attachEvent('on' + type,handleThis(ele,run));
+            }
+            //防止重复执行
+            for (var k = 0; k < events.length; k++) {
+                if (events[i] === handle) return;
+            }
+            events.push(handle);
+        }
+    }
+
+    function off(ele, type, handle) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false);
+        } else {
+            var events = ['bind' + type];
+            if (events instanceof Array) {
+                for (var i = 0; i < events.length; i++) {
+                    if (events[i] === handle) {
+                        events.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    function run(e) {
+        //事件对象兼容处理
+        e = e || window.event;
+        e.target = e.target || e.srcElement;
+        e.preventDefault = e.preventDefault || function () {
+            e.returnValue = false;
+        };
+        e.stopPropagation = e.stopPropagation || function () {
+            e.cancelBubble = true;
+        };
+        e.pageX = (document.documentElement.scrollLeft || document.body.scrollLeft) + e.clientX;
+        e.pageY = (document.documentElement.scrollTop || document.body.scrollTop) + e.clientY;
+
+        var events = this['bind' + type];
+        if (!(events instanceof Array)) return;
+        for (var i = 0; i < events.length; i++) {
+            events[i].call(this, e);
+        }
+    }
+
+    //处理this
+    function handleThis(context, fn) {
+        return function (e) {
+            fn.call(context, e);
+        }
+    }
+
+    function fn1() {
+        console.log('fn1');
+    }
+
+    function fn2() {
+        console.log('fn2');
+    }
+
+    function fn3() {
+        console.log('fn3');
+    }
+
+    on(btn, 'click', fn1);
+    on(btn, 'click', fn2);
+    on(btn, 'click', fn3);
+
+</script>

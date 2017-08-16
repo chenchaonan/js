@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="outer">
+    <div id="inner"></div>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var outer = document.getElementById('outer');
+    var inner = document.getElementById('inner');
+    inner.onclick = function (e) {
+        e = e || window.event;//事件对象
+        e.target = e.target || e.srcElement;//事件源
+        e.stopPropagation() ? e.stopPropagation() : e.cancelable = true;//阻止冒泡传播
+        e.preventDefault() ? e.preventDefault() : e.returnValue = false;//阻止默认行为
+        var sLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        var sTop = document.documentElement.scrollTop || document.body.scrollTop;
+        e.pageX = e.pageX + sLeft;
+        e.pageY = e.pageY + sTop;
+    }
+</script>

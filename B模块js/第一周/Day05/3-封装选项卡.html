@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>封装选项卡</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            width: 400px;
+            margin: 0 auto;
+        }
+
+        span {
+            display: inline-block;
+            width: 80px;
+            height: 35px;
+            background: green;
+            line-height: 35px;
+            text-align: center;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        p {
+            width: 400px;
+            height: 200px;
+            background: green;
+            text-align: center;
+            margin-top: 1px;
+            display: none;
+        }
+
+        .active {
+            display: inline-block;
+            background: darkorange;
+
+        }
+    </style>
+</head>
+<body>
+<div>
+    <span class="active">综艺</span>
+    <span>娱乐</span>
+    <span>新闻</span>
+    <p class="active">Tab1</p>
+    <p>Tab2</p>
+    <p>Tab3</p>
+</div>
+</body>
+</html>
+<script>
+
+
+    var spans = document.getElementsByTagName('span');
+    var ps = document.getElementsByTagName('p');
+    for (var i = 0; i < spans.length; i++) {
+        spans[i].index = i;
+        spans[i].onclick = function () {
+            for (var k = 0; k < ps.length; k++) {
+                spans[k].className = '';
+                ps[k].className = '';
+            }
+            this.className = 'active';
+            ps[this.index].className = 'active';
+        }
+    }
+
+    //    new Tab({
+    //        el: 'Tab1'
+    //    })
+</script>

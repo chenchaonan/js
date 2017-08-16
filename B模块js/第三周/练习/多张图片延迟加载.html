@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>延迟加载</title>
+    <style>
+        #oDiv {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        #oDiv img {
+            width: 300px;
+            height: 300px;
+            background: url("./img/lazyload.gif") no-repeat center;
+            background-size: 80%;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv">
+    <img real="./img/1.jpg" alt="">
+    <img real="./img/2.jpg" alt="">
+    <img real="./img/3.jpg" alt="">
+    <img real="./img/4.jpg" alt="">
+    <img real="./img/1.jpg" alt="">
+    <img real="./img/2.jpg" alt="">
+    <img real="./img/3.jpg" alt="">
+    <img real="./img/4.jpg" alt="">
+</div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var oDiv = document.getElementById('oDiv');
+    var oImgs = oDiv.getElementsByTagName('img');
+    //图片延迟
+    function delayImg() {
+        for (var i = 0; i < oImgs.length; i++) {
+            var cur = oImgs[i];
+            if (cur.flag) continue;
+            checkImg(cur);
+        }
+    }
+    //加载图片检测
+    function checkImg(img) {
+        var winH = utils.win('clientHeight');
+        var sTop = utils.win('scrollTop');
+        var imgH = utils.offset(img).top;
+        var imgT = img.offsetHeight;
+        if (winH + sTop >= imgH + imgT) {
+            var imgSrc = img.getAttribute('real');
+            var temp = new Image;
+            temp.src = imgSrc;
+            temp.onload = function () {
+                img.src = imgSrc;
+                fadeIn(img);
+                img.flag = true;
+            };
+            temp.onerror = function () {
+                img.flag = true;
+            }
+        }
+    }
+    delayImg();
+    window.onscroll = function () {
+        delayImg();
+    };
+    function fadeIn(img) {
+      var op;
+        img.timer=setInterval(function () {
+            op=utils.getCss(img,'opacity');
+            if(op>=1){
+                utils.setCss(img,'opacity',1);
+                clearInterval(img.timer);
+                return
+            }
+            utils.setCss(img,'opacity',op+=0.2);
+        },120)
+    }
+
+
+</script>

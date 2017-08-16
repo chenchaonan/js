@@ -1,0 +1,216 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+li {
+    list-style: none;
+}
+
+body, html {
+    font: 12px/1.5 Microsoft YaHei, tahoma, arial, Hiragino Sans GB, \\5b8b\4f53, sans-serif;
+    color: #666;
+    width: 100%;
+}
+
+/*header*/
+.header .nav {
+    width: 100%;
+    height: 30px;
+    background: #e3e4e5;
+    border-bottom: 1px solid #ddd;
+}
+
+.jd_mini {
+    max-width: 100%;
+    min-width: 990px;
+}
+
+.header .nav .top_nav {
+    position: relative;
+    width: 1190px;
+    margin: 0 auto;
+    clear: both;
+}
+
+.header .nav a {
+    font-size: 12px;
+    line-height: 24px;
+    color: #999;
+}
+
+/*左侧城市*/
+.header .nav .top_nav .left_nav {
+    float: left;
+    margin-left: 10px;
+}
+
+.header .nav .top_nav .left_nav i {
+    color: red
+}
+
+.header .nav .top_nav .right_nav {
+    float: right;
+}
+
+.header .nav .top_nav .left_nav .top {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    margin-top: -1px;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid transparent;
+}
+
+.header .nav .top_nav .left_nav .top:hover {
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+/*右侧导航链接*/
+.header .nav .right_nav a {
+    padding: 0 10px;
+}
+
+.header .nav .top_nav .right_nav > li {
+    display: inline-block;
+    line-height: 30px;
+
+}
+.header .nav .top_nav .right_nav > li:before{
+    position: absolute;
+    content: '';
+    display: block;
+    width: 1px;
+    height: 11px;
+    background: #ccc;
+    margin: 10px 5px 0 -5px;
+}
+
+.header .nav .top_nav .right_nav li a:hover {
+    color: red;
+}
+
+.header .nav .top_nav .top_logo {
+    float: left;
+    display: block;
+    width: 190px;
+    height: 170px;
+    background: #fff;
+    -webkit-box-shadow: 0 -12px 10px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 -12px 10px rgba(0, 0, 0, .2);
+    box-shadow: 0 -12px 10px rgba(0, 0, 0, .2);
+}
+
+.header .nav .top_nav .top_logo img {
+    width: 100%;
+    height: 100%;
+}
+
+/*隐藏层*/
+.down {
+    position: absolute;
+    /*padding: 10px;*/
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 1px 2px 1px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 1px 2px 1px rgba(0, 0, 0, .1);
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, .1);
+}
+
+.down a {
+    display: inline-block;
+    line-height: 30px;
+}
+
+/*左侧城市隐藏层*/
+.down_layer {
+    display: none;
+    width: 300px;
+    left: -1px;
+    padding: 10px;
+}
+
+.down_layer ul li {
+    float: left;
+    width: 60px;
+    text-align: center;
+}
+
+.down_layer ul li a {
+    padding: 0 8px;
+}
+
+.down_layer ul li a.select {
+    background: red;
+    color: #fff;
+}
+
+.down_layer ul li a:hover {
+    background: #f4f4f4;
+    color: red;
+}
+
+/*鼠标经过隐藏层显示*/
+.left_nav li:hover .down_layer,.my_jd:hover .my_jdDown {
+    display: block;
+}
+
+.down_layer:before {
+    position: absolute;
+    content: '';
+    display: block;
+    top: -1px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: #fff;
+}
+
+/*我的京东隐藏层*/
+.my_jd .my_jdDown {
+    display: none;
+    width: 280px;
+}
+
+.my_jd .my_jdDown .my_jdList{
+    padding: 10px 0 15px 10px;
+}
+.my_jd .my_jdDown .my_jdList2 {
+    border-top: 1px solid #f1f1f1;
+}
+
+.my_jd .my_jdDown ul li {
+    display: inline-block;
+    width: 120px;
+}
+.my_jd:hover .my_jdDown{
+
+}
+.header .nav .top_nav .my_jd{
+    position: relative;
+    display: inline-block;
+    padding:0 3px;
+    border: 1px solid transparent;
+}
+.header .nav .top_nav .my_jd:hover{
+    background: #fff;
+    border: 1px solid #ccc;
+}
+.header .nav .top_nav .my_jdDown:before{
+    position: absolute;
+    content: '';
+    display: block;
+    top: -1px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: #fff;
+}
+
+

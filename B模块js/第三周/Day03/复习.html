@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function getCss(curEle, val) {
+        var val;
+        var reg;
+        if ('getComputedStyle' in window) {
+            val = window.getComputedStyle(curEle, null)[attr];
+        } else {
+            if (attr === 'opacity') {
+                val = curEle.currentStyle['filter'];
+                reg = /alpha\(opacity=((?:\d|[1-9]\d+)(?:\.\d+))\)/;
+                var temp = reg.exec(val);
+                val = temp ? temp[1] / 100 : 1;
+            } else {
+                val = curEle.currentStyle[attr];
+            }
+        }
+    }
+    getCss();
+
+
+    function setCss(curEle, attr, val) {
+        if (attr === 'opacity') {
+            curEle.style[attr] = val;
+            curEle.style['finter'] = 'alpha(opacity=' + val * 100 + ')';
+            return;
+        }
+        if (attr === 'float') {
+            curEle.style.cssFloat = val;
+            curEle.style.styleFloat = val;
+            return;
+        }
+        var reg = /^width|height|left|top|right|bottom|fontSize|((margin|padding)|(left|right|top|bottom)?)$/;
+        if (reg.test(attr)) {
+            if (isNaN(val)) {
+                val += 'px';
+            }
+        }
+        curEle.style[attr] = val;
+    }
+    setCss();
+
+
+    function css(curEle, attr, val) {
+        if (typeof attr === 'object') {
+            for (var k in attr) {
+                setCss(curEle, k, attr[k])
+            }
+        } else {
+            setCss(curEle, attr, val)
+        }
+    }
+    css();
+
+    function win(attr, val) {
+        if (typeof val === 'undefined') {
+            return document.documentElement[attr] || document.body[attr];
+        }
+        document.documentElement[attr] = val;
+        document.body[attr] = val;
+    }
+    win();
+    function offset(ele) {
+        var l = ele.offsetLeft;
+        var t = ele.offsetTop;
+        var p = ele.offsetParent;
+        while (p) {
+            if (navigator.userAgent.indexOf('MSIE 8.0') === -1) {
+                l += p.clientLeft;
+                t += p.clientTop;
+            }
+            l += p.offsetLeft;
+            t += p.offsetTop;
+            p = p.offsetParent;
+        }
+        return{left:l,top:t}
+
+    }
+    offset();
+</script>

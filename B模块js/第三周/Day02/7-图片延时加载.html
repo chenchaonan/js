@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>延时加载</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #oDiv {
+            width: 300px;
+            height: 380px;
+            margin: 0 auto;
+            margin-top: 800px;
+        }
+
+        img {
+            width: 300px;
+            height: 380px;
+            background: url("img/lazyload.gif") no-repeat center;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv">
+    <img id="oImg" real="img/dlrb.jpeg" alt="">
+</div>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    //scrollTop+winH >= offset
+    var oImg = document.getElementById('oImg');
+    var oImgT = utils.offset(oImg).top;
+    var oImgH = oImg.offsetHeight;
+    //img最底端距离顶部的偏移
+    var imgH = oImgT + oImgH;
+    var winH = utils.win('clientHeight');
+    window.onscroll = function () {
+        if (oImg.flag) return;//防止重复加载
+        var scrollT = utils.win('scrollTop');
+        if (scrollT + winH >= imgH) {
+            var imgSrc = oImg.getAttribute('real');
+            //检测一个图片的有效性
+            var temp = new Image;
+            temp.src = imgSrc;
+            //图片加载成功，才会触发自己的onload事件，这个地址是有效的。
+            temp.onload = function () {
+                oImg.src = imgSrc;
+                oImg.flag = true;//定义一个标识，检验图片是否被正确加载
+            };
+            temp.onerror=function () {
+                console.log('加载失败');
+            }
+
+        }
+    }
+</script>

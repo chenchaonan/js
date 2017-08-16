@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    复习再复习
+
+    //1.函数预解释，不重复声明，重复定义
+//    function fn() {
+//        console.log(1111);
+//    }
+//    fn();//222
+//    var fn = function () {//代码执行到这进行赋值操作
+//        console.log('fn');
+//    };
+//    fn();//'fn'
+//    function fn() {//预解释的时候 赋值定义
+//        console.log(222);
+//    }
+//    fn();//'fn'
+
+
+
+
+//js解析
+fn=function () {
+    console.log(111);
+};
+fn=function () {
+    console.log(222);
+};
+var fn
+
+    //2.带var不重复声明
+    function foo(n) {
+        console.log(n);//100
+        var n = 300;
+        return function () {
+            console.log(n);//300
+        }
+    }
+    var f1 = foo(100);
+    fn();
+</script>

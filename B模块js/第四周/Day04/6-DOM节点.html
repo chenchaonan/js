@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+<div class="oDiv">
+    <ul class="oUl">
+        <li>11</li>
+        <li class="li2">22</li>
+        <li class="li3">33</li>
+        <li>44</li>
+        <li>55</li>
+    </ul>
+</div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $(function () {
+        //获取父亲节点
+//        console.log($('.li3').parent());
+//        console.log($('.li3')[0].parentNode());
+
+        //获取所有子元素
+//        console.log($('.oUl')[0].children);
+//        console.log($('.oUl').children());
+//        console.log($('.oUl').children('.li3'));
+//        console.log($('.oUl>li.li3'));
+
+        //获取上一个哥哥节点
+        console.log($('.li3').prev());
+
+        //获取所有哥哥节点
+        console.log($('.li3').prevAll());
+        console.log($('.li3').prevAll('.li2'));
+
+        //获取弟弟元素
+        console.log($('.li3').next());
+        console.log($('.li3').nextAll());
+
+        //获取所有兄弟节点
+        console.log($('.li3').siblings());
+        console.log($('.li3').siblings('.li2'));
+
+        //获取当前元素的所有祖先元素
+        console.log($('.li3').parents('.oDiv'));
+
+        //在父容器中的索引
+        console.log($('.li3').index());
+    })
+</script>

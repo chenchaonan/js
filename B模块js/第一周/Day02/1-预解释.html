@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>预解释</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*
+    * 预解释（变量提升)
+     在js执行之前把所有带var 和function关键字的，提前声明或者定义；
+     带 var先声明，再赋一个默认值 undefined(只声明不定义)；只有代码执行到这一行的时候才会进行赋值操作。
+     带function的 ，声明并且赋值（将定义部分赋值给它）；
+
+     预解释结束之后，代码从上而下依次执行
+
+
+
+     作用域（栈内存） 供js代码执行的环境
+     当我们加载页面的时候，浏览器提供一个供全局js执行的环境，全局作用域
+
+     预解释只发生在当前作用域中
+
+
+     作用域：全局作用域 window
+
+
+     函数执行，形成一个私有作用域，目的是供函数体里的代码执行
+     1.形参赋值
+     2.代码从上而下执行
+
+
+     全局变量和私有变量的区别
+     全局变量就是在全局中声明的变量
+     私有变量 形参和在私有作用域中声明的变量
+    *
+    * */
+//    console.log(fe);//undefined
+//    var fe=123;
+//    console.log(fe);//123
+//
+//    bar();//函数体
+//    function bar() {
+//        console.log('456');
+//    }
+//    bar();
+
+    var nn = 1000;
+    bar(100);
+    function bar(a) {
+        console.log(a);//100
+        var nn = 666;
+        function fe() {
+            console.log('fe');
+        }
+        console.log(nn); // 666
+        fe(); //fe
+    }
+
+        console.log(nn); // 1000
+        //fe();//报错，未定义 is not defined
+        bar();
+
+    //   var fe = 123; // 将fe重新赋值为 123
+
+    //    console.log(foo); // 函数定义部分
+    //    function foo() {  // 代码执行到函数定义部分 直接跳过了
+    //        console.log('foo');
+    //    }
+</script>

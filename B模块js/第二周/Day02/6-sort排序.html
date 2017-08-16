@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="btn">升降序</button>
+<ul id="oUl">
+    <li>22</li>
+    <li>11</li>
+    <li>33</li>
+</ul>
+</body>
+</html>
+<script src="utils.js" type="text/javascript"></script>
+<script>
+    //    var arr=[11,44,33,22,55];
+    //    arr.sort(function (a, b) {//每比较一次都会执行一次这个函数
+    //        //a当前项
+    //        //b当前项的后一项
+    //        console.log(a - b);;//看的是a-b的差，大于0，说明a大于b。小于0，说明a小于b。
+    //        return 1;
+    //    });
+    //    console.log(arr);
+
+
+    var oLis = document.getElementsByTagName('li');
+    var arrlist = utils.likeToArray(oLis);
+
+    //排序li
+    arrlist.sort(function (a, b) {
+        return a.innerHTML - b.innerHTML;
+    });
+    console.log(arrlist);
+
+    //遍历排好的li元素然后追加到页面中
+    for (var i = 0; i < arrlist.length; i++) {
+        oUl.appendChild(arrlist[i]);
+    }
+    console.log(arrlist);
+
+    //绑定鼠标点击事件
+    btn.flag = -1;
+    btn.onclick = function () {
+        //alert('1');
+        btn.flag *= -1;
+        arrlist.sort(function (a, b) {
+            return (a - b) * btn.flag
+        });
+        oLis.appendChild();
+    };
+    console.log(arrlist);
+</script>

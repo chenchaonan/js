@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        .outer{
+            position: relative;
+            width: 700px;
+            height:300px;
+            margin: 0 auto;
+            overflow: hidden;
+            border:1px solid #e5e5e5;
+        }
+        .inner{
+            position: relative;
+            left: 0;
+            width:3500px;
+            clear: both;
+        }
+        .inner div{
+            float: left;
+            width: 700px;
+            height: 300px;
+            background: url("./image/lazyload.gif") no-repeat center;
+        }
+        img {
+            width: 700px;
+            height: 100%;
+            opacity: 0.5;
+        }
+        #outer a{
+            position: absolute;
+            top:40%;
+            background: #000;
+            color: #fff;
+            padding: 14px 5px;
+        }
+        .left{
+            left: 0;
+        }
+        .right{
+            right: 0;
+        }
+        .focus {
+            width: 84px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            bottom: 3px;
+            background: rgba(0, 0, 0, .4);
+            overflow: hidden;
+            padding: 3px 5px 3px 0;
+            border-radius: 20px;
+        }
+        .focus li {
+            cursor: pointer;
+            float: left;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            margin-left: 5px;
+        }
+        .focus li.select {
+            background-color: #ff5132;
+        }
+    </style>
+</head>
+<body>
+<!--图片可视窗口-->
+<div id="outer" class="outer">
+    <!--图片容器-->
+    <div class="inner"></div>
+    <!--左右切换按钮-->
+    <a class="left" href="javascript:;">left</a>
+    <a class="right" href="javascript:;">right</a>
+    <ul class="focus"></ul>
+</div>
+</body>
+</html>
+
+<script src="js/utils.js"></script>
+<script src="js/animate2.js"></script>
+<script src="js/index.js"></script>

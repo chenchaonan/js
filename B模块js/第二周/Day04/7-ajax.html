@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //ajax
+    //1.创建一个ajax对象
+    var xhr = new XMLHttpRequest();
+    console.log(xhr);
+    //2.打开一个接口链接
+    //第一个参数：请求方式：get post delete put head
+    //第二个参数：请求地址，文件在服务器中存放地址
+    //第三个参数：true（异步）或者false（同步），或者不写（代表异步）
+    //异步：不会阻塞后边代码的执行
+    //同步：后边代码要等ajax执行完成之后才会执行
+    //json是一种前后端传输数据格式，
+    //json对象，类似于js对象，属性名和属宗旨如果是字符串就必须用双引号包起来
+    xhr.open('get', 'url', true)
+</script>

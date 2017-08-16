@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>复习</title>
+</head>
+<body>
+<button id="btn">button</button>
+</body>
+</html>
+<script>
+    var btn = document.getElementById('btn');
+
+    //绑定事件
+    function on(ele, type, handle) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handle, false);
+        } else {
+            var events = ele['bind' + type];
+            if (!(events instanceof Array)) {
+                events = ele['bind' + type] = [];
+                ele.attachEvent('on' + type, handleThis(ele, run));
+            }
+            for (var i = 0; i < events.length; i++) {
+                if(events[i] === handle) return;
+            }
+            events.push(handle);
+        }
+    }
+
+    function off(ele, type, handle) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false);
+        } else {
+            var events = ele['bind' + type];
+            for (var i = 0; i < events.length; i++) {
+                if (events[i] === handle) {
+                    events.splice(i, 1);
+                    break;
+                }
+            }
+            ele.detachEvent('on' + type, handle);
+        }
+    }
+
+    //处理e
+    function run(e) {
+        e = e || window.event;
+        e.target = e.target || e.srcElement;
+        e.stopPropagation = e.stopPropagation || function () {
+            e.cancelBubble = true;
+        };
+        e.preventDefault = e.preventDefault || function () {
+            e.returnValue = false;
+        };
+        e.pageX = (document.documentElement.scrollLeft || document.body.scrollLeft) + e.clientX;
+        e.pageY = (document.documentElement.scrollTop || document.body.scrollLeft) + e.clientY;
+        var events = this['bind' + type];
+        if (!(events instanceof Array)) return;
+        for (var i = 0; i < events.length; i++) {
+            events[i].call(this, e);
+        }
+    }
+
+    //改变this
+    function handleThis(context, fn) {
+        return function (e) {
+            fn.call(context, e);
+        }
+    }
+
+
+    function fn1() {
+        console.log('fn1');
+    }
+
+    function fn2() {
+        console.log('fn2');
+    }
+
+    function fn3() {
+        console.log('fn3');
+    }
+
+    on(btn, 'click', fn1);
+    on(btn, 'click', fn2);
+    on(btn, 'click', fn3);
+</script>

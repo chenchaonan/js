@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    //属性名=变量名
+    let {a:a,b:b}={a:1,b:2};
+    //let {a,b}={a:1,b:2};
+    console.log(a, b);
+    //属性名不等于变量名
+    let {a:n,b:m}={a:1,b:2};
+    console.log(n, m);
+
+    //let {x,a:y}={x:"X",a:"Y"};
+
+    let x,y;
+    ({x,a:y}={x:"X",a:"Y"});
+
+    //嵌套
+    let {s:[,a2],ss}={s:[1,2],ss:"ss"};
+    console.log(a2, ss);//2,"ss"
+
+    //默认值
+    let {xx="SS",yy}={yy:"YY"};
+    let {x1:x2="X2",y1}={x1:undefined,y1:"YY"};
+    //其他问题
+
+
+
+    let {length,__proto__}="nn";
+    console.log(length,__proto__);
+
+    console.log(Object("nn"));
+    //{length:2,__proto__:"aa"}
+
+    let {__proto__:p}=1;
+    console.log(p);
+    console.log(Object(1));
+
+    //解构赋值若不是对象,会转为对象
+    //注意:null和undefined不能转为对象
+    //let{nnn}=null;
+    //let{nnn}=undefined;
+
+
+    //字符串==>数组
+    let [c1,c2]="1234";
+    console.log(c1, c2);
+</script>

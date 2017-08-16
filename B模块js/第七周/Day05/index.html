@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/reset.min.css" type="text/css">
+    <link rel="stylesheet" href="css/index.css" type="text/css">
+    <link rel="stylesheet" href="css/swiper.min.css" type="text/css">
+    <script src="js/zepto.min.js" type="text/javascript"></script>
+    <script src="js/swiper.jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        // 动态计算根元素字体
+        var desW = 640; // 设计稿的宽度
+        var doc = document.documentElement;
+
+        function refreshRem() {
+            var winW = doc.clientWidth; // 获取视口宽度
+            if (winW >= desW) { // 视口宽度超过设计稿宽度时 始终 100px 不能再变大了
+                doc.style.fontSize = '100px';
+                return;
+            }
+            var radio = desW / winW;
+            doc.style.fontSize = 100 / radio + 'px';
+        }
+
+        refreshRem();
+        window.addEventListener('resize', refreshRem);
+    </script>
+</head>
+<body>
+<div id="container">
+    <!--swiper容器-->
+    <div class="swiper-container swiperContainer" id="swiper1">
+        <!--轮播区域-->
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/swiper1.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/swiper2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/swiper3.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="img/swiper4.jpg" alt=""></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!--导航列表-->
+    <div id="navList">
+        <ul>
+            <li>
+                <a href="javascript:;"><img src="img/chaoshi.png" alt=""><span>京东超市</span></a>
+                <a href="javascript:;"><img src="img/jinkou.png" alt=""><span>全球购</span></a>
+                <a href="javascript:;"><img src="img/fuzhuang.png" alt=""><span>服装城</span></a>
+                <a href="javascript:;"><img src="img/shengxian.png" alt=""><span>京东生鲜</span></a>
+                <a href="javascript:;"><img src="img/xiaoshi.png" alt=""><span>京东到家</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="text">该方法适用范围广，但文字未超出行的情况下也会出现省略号,可结合js优化该方法。该方法适用范围广，但文字未超出行的情况下也会出现省略号,可结合js优化该方法。该方法适用范围广，但文字未超出行的情况下也会出现省略号,可结合js优化该方法。该方法适用范围广，但文字未超出行的情况下也会出现省略号,可结合js优化该方法。</div>
+</div>
+<!--<script>-->
+<!--$(function () {-->
+<!--new swiper('#swiper1', {-->
+<!--direction: 'horizontal',-->
+<!--loop: true,-->
+<!--pagination:'.swiper-pagination',-->
+<!--autoplay: 3000-->
+<!--});-->
+
+<!--})()-->
+<!--</script>-->
+</body>
+</html>

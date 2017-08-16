@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">button</button>
+</body>
+</html>
+<script>
+    var btn = document.getElementById('btn');
+
+    function on(ele, type, handle) {
+        if (ele.addEventListener) {
+            ele.addEventListener(type, handle, false);
+        } else {
+            var events = ele['bind' + type];
+            //判断有没有事件池
+            if (!(events instanceof Array)) {
+                events = ele['bind' + type] = [];
+                //相关行为触发时找到相应的事件池，让里面的处理函数按照顺序依次执行。
+                //给每一个行为类型分配一个执行处理函数
+                ele.attachEvent('on' + type, function (e) {
+                    var events = ele['bind' + type];
+                    if (events instanceof Array) {
+                        for (var i = 0; i < events.length; i++) {
+                            events[i].call(ele, e);
+                        }
+                    }
+                });
+            }
+            for (var k = 0; k < events.length; k++) {
+                if (events[k] === handle) return;
+            }
+            events.push(handle);
+        }
+    }
+
+    function off(ele, type, handle) {
+        if (ele.removeEventListener) {
+            ele.removeEventListener(type, handle, false);
+        } else {
+            var events = ele['bind' + type];
+            for (var i = 0; i < events.length; i++) {
+                if (events[i] === handle) {
+                    events.splice(i,1);
+                    break;
+                }
+            }
+        }
+    }
+
+    function fn1() {
+        console.log('fn1');
+    }
+
+    function fn2() {
+        console.log('fn2');
+    }
+
+    function fn3() {
+        console.log('fn3');
+    }
+
+    btn.on('click', fn1);
+    btn.on('click', fn2);
+    btn.on('click', fn3);
+
+</script>

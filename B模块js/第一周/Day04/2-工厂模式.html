@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //工厂模式,减少荣誉代码，封装到工厂函数里面
+    var user1 = {}
+
+    function createObj(name, age) {
+        var obj = new Object();
+        obj.name = name;
+        obj.age = age;
+        obj.say=function () {
+            console.log('my name is' + this.name + '年龄 ' + this.age);
+        };
+        return obj;
+    }
+    var zhufeng=createObj('zhufeng','18');
+    var zhufeng2=createObj('zhufeng2','28');
+</script>

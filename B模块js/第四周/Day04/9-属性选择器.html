@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性选择器</title>
+    <style>
+
+    </style>
+</head>
+<body>
+<input type="text">
+<div id="oDiv" zf="ol">123</div>
+<div id="oDiv2" zf="'lol">123</div>
+<div class="oDiv3">456</div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+
+    $(function () {
+        //根据指定属性进行匹配
+//        console.log($('div[id]').css('background', 'red'));
+//        console.log($('div[class]').css('background', 'yellow'));
+
+//        $('div[zf*=o]').css('background','blue')//包含
+//        $('div[zf^=o]').css('background','pink');//^以什么结尾
+//        $('div[zf$=l]').css('background','purple');//$以什么结尾
+        $('div[zf!=ol]').css('color','red');//匹配属性内容不是指定文本的元素
+    })
+</script>

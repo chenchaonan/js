@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<p><img id="img" src='./img/1.png' alt="pic"/></p>
+<p><img src='./img/3.jpeg'/></p>
+<p><img src='./img/1.png' alt="pic"/></p>
+<p><img src='./img/3.jpeg'/></p>
+</div>
+</body>
+</html>
+<!--<script>-->
+<!--var oImgs=document.getElementsByTagName('img');-->
+<!--var scaleImage = function(o, w, h){-->
+<!--var img = new Image();-->
+<!--img.src = o.src;-->
+<!--if(img.width >0 && img.height>0)-->
+<!--{-->
+<!--if(img.width/img.height >= w/h)-->
+<!--{-->
+<!--if(img.width > w)-->
+<!--{-->
+<!--o.width = w;-->
+<!--o.height = (img.height*w) / img.width;-->
+<!--}-->
+<!--else-->
+<!--{-->
+<!--o.width = img.width;-->
+<!--o.height = img.height;-->
+<!--}-->
+<!--o.alt = img.width + "x" + img.height;-->
+<!--}-->
+<!--else-->
+<!--{-->
+<!--if(img.height > h)-->
+<!--{-->
+<!--o.height = h;-->
+<!--o.width = (img.width * h) / img.height;-->
+<!--}-->
+<!--else-->
+<!--{-->
+<!--o.width = img.width;-->
+<!--o.height = img.height;-->
+<!--}-->
+<!--o.alt = img.width + "x" + img.height;-->
+<!--}-->
+<!--}-->
+<!--};-->
+<!--window.onload=function () {-->
+<!--scaleImage('oImgs',300)-->
+<!--}-->
+<!--scaleImage()-->
+<!--</script>-->
+
+<script>
+    var oImgs = document.getElementById('img');
+//    //如果图片过大，处理图片大小。使用要求：传递id和大小要求。示例：autoImgSize('img1',1000)
+//    function autoImgSize(img, size) {
+//        if (!size) {
+//            size = 1000;//设置默认最大值为1000
+//        }
+//        var imgobj = document.getElementById(img); //获取对象
+//        imgobj.style.width = "auto";
+//        imgobj.style.height = "auto";  //释放图片本来的大小
+//        var imgwidth = imgobj.width;
+//        var imgheight = imgobj.height;
+//        if (imgwidth > imgheight) {     //判断是width和height哪一个大。大的先处理。设置最大值size
+//            if (imgwidth > size) {
+//                imgobj.style.width = size + "px";
+//            }
+//            imgheight = imgobj.height;
+//            if (imgheight > size) {
+//
+//                imgobj.style.height = size + "px";
+//            }
+//        } else {
+//            if (imgheight > size) {
+//                imgobj.style.height = size + "px";
+//            }
+//            imgwidth = imgobj.width;
+//            if (imgwidth > size) {
+//                imgobj.style.width = size + "px";
+//            }
+//        }
+//    }
+//    window.onload = function () {
+//
+//        autoImgSize('img', 236);
+//    }
+
+
+</script>

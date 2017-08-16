@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    console.log(name);//name是window的自带属性
+    /*
+    * 全局变量
+    * 添加一个全局变量也是给window添加一个全局属性
+    * */
+
+//    window.setTimeout(function () {
+//
+//    },1000);//setTimeout是全局的属性，window可以省略
+//
+//    var num=100;
+//    console.log(window.num);
+
+//    window.num=20;
+//    console.log(num);
+
+//    function fe() {
+//        console.log('fe');
+//    }
+//    fe();
+//    window.fe();
+
+
+    function foo() {
+        num=1000;//赋值的时候就相当于给全局window添加全局属性
+    }
+    foo();
+    console.log(num);
+
+
+</script>

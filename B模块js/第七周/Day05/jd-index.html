@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/reset.min.css" type="text/css">
+    <style>
+        .container{
+            max-width: 640px;
+            margin: 0 auto;
+            overflow: hidden;
+            background: #f5f5f5;
+            padding: 10px;
+        }
+        .container .list li{
+            overflow: hidden;
+        }
+        .container .list a{
+            float: left;
+            width: 20%;
+            text-align: center;
+            color: #000;
+            padding: 2px 0;
+        }
+        .container .list a img{
+            display: inline-block;
+            width: 0.58rem;
+            height: 0.58rem;
+        }
+        .container .list a span{
+            display: block;
+            text-align: center;
+        }
+    </style>
+    <script>
+        /*动态计算根元素字体*/
+        var desW = 640;
+        var doc = document.documentElement;
+
+        function refreshRem() {
+            var winW = doc.clientWidth;//获取视口宽度
+            if(winW > desW){
+                doc.style.fontSize = 100 + 'px';
+                return;
+            }
+            var radio = desW / winW; //像素比
+            doc.style.fontSize = 100 / radio + 'px';
+        }
+        refreshRem();
+        window.addEventListener('resize',refreshRem)
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <ul class="list">
+        <li>
+            <a href="javascript:;"><img src="img/chaoshi.png" alt=""><span>京东超市</span></a>
+            <a href="javascript:;"><img src="img/jinkou.png" alt=""><span>全球购</span></a>
+            <a href="javascript:;"><img src="img/fuzhuang.png" alt=""><span>服装城</span></a>
+            <a href="javascript:;"><img src="img/shengxian.png" alt=""><span>京东生鲜</span></a>
+            <a href="javascript:;"><img src="img/xiaoshi.png" alt=""><span>京东到家</span></a>
+        </li>
+        <li>
+            <a href="javascript:;"><img src="img/chongzhi.png" alt=""><span>充值缴费</span></a>
+            <a href="javascript:;"><img src="img/jingdou.png" alt=""><span>领京豆</span></a>
+            <a href="javascript:;"><img src="img/lingquan.png" alt=""><span>领券</span></a>
+            <a href="javascript:;"><img src="img/qiandai.png" alt=""><span>惠赚钱</span></a>
+            <a href="javascript:;"><img src="img/huoche.png" alt=""><span>物流查询</span></a>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>

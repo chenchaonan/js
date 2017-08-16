@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    let [x,y]=[1,2];
+    function fn([x,y]) {}
+    fn([1,2]);
+
+
+    function ff1({x,y}={x:0,y:0}) {
+        console.log(x, y);
+    }
+    function ff2({x=0,y=0}={}) {
+        console.log(x, y);
+    }
+
+    ff1({});// undefined undefined
+    // {x,y}={}
+    ff2({});// 0 0
+    //{x=0,y=0}={}
+    ff1({x:10,y:20});
+    ff2({x:10,y:20});
+    ff1({x:10});//{x,y}={x:10}
+    ff2({x:10});//({x=0,y=0}={x:10}
+
+    //参数的作用域是私有作用域
+    let m=0;
+    function f1(n=m+1,m) {
+        //console.log(f);
+        let f=0;
+        console.log(n);
+    }
+    f1(1);
+
+    let s=(...rest)=>{
+
+    }
+</script>

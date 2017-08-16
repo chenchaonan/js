@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    let obj={_a:'a',b:"b",a:"q"};
+    let proxy=new Proxy(obj,{
+        get(a,b,c){
+            //a:obj
+            //b:获取的属性
+            //c:当前实例
+           //console.log(obj,a,b,c);
+            if(b.startsWith("_")){
+                return 'sorry'
+            }
+
+           return a[b]
+        }
+    });
+    console.log(proxy);
+    //[[Target]]:Object 第一个参数
+    //[[Handler]]:Object 第二个参数
+
+    console.log(proxy._a);
+    //console.log(proxy.b);
+    function fn() {
+        console.log(this);
+    }
+    let p1=new Proxy(fn,{
+        apply(fn,o){
+            console.log("哈哈哈");
+            fn.call({1:1});
+        }
+
+    });
+    //p1();
+    p1.call(obj);
+    //p1.apply(null)
+</script>

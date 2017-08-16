@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #outer{
+            position: relative;
+            width:200px;
+            height:200px;
+            /*padding: 10px;*/
+            /*border: 4px solid red;*/
+            background: darkorange;
+            margin: 0 auto;
+
+        }
+        #inner{
+            width:100px;
+            height:100px;
+            background: #fff;
+            margin: 0 auto;
+
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="inner"></div>
+</div>
+</body>
+</html>
+<script>
+    var outer=document.getElementById('outer');
+    console.log(outer.clientLeft);
+    console.log(outer.clientTop);
+    console.log(outer.clientHeight);
+    console.log(outer.clientWidth);
+    console.log(outer.offsetHeight);//clientHeight+上下边框
+    console.log(outer.offsetWidth);//clientWidth+左右边框
+    console.log(inner.offsetLeft);//当前元素距离父级
+    console.log(inner.offsetTop);
+
+</script>

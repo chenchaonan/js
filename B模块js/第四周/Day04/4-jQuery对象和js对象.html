@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .div {
+            width: 100px;
+            height: 35px;
+            background: darkorange;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv">btn</div>
+<div id="oDiv1">btn</div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    //    $(function () {
+    //        console.log(this);
+    //    });
+
+    //将jq对象转化成js对象
+    //    $('#oDiv').addClass('div');
+    //    console.log($('#oDiv')[0]);
+    //    console.log($('#oDiv').get(0));
+
+    //将js对象转化成jq对象,使用jq的方法
+    //    var oDiv = document.getElementById('oDiv');
+    //    console.log(oDiv);
+    //    console.log($(oDiv));
+
+
+    //区别
+    //元素集合及时更新同步
+    //jq对象不存在及时更新的
+
+    //不管根据选择器有没有获取到这个元素，都会返回jq实例。
+//    var oDiv = document.getElementById('oDiv2');
+//    console.log(oDiv);
+//    console.log($('oDiv'));
+    //判断元素有没有获取到需要根据length／jqObj.size();
+    console.log($('oDiv').size());
+
+    //$(selector,context)
+    //selector,选择器 context获取的上下文,默认是document
+
+</script>

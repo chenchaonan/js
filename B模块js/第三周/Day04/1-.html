@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取样式属性</title>
+    <style>
+        #outer {
+            width: 100px;
+            height: 1200px;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="outer"></div>
+</body>
+</html>
+<script>
+    //盒模型属性
+    /*
+     * 1.clientWidth     内容宽度+左右padding     只读
+     * 2.clientHeight    内容高度+上下padding     只读
+     *
+     * 3.clientLeft     左边框宽度   只读
+     * 4.clientTop      上边框高度   只读
+     *
+     * 5.offsetWidth    clientWidth+左右边框
+     * 6.offsetHeight   clientHeight+上下边框
+     *
+     * 7.scrollWidth
+     * 8.scrollHeight
+     * scrollHeight===clientHeight+scrollTop(最大值)
+     *
+     * 9.scrollTop  纵向滚动条滚出去的距离     可读可写
+     * 10.scrollLeft    横向滚动条滚出去的距离     可读可写
+     *
+     * */
+
+    console.log(outer.clientLeft);
+    console.log(outer.offsetWidth);
+
+
+    var winH = document.documentElement.clientWidth || document.body.clientWidth;
+    function win(attr, val) {
+        if (typeof val === 'undefined') {
+            //arguments.length===1//传一个参数就是获取，传两个参数就是设置值
+            return document.documentElement[attr] || document.body[attr];
+        }
+        document.documentElement[attr] = val;
+        document.body[attr] = val;
+    }
+    setTimeout(function () {
+        win('scrollTop', 300)
+    }, 1000)
+</script>

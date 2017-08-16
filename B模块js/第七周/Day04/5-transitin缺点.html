@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #outer{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+        #red{
+            position: relative;
+            left: 0px;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition: all 0.5s linear;/*执行两次动画，懂开始到结束，从结束到开始*/
+        }
+        #red:hover{
+        /*有多少个过度属性有会应用多少个transtion，就会触发多少次transtionend事件*/
+            left: 400px;
+            top: 400px;
+        }
+        /*
+        无法控制执行动画次数
+        */
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="red"></div>
+</div>
+<script>
+    var red = document.getElementById('red');
+    red.addEventListener('transitionEnd',function () {
+        console.log('transitionEnd');
+    })
+</script>
+</body>
+</html>

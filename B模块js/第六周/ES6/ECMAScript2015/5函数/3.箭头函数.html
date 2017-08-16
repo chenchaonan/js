@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    let arr=[1,2,3];
+    let a=0;
+    arr.find((item,index,arr)=>{
+        console.log(item);
+        console.log(this);
+        return index;
+    });
+
+
+    function ff() {
+        let f=()=>{
+            console.log(this);
+        };
+        f();
+        let obj={
+            fn:()=>{
+                console.log(this);
+            }
+        };
+        obj.fn()
+    }
+    ff.call(arr)
+
+
+</script>

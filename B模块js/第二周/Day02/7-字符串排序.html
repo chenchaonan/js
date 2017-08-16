@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="btn">升降序</button>
+<ul id="oUl">
+    <li>a</li>
+    <li>g</li>
+    <li>d</li>
+</ul>
+</body>
+</html>
+<script>
+    //'a'.localeCompare('b'),字符串排序
+    var arr = ['d', 'c', 'a', 'b'];
+    arr.sort(function (a, b) {
+        return a.localeCompare(b);//
+    });
+    console.log(arr);
+
+
+</script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //    function Tab() {
+    //        this.id = 10;
+    //    }
+    //    var tab = new Tab();
+    //    var tab1=new Tab();
+    //
+    //    tab.__proto__.id = 1000;//通过实例来修改原型属性，被IE屏蔽
+    //    console.log(tab1.id);//找自己私有的
+    //    console.log(tab1.__proto__.id);//直接从原型上开始查找
+    //
+    //
+    //    var arr = [];
+    //    console.log([].__proto__);
+    //    [].__proto__.slice = function () {
+    //        console.log('我被修改了');
+    //    };
+    //    Array.prototype = {
+    //        //被屏蔽掉了，如果重构了内置的原型对象，会导致原有的所有的内置方法都被干掉了，所以浏览器会把这种方法屏蔽，他认为这是不安全的。
+    //    };
+
+    //虽然不能批量设置，但可以在内置类上增加原型属性(一个一个的添加属性)
+    //    Array.prototype.say = function () {
+    //        console.log('say');
+    //    };
+    //
+    //
+    //    [].__proto__.say=function () {
+    //        //不兼容IE
+    //        console.log('不兼容IE');
+    //    };
+
+    function hasPublicProperty(obj, attr) {
+        //        if(attr in obj) { // 先确定是不是属性
+        //            return !obj.hasOwnProperty(attr); // 然后确定是不是私有 然后取反
+        //        }
+                return (attr in obj) && !obj.hasOwnProperty(attr);
+            }
+
+
+    function Fn(n) {
+        this.id = 100;
+        this.mess = 'hello vue';
+        if (n) {
+            this.say = function () {
+                console.log(this.say);
+            }
+        }
+    }
+
+    Fn.prototype = {
+        id: 123,
+        mess: 'hello react',
+        say:function () {
+            console.log(this.mess);
+        }
+    };
+
+    var fn1=new Fn(1);
+    var fn2=new Fn;
+    fn1.say();
+    //fn.prototype.say();//hello react
+    fn2.__proto__.say();//Object
+    fn2.say();//hello vue
+
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //堆内存释放
+    //浏览器默认机制，每间隔一段时间就将没有被占用的内存回首释放。
+//    var obj = {
+//        id: 1,
+//        name: 'zhufeng'
+//    }
+//    obj=null;//手工释放，null空对象指针
+
+    /*
+    * 栈内存的销毁与不销毁
+    * window 形成的栈内存，只有浏览器关闭的时候才会销毁。
+    * 函数形成的栈内存通常是执行完代码之后立即销毁。
+    *
+    * 栈内存不销毁的条件
+    * 1.在栈内存中，返回一个引用数据类型，被外部某个变量接收，这个栈内存就不能被销毁。
+    *
+    * */
+
+    function fn() {
+        return [1,2,3]
+    }
+    var ff=fn();
+    ff();
+//
+//    function fn() {
+//        var count=0;
+//        return function () {
+//            count++;
+//            console.log(count);
+//        }
+//    }
+//    var fe=fn();
+//    fe();//1
+//    fe();//2
+
+    //2.不立即销毁，在一个栈内存返回一个函数数据类型，在外边直接执行的时候，需要等返回的函数执行完后才能销毁。
+    function fe() {
+        return function () {
+            console.log(123);
+        }
+    }
+    fe()();
+</script>

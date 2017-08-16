@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    //1.Array.form()
+    let ary=[1,2,3];
+    let aryNew=Array.from(ary);
+    aryNew[3]=10;
+    console.log(ary,aryNew);
+
+    function add() {
+        return Array.from(arguments)
+    }
+
+    console.log(add(1, 2, 3));
+
+    let str='1234';
+    console.log(Array.from(str));
+
+    //Array.of()
+    //Array(); 只传一个值代表length
+    console.log(Array(10));
+    console.log(Array(1,2,3,4));
+    //Array.of();解决了传一个值得问题
+    console.log(Array.of(10));
+    let a=Array(3);//[,,,]  数组的空位
+    let a1=[undefined,undefined,undefined];
+    // 索引 in 数组:判断当前位置有没有值
+    console.log(1 in a);
+    console.log(1 in a1);
+
+    let a2=[,,,,1];
+    a2.forEach(function (item) {
+        console.log(item);
+    });
+
+    //for 当前项 of 数组
+    //不会跳过空位,当前做undefined处理
+    for(let i of a2){
+        console.log(i);
+    }
+
+
+</script>

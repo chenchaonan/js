@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    console.log(a);//undefined
+    var a=1;
+    //let
+    //1.没有变量提声
+
+    //console.log(b);//b is not defined
+
+    //let a=0;
+    //2.不可以重复声明
+    //注意:虽然不进行预解释,但是作用域形参之后会先把所有的变量过滤一遍,一旦发现不合法直接报错,代码不执行
+    // 'a' has already been declared
+
+    //3.暂时性死区 不可以提前使用未被定义的变量
+    let aa=12;
+    function fn() {
+        console.log(aa);
+        let aa=13;
+    }
+    //fn();
+    console.log(aa);
+
+
+
+    function ff() {
+        let ff=1
+    };
+    console.log(ff);
+    let ff=2;
+    console.log(ff);
+</script>

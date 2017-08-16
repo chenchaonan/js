@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">button</button>
+</body>
+</html>
+<script>
+    var btn = document.getElementById('btn');
+    btn.addEventListener('click', fn1, false);
+    btn.addEventListener('click', fn2, false);
+
+    function fn1() {
+        console.log('fn1');
+    }
+
+    function fn2() {
+        console.log('fn1');
+    }
+
+    btn.removeEventListener('click', fn1, false);
+    btn.removeEventListener('click', fn2, false);
+    //
+    /*
+    * DOM2级在eventTargat ，addEventListener/removeListener，在IE6-8不兼容
+    * 捕获 => 目标 => 冒泡
+    *
+    * 注意:事件类型，处理函数，事件阶段要保持一致
+    *
+    * IE6-8中，只有冒泡阶段，attachEvent/detachEvent(ie独有的，谷歌火狐不兼容)
+    * */
+    btn.attachEvent('click', fn1);
+    btn.detachEvent('click', fn1);
+
+</script>

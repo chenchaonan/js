@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+</body>
+</html>
+<script>
+
+    var oLis=document.getElementsByTagName('li');
+    console.log('oLis');
+
+    var arr=[];
+    for(var i=0;i<oLis.length;i++){
+        arr[arr.length]=oLis[i];
+    }
+    console.log(arr);
+
+    //IE6-8是不兼容的
+
+//    function sum() {
+//        console.log(arguments);
+//        var arr =[].sort.call(arguments,function (a, b) {
+//            return a-b;
+//        });
+//        console.log(arr);
+//    }
+//    sum(33, 55, 22, 44, 66)
+
+
+function sum() {
+    console.log(arguments);
+    var arr =[].slice.call(arguments,0);
+    console.log(arr);
+}
+sum(33, 55, 22, 44, 66)
+</script>

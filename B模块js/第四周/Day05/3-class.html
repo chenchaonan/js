@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class</title>
+    <style>
+        .a1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+
+        .a2 {
+            background-color: #3b55ff;
+        }
+    </style>
+</head>
+<body>
+<button class="btn">切换</button>
+<div class="oDiv"></div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $(function () {
+        $('.btn').click(function () {
+            var flag = $('.oDiv').hasClass('.a1');
+            if(flag){
+                $('.oDiv').removeClass('a1 oDiv')
+            }else {
+                $('oDiv').addClass('a1 ')
+            }
+            $('oDiv').toggleClass('a1 oDiv');
+        })
+    })
+</script>

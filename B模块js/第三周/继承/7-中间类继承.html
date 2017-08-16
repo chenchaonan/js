@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>中间类继承</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var arr=[11,22,33,44,55];
+    arr.shift();
+    console.log(arr.__proto__ === Array.prototype);
+    console.log(arr.shift);//通过arr的原型链能够找到这个方法。
+    console.log(arr);
+
+    function sum() {
+        console.log(arguments);
+        arguments.__proto__=Array.prototype;
+        console.log(arguments.shift());
+    }
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //单例模式 分组对象，解决变量冲突
+    //'命名空间'newsRender and musicRender 多人协作是将多个模块同时开发，以单例模式开发，最终将代码整合到一起。
+    var newsRender={
+        mess:'hello word',
+        say:function () {
+            console.log(this.mess)
+        }
+    };
+    newsRender.say();
+
+    var musicRender={
+        mess:'hello music',
+        say:function () {
+            console.log(this.mess);
+        },
+        bindEvent:function () {
+
+        },
+        init:function () {
+            this.say()
+        }
+    };
+    musicRender.say();
+
+
+
+//    var nusicRender=(function () {
+//        var mess='hello word'
+//    })
+
+
+    //公共的部分
+    var commentRender= {
+        getDate:function () {
+            return new Date();
+        }
+    };
+    commentRender.getDate();
+</script>

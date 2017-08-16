@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        ul {
+            width: 500px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        ul li {
+            float: left;
+            width: 100px;
+            height: 35px;
+            line-height: 35px;
+            border: 1px solid red;
+        }
+
+        .active {
+            background: red;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="list">
+    <li>按钮</li>
+    <li>按钮</li>
+    <li>按钮</li>
+</ul>
+<button class="btn">btn</button>
+<script src='../utils.js'></script>
+<script>
+    var oLi = document.getElementsByTagName('li');
+    for (var i = 0; i < oLi.length; i++) {
+        oLi[i].n = i;
+        oLi[i].onclick = function () {
+            console.log(i);
+            oLi[this.n].className='active';
+        }
+    }
+    //    $('.btn').click(function () {
+    //
+    //        $('li').addClass('.active');
+    //    });
+</script>
+</body>
+</html>

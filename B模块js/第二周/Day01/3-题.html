@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var num = 0;
+    function Fn(num) {
+        arguments[0] = 1;//第一个被传过来的实参
+        this.num = 2;//给当前实例添加私有属性
+        console.log(num);
+        console.log(this.num);
+        return num;//
+    }
+    Fn.num = 400;
+    Fn.prototype.num = 300;
+    Fn.prototype.getNum = function () {
+        console.log(this.num);
+    };
+    var f = new Fn(num);//1 2作为一个类，返回当前类的实例。
+    console.log(f.num);//2
+    f.getNum();//this指f  2
+    Fn.prototype.getNum();//this指 Fn.prototype   300
+    console.log(num);//全局的num，0
+    var n = Fn(num);//1 2
+    console.log(n);//1
+    console.log(num);//2
+
+
+    //    var num = 0;
+    //    function Fn(num) {
+    //        arguments[0] = 1;
+    //        this.num = 2;
+    //        console.log(num);
+    //        console.log(this.num);
+    //        return num;
+    //    }
+    //    Fn.num = 400;
+    //    Fn.prototype.num = 300;
+    //    Fn.prototype.getNum = function () {
+    //        console.log(this.num);
+    //    };
+    //    var f = new Fn(num);
+    //    console.log(f.num);
+    //    f.getNum();
+    //    Fn.prototype.getNum();
+    //    console.log(num);
+    //    var n = Fn(num);
+    //    console.log(n);
+    //    console.log(num);
+
+
+    function Fe() {
+        this.num = 300;
+    }
+
+</script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="oDiv">button</div>
+</body>
+</html>
+<script>
+    var oDiv = document.getElementById('oDiv');
+    //DOM0级
+    oDiv.onclick = function () {
+        console.log('on');
+    }
+    function fn() {
+        console.log('fn');
+    }
+
+
+    //DOM2级 事件类型，处理函数，冒泡阶段，或者捕获阶段 true冒泡阶段 false捕获阶段
+    oDiv.addEventListener('click',fn,false);
+</script>

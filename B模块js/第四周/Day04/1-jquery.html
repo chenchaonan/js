@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery</title>
+    <style>
+        .active {
+            width: 100px;
+            height: 35px;
+            background: darkorange;
+            color: #fff;
+            outline:0;
+        }
+    </style>
+</head>
+<body>
+<button id="oBtn">button</button>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    /*
+    * jQuery 使用原生js来封装的常用方法的类库（解决了浏览器的兼容问题）
+    * 一个前端js库，强大的选择器，ajax封装，事件、动画、链式写法;
+    * 以后使用jQuery标明版本号
+    * jQuery 典型的构造函数封装
+    * */
+
+    //无new构造，让jq执行，传递进去，生成一个jq实例
+    console.log($);
+    console.log(jQuery);
+    console.log($('#oBtn'));//jq对象（jq实例）
+    var oBtn = document.getElementById('oBtn');
+    console.log(oBtn);//原生对象
+
+    console.log($('oBtn') instanceof $);
+    console.log($('oBtn') instanceof jQuery);
+
+
+    $('#oBtn').addClass('active');
+    console.log($('#oBtn'));
+
+    $('#oBtn')
+
+
+    //jQuery中的方法，有的将一些供jq对象（实例）调用的方法封装在原型上
+    //工具方法封装在自身
+</script>

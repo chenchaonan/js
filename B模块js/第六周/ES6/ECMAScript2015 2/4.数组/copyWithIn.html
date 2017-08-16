@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    //Array.prototype.copyWithin(target,start,end)
+    //target(必需)：从该位置开始替换数据。
+    //start(可选)：从该位置开始读取数据，默认为 0 。如果为负值，表示倒数。
+    //end(可选)：到该位置前停止读取数据，默认等于数组长度。如果为负值，表示倒数。
+    //这三个参数都应该是数值，如果不是，会自动转为数值。
+    let arr = [1, 2, 3, 4, 5];
+    //arr.copyWithin(3,4);
+    arr.copyWithin(3,1,5);
+    console.log(arr);
+
+    //2数组实例的find()和findIndex()
+    let arr1=["b",1,2,3,"a",4,5];
+    //返回值是找到的那一项,没有就是undefined
+    console.log(arr1.find((item, index, arr) => {
+        return item%2==0;
+        return true
+    }));
+
+    //返回值是找到的那一项的索引,没有就是-1
+
+    let findIndex=arr.findIndex((item,index,arr)=>{
+        return item=="a"
+    });
+    console.log(findIndex);
+
+    //
+    //fill 联想canvas的fill方法填充的意思, 这里是填充数组,明显肯定会改变原数组
+    //Array.prototype.fill(value,start,end)
+    //value 必需。填充的值。
+    //start 可选。开始填充位置(默认值为0)
+    //end   可选。停止填充位置 (不包括该值,默认为 array.length)
+    let arr2=[1,2,3,4,5];
+    //常用来初始化数组
+    //arr2.fill(0);
+    arr2.fill("aa",2,4);
+    console.log(arr2);
+    //创建一个数组中有7个1
+    console.log(Array(7).fill(1));
+
+    let arr3=[1,2,3,4,5];
+
+    for(let key of arr3){
+        //key 是当前项
+        console.log(key);
+    }
+
+//    //console.log(arr3.keys());
+//    for (let key of arr3.keys()){
+//        //key 索引
+//        console.log(key);
+//    }
+
+
+    //entries
+    for (let [index,item] of arr3.entries()){
+        console.log(index, item);
+    }
+
+    //includes true false
+    //
+    console.log([ +0, NaN].indexOf(NaN));//-1
+    console.log([ +0, NaN].indexOf(0));//0
+    console.log([ +0, NaN].includes(NaN));//true
+
+    //在ES5中大部分方法都会掉过空位
+    //在ES6会处理为undefined
+
+    let a1=Array(5);
+    let a2=[,,,,1];
+
+    a2.forEach((item,index)=>{
+        console.log(item);
+    })
+
+    for (let item of a2){
+        console.log(item);
+    }
+</script>

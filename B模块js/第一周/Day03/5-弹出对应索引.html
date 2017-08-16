@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>111</button>
+<button>222</button>
+<button>333</button>
+</body>
+</html>
+<script>
+    //var btns = document.getElementsByTagName('button');
+    //    for(var i=0;i<btns.length;i++){
+    //        btns[i].n=i;//保存每一轮i的值，作为索引值来用。
+    //        btns[i].onclick=function () {
+    //            console.log(this.n);
+    //        }
+    //    }
+
+
+    //形成多个不销毁的堆栈内存（存储当前值）
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].onclick = (function () {
+            console.log(n);
+            return function () {
+                console.log(n);
+            }
+        })(i);
+    }
+
+    var obj = {
+        num: 6,
+        fn: (function () {
+            var n = 5;
+            return function () {
+                n += 1;
+                console.log(n);
+            }
+        })()
+    };
+    obj.fn();//6
+    obj.fn();//6
+    var f = obj.fn;
+    f();//7
+    var f1 = f;
+    f1();
+
+</script>

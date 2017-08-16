@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //call
+    //数组中操作原始数组就是this，就是原始数组（调用这个方法的数组)，要操作数组要有索引和length。
+    //    Array.prototype.mySlice=function (n, m) {
+    //
+    //    }
+
+
+    //让类数组可以使用数组中的方法，数组中实际上操作处理的都是this，
+    //    function sum() {
+    //       var ary = [].sort.call(arguments,function (a, b) {
+    //            return a-b;
+    //        });
+    //        return ary
+    //    }
+    function sum() {
+//        [].pop.call(arguments);
+//        console.log(arguments);
+        //将类数组改为数组
+        var newAry = [].slice.call(arguments,0);
+        newAry.shift();
+    }
+
+
+    console.log(sum(2, 3, 10, 11, 67));
+</script>

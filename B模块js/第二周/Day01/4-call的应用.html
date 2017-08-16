@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //最大值和最小值
+    // 1.先排序，
+    var arr = [11, 8, 20, 38, 55, 66];
+
+
+    // 2.假设法
+    //    var min = arr[0];//假设一个最小的基准点
+    //    var max = arr[0];//假设一个最大的基准点
+    //    for (var i = 1; i < arr.length; i++) {
+    //        var cur = arr[i];
+    //        cur < min ? min = cur : null;//谁最大谁当基准点
+    //        cur > max ? max = cur : null;//谁最小谁当基准点
+    //    }
+    //    console.log(min);
+    //    console.log(max);
+
+    // 3.传参虽然是以参数集合形式传参，但在里面依然是一个一个形参赋值。
+    //    console.log(Math.min.apply(null, arr));
+    //    console.log(Math.min.apply(null.arr));
+
+    // 4.eval 将字符串转化为js表达式
+//    console.log(eval('Math.max(' + arr + ')'));
+//    console.log(eval('Math.min(' + arr + ')'));
+//
+//    function fn() {
+//        console.log('fn123');
+//    }
+//    fn();
+//    eval('fn()');
+//
+//    var test = 'hello';
+//    console.log(eval('test'));
+//
+//    //将字符串转化为js表达式
+//    var fnStr='function () {console.log(123);}';
+//    var fn=eval('('+fnStr+')');
+//    fn();
+
+
+    function f1() {
+        console.log('f1');
+    }
+    function f2() {
+        console.log('f2');
+    }
+
+    //最终执行的是谁？输出的是什么
+    f1.call();
+    //f1.call.call通过f1找到function call，因为它是函数数据类型，这个第一个call方法，依然可以继续找到call方法。
+    f1.call.call(f2);//最先开始执行的是最后一个，将它的this（f1.call）方法中的this修改为f2，并且让修改后的f1.call执行==>f2.call
+    f1.call.call.call.call.call(f2);//两个或者两个以上的call，最终执行的都是f2
+
+    // mySlice 实现
+//    Array.prototype.mySlice = function () {
+//        console.log(this);
+//        this
+//    };
+//    [13, 123, 34].slice();
+
+</script>

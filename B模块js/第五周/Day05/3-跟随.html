@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跟随</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #red {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background: red;
+            cursor: move;
+        }
+
+        #outer {
+            position: relative;
+            left:0;
+            top:0;
+            width: 400px;
+            height: 400px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="red"></div>
+</div>
+</body>
+</html>
+<script>
+    var red = document.getElementById('red');
+    var outer = document.getElementById('outer');
+    //让鼠标在元素的正中间的话，就要减去元素的1／2就可以了，因为鼠标不能移动，只能让元素往上和往左挪动一半的距离，也就是说鼠标的位置clientX／clientY-元素自身的kuan／高的一半
+    var l = outer.offsetLeft + outer.clientLeft + red.offsetWidth / 2;
+    var t = outer.offsetTop + outer.clientTop + red.offsetHeight / 2;
+    red.onmousemove = function (e) {
+        e = e || window.event;
+        var maxL = outer.clientWidth - red.offsetWidth;
+        var maxT = outer.clientHeight - red.offsetHeight;
+        if (l < 0) {
+            l = 0;
+        } else if (l > maxL){
+            l = maxL;
+        }
+        if(t < 0){
+            t = 0;
+        }else if(t > maxT){
+            t = maxT;
+        }
+        this.style.left = e.clientX - l + 'px';
+        this.style.top = e.clientY - t + 'px';
+
+    }
+
+</script>

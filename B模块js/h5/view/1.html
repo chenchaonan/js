@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="ipPic">
+    <div><img src="../images/ip_0.png" alt=""></div>
+    <span>张志远</span>
+</div>
+<div class="ipN">
+    <h3>上海疑问录</h3>
+    <a href="javascript:;">悬疑</a>
+    <a href="javascript:;">惊悚</a>
+</div>
+<div class="txt">“阿三”是个青楼女子，还是个孤儿，从小被老鸨捡回青楼当童工。她是个滥好心的滥好人。...</div>
+<i class="fa fa-angle-right fa-2x"></i>
+</body>
+</html>
+<style>
+    .main-ip .ipList .ipPic, .main-ip .ipList .ipN, .main-ip .ipList .txt {
+        float: left;
+    }
+    .main-ip .ipList .ipPic{
+        padding-right: 0.2rem;
+        border-right: 0.01rem solid #ccc;
+    }
+    .main-ip .ipList .ipPic div{
+        width: 0.35rem;
+        height: 0.35rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+    .main-ip .ipList .ipPic span{
+        text-align: center;
+    }
+    .main-ip .ipList .ipPic img {
+        width: 100%;
+        height: 100%;
+    }
+    .main-ip .ipList .ipN{
+        text-align: center;
+        margin: 0 0.1rem;
+    }
+    .main-ip .ipList .ipN h3{
+        color: #333;
+        font-weight: normal;
+    }
+    .main-ip .ipList .ipN a{
+        display: inline-block;
+        width: 0.26rem;
+        height: 0.13rem;
+        line-height: 0.13rem;
+        border-radius: 0.015rem ;
+        margin-top: 0.1rem;
+    }
+    .main-ip .ipList .ipN a:nth-of-type(1){
+        color: red;
+        border: 0.01rem solid red;
+    }
+    .main-ip .ipList .ipN a:nth-of-type(2){
+        color: #610094;
+        border: 0.01rem solid #610094;
+    }
+    .main-ip .ipList .txt{
+        overflow:hidden;
+        text-overflow:ellipsis;
+        display:-webkit-box;
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp:3;
+    }
+    .main-ip .ipList i {
+        position: absolute;
+        right: 0.15rem;
+        line-height: 0.75rem;
+    }
+</style>

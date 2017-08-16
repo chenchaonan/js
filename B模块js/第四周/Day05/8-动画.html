@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画</title>
+    <style>
+        #oDiv{
+            width:300px;
+            height:300px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">按钮</button>
+<div id="oDiv"></div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $('#btn').click(function () {
+
+        //1.hide/show<====>toggle
+//        //默认swing linear
+//        //过渡时间'faster','slow','normal'
+//        //is 检测是否匹配选择器：:visible   :hidden过滤隐藏
+//        $('#oDiv').hide('slow','linear',function () {
+//            console.log(this);
+//        });
+//        console.log($(':visible'));//匹配所有显示的元素
+//        $('#btn').click(function () {
+//            if($('#oDiv').is(':hidden')){
+//                $('#oDiv').show(300);
+//            }else {
+//                $('#oDiv').hide(300);
+//            }
+//        })
+        //2.下拉收起 slideUp slideDown===>slideToggle
+        var $div=$('#oDiv');
+//        $('#btn').click(function () {
+//            $div.slideUp(300,'linear',function () {
+//                console.log(this);
+//            })
+//        })
+//        $('#btn').click(function () {
+//            if($div.is(':visible')){
+//                $div.slideUp(2000);
+//            }else {
+//                $div.slideDown(2000);
+//            }
+//        });
+
+        //3.渐入、渐出fadeIn fadeOut  fadeToggle
+        // fadeTo渐变到某一个指定的值
+        $('#btn').click(function () {
+            $div.fadeOut(2000,'linear',function () {
+                console.log(123);
+            })
+        })
+    })
+</script>

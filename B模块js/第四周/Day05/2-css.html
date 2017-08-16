@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css</title>
+    <style>
+        #oDiv{
+            width: 100px;
+            height:35px;
+            background: red;
+            opacity: 0.1;
+            border: 2px solid darkorange;
+            padding: 30px;
+            margin: 30px;
+        }
+        #outer{
+            height:1200px;
+        }
+    </style>
+</head>
+<body>
+<div id="outer">
+    <div id="oDiv">hello word</div>
+</div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $(function () {
+//        $('#oDiv').css('color');//只传一个参数就只是获取属性,没办法左链式写法，因为返回的不是jq对象
+//        $('#oDiv').css('color','red'); //传两个参数代表获取和设置
+//        $('#oDiv').css('color','red').css('width',100).css('background','yellow');//链式写法
+//        $('#oDiv').css({
+//            width: 300,
+//            color: 'green',
+//            background: 'yellow'
+//        });
+//        console.log($('#oDiv').css('width'));//获取windth
+
+//        setInterval(function () {
+//            $('#oDiv').css('width',function (n,val) {
+//                console.log(val);
+//                return parseFloat(val)+30;
+//            });//获取windth
+//        },500)
+
+
+//        setInterval(function () {
+//            $('#oDiv').css({
+//                width: function (n,val) {
+//                    return parseFloat(val) + 10;
+//                },
+//                height:function (n,val) {
+//                    return parseFloat(val)+10;
+//                },
+//                opacity:function (n,val) {
+//                    return parseFloat(val)+0.01
+//                }
+//            })
+//        },100)
+
+//        console.log($('#oDiv').height);
+//        console.log($('#oDiv').css('width'));
+//        console.log($('#oDiv').innerWidth());//clientWidth
+//        console.log($('#oDiv').innerHeight());//clientHeight
+//
+//        console.log($('#oDiv').outerWidth());//offsetWidth
+//        console.log($('#oDiv').outerWidth(true));//offsetWidth+外边距
+//        console.log($('#oDiv').outerHeight());//offsetHeigt
+//        console.log($('#oDiv').outerHeight(true));//offsetHeigt+外边距
+//
+//        console.log($('#oDiv').offset());//距离body的偏移值，返回的是一个对象
+//        console.log($('#oDiv').position());//定位元素的偏移值，获取left和top值，返回的是一个对象
+//
+//        $('#oDiv').offset({top:0,left:0});//设置偏移值
+
+
+        console.log($('body').scrollTop());//获取
+        console.log($('body').scrollTop(100));//设置
+
+    })
+</script>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+<img src="" alt="" photo="bg.png" id="photo1">
+<img src="" alt="" photo="bg.png" id="photo2">
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    //初始状态:pending
+    //成功
+    //失败
+    let pro=new Promise((resolve,reject)=>{
+        //resolve,reject2个参数是个函数
+        //你可以规定他的状态,只能走一个
+        //resolve() 成功
+        //reject() 失败
+        //resolve();
+
+        reject("失败");
+    });
+    //console.log(pro);
+
+    //then 方法返回值是promise对象,所以可以实现链式写法
+    pro.then((res) => {
+        console.log("Success")
+    }, (res) => {
+        console.log("Error", res)
+    });
+
+
+    let photo1=document.getElementById("photo1");
+    let photo2=document.getElementById("photo2");
+
+    function loadImg(url) {
+        return new Promise((resolve,reject)=>{
+            let img=new Image();
+            img.src=url;
+            img.onload=function () {
+                resolve(img)
+            };
+            img.onerror=function () {
+                reject(new Error("加载失败!"))
+            }
+        })
+    }
+    setTimeout(function () {
+        loadImg(photo1.getAttribute("photo")).then((img)=>{
+            photo1.src=img.src;
+        },(e)=>{
+            console.log(e);
+            throw Error(e)
+
+        })
+    },1000)
+    //catch
+
+    //then(null,()=>{})
+
+    //catch(()=>{});
+    setTimeout(function () {
+        loadImg(photo1.getAttribute("photo")).then((img)=>{
+            photo1.src=img.src;
+        }).catch((e)=>{
+            console.log(e);
+            throw Error(e)
+        })
+    },1000);
+
+
+
+
+    //
+    let pro2=new Promise((r,j)=>{
+        //r(1);
+        j();
+    });
+    pro2.then((res)=>{
+        console.log(res);
+    }).then(()=>{
+        console.log(2)
+    },()=>{
+        console.log("qq")
+    });
+
+    let p1=Promise.all(["a", 2, 3,4]);
+    p1.then((res)=>{
+        res.forEach((item)=>{
+            if(isNaN(item)){
+                throw Error(item+"不是数")
+            }
+        })
+    }).then(null,(e)=>{
+        console.log(e);
+    })
+</script>

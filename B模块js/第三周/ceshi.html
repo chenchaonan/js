@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function win(attr, val) {
+        if (typeof val === 'undefined') {
+            return document.documentElement[attr] || document.body[attr];
+        }
+        document.documentElement[attr] = val;
+        document.body[attr] = val;
+    }
+    win();
+
+    function offset(ele) {
+        var l = ele.offsetLeft;
+        var t = ele.offsetTop;
+        var p = ele.offsetParent;
+        while (p.nodeName !== 'BODY') {
+            if (navigator.userAgent.indexOf('MSIE') === -1) {
+                l += p.clientLeft;
+                t += p.clientTop;
+            }
+            l += p.offsetLeft;
+            t += p.offsetTop;
+            p = p.offsetParent;
+        }
+        return {left: l, top: t}
+    }
+    offset();
+
+
+    var obj = {id: 'hello'};
+    var attr = 'id';
+    console.log(obj.id);//把attr当做属性名
+    console.log(obj['attr']);
+</script>

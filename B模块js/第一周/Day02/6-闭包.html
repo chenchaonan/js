@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //函数执行都会形成一个作用域，保护里面的私有变不被干扰，这种保护机制叫闭包。
+    //    var bar = 20;
+    //    function fn() {
+    //        bar += 20;
+    //    }
+    //    fn();
+    //    console.log(bar);
+    //
+    //    var foo = 10;
+    //    function fn() {
+    //        foo += 10;
+    //        console.log(foo);//undefined
+    //        var foo = 5;
+    //        console.log(foo);//5
+    //    }
+    //    fn();
+    //    console.log(foo);
+
+
+//        var num=10;
+//        function fe() {
+//            var num;
+//            console.log(num);//30
+//        }
+//        num=30;
+//        fe();
+//        console.log(num);//30
+
+    function foo() {
+        var num = 100;
+        console.log(num);
+        return function () {
+            num += 100;
+            console.log(num);
+        }
+    }
+    var f=foo();//通过从内部返回一个子函数，在外部接收，从而达到访问和修改内部私有变量的目的。
+    f();//在外界利用foo的子函数，修改foo的内部私有变量
+    f();
+
+
+
+
+
+</script>

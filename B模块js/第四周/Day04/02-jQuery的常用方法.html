@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <div>22</div>
+    <div>33</div>
+</div>
+<div id="box1">0
+    <div>1</div>
+    <div>2</div>
+    <div>3<div>4</div></div>
+</div>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+
+    //    $(document).ready(function () {
+    //    });//<====>$(function(){});//他们两个是相等的
+    //    //和原生js中的window相对应
+    //    //window.onload的意思是：当页面中的HTML结构，图片，文字等多种资源都加载完成才会触发这个行为，并且在一个页面中它只能执行一次，后边编写的会把前面的覆盖掉。
+    //    window.onload = function () {
+    //    };
+    //    window.onload = function () {
+    //    };//／／只能执行一次，并且后边的会把前面的覆盖掉。
+    //    $(document).ready(function () {
+    //    });//只要HTML结构加载完成就会触发相对应的行为，而且在一个页面中可以多次使用
+
+    //3.属性
+    //attr 获取和设置自定义属性，等价于原生js中的set／getAttribute
+    //removeAttr 移除属性
+    //    $('#box').attr('zhufeng',100);
+    //    var $box1=$('#box1');
+    //    $box1.attr('zhufeng',200);
+    //    $box1.removeAttr('zhufeng');
+    //
+    //    //传一个对象，批量设置
+    //    $box1.attr({
+    //        index:1,
+    //        name:'zhufeng'
+    //    })
+
+    //prop获取和设置元素的属性和attr的是不同的两套方式，两者不呢个相互混用，用attr获取的只能用attr删除或者修改，用prop设置的，也只能用prop操作。
+    //prop 内置的属性只有内置的html属性能够体现出来，但是不是内置的属性是体现不出来的。
+    //    var $box1 = $('#box1');
+    //    console.log($box1);
+    //    $box1.prop({
+    //        index: 1,
+    //        class: 'w100'
+    //    });
+
+    //attr和 prop的区别：attr一般用来设置和操作元素的自定义属性的，而prop一般用来操作元素的内置属性（尤其是表单元素的操作，我们大部分都在使用prop）
+
+    //addClass/removeClass/toggleClass(toggle系列都是之前有就是移除，没有就是新增)
+
+    //jQuery(selector,context)context一般不需要传递，默认是document，但是我们也可以指定具体的上下文来获取需要的元素;
+    //和$('#box div)是一个意思
+    var $box=$('#box');
+    console.log($divList = $('div', $box));
+
+    //通过jQuery选择器获取到一个集合，然后让集合直接调用jQuery中提供的方法，相当于给每一个元素都调取了对应的方法（jQuery内置循环操作）
+//    console.log($divList.addClass('w1'));
+
+    //4.css
+    //offset 不管父级元素参照物是谁，获取当前元素距离body的偏移值（left/top）
+    //position 获取当前元素距离父级参照物的偏移
+    //width/height 获取或设置当前元素的width／height
+    //innerWidth/innerHeight 获取或设置元素可视区域的宽高（获取的时候等价于clientHeight／clientWidth，设置的时候保留padding的值，把width值进行改变）
+    //outerWidth/outerHeight 获取或设置元素的宽高，设置具体值的时候和上边的效果一样，如果传递进来的参数是true，默认把margin的值也计算在内了。
+
+
+    //filter
+</script>

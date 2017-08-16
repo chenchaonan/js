@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .outer {
+            position: relative;
+            width: 700px;
+            height: 300px;
+            border: 1px solid #e5e5e5;
+            margin: 0 auto;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+
+        .inner {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3500px;
+            clear: both;
+        }
+
+        .inner div {
+            float: left;
+            width: 700px;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<!--outer 轮播图片窗口-->
+<div id="outer" class="outer">
+    <!--inner 轮播图的容器-->
+    <div id="inner" class="inner">
+        <div><img src="./image/1.jpg" alt=""></div>
+        <div><img src="./image/2.jpg" alt=""></div>
+        <div><img src="./image/3.jpg" alt=""></div>
+        <div><img src="./image/4.jpg" alt=""></div>
+        <div><img src="./image/1.jpg" alt=""></div>
+    </div>
+</div>
+</body>
+</html>
+<script src="../utils.js"></script>
+<script src="animate3.js"></script>
+<script src="index.js"></script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+//1,交换值
+    let x=1,y=2;
+    [x,y]=[y,x];
+console.log(x, y);
+
+//2.函数的参数中使用
+    function fn([,b]) {
+        //[a,b]=[1,2]
+        console.log(b);
+    }
+    fn([1,2]);
+
+    function fn1([x,y=10]) {
+
+    }
+    fn1([1]);
+
+    function fn2(...arg) {
+        return arg
+    }
+
+console.log(fn2(1, 2, 3, 4, 5));
+
+
+    function fn3({x=0,y=0}={}) {
+        console.log(x, y);
+    }
+    function fn4({x,y}={x:0,y:0}) {
+        console.log(x, y);
+    }
+
+    fn3({});
+    fn4({});//{x,y}={}
+
+    fn3({x:10});//10,0
+    fn4({x:10});//10,undefined
+
+
+//形参赋值的是时候作用域是上一级的
+
+    let m1=3,m2=4;
+    function fn5(m1,m=m2) {
+        let m2=10;
+        console.log(m1, m2, m);
+    }
+    fn5(1);
+
+
+    setTimeout(fn5,2000,1,2)
+</script>

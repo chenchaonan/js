@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //构造函数模式：创建一个自定义类，以及实例
+    //类：本身就是函数。
+    var arr = new Array();//实例化创建
+
+    function Person() {
+
+    }
+    var person = new Person();//构造函数模式执行（new关键字），把person当作一个类，并且返回这个类实例。
+    console.log(typeof person);//实例都是对象数据类型
+    console.log(person);//普通函数执行
+
+    var person1 = new Person;//不传参数，括号可以省略
+    var person2 = new Person;
+    var person3 = new Person;
+    console.log(person1 === person2);//false 实例都是一个单独的个体
+
+
+    //instanceof 检测一个实例是否属于这个类，true和false。
+    //缺点：
+    console.log(person instanceof Person);
+    console.log([] instanceof Array);
+
+
+    //Object是基类
+    console.log(Array instanceof Object);//true
+    console.log(String instanceof Object);//true
+    console.log(RegExp instanceof Object);//true
+</script>

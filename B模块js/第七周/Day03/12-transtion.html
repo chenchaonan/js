@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;left:0;
+            -webkit-transition: all 0.5s linear;
+            -moz-transition: all 0.5s linear ;
+            -ms-transition: all 0.5s linear ;
+            -o-transition: all 0.5s linear ;
+            transition: all 0.5s linear ;
+        }
+        .active{
+            left: 600px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">改变</button>
+<div id="red"></div>
+</body>
+</html>
+<script>
+    var btn = document.getElementById('btn');
+    var red = document.getElementById('red');
+    btn.onclick = function () {
+        red.classList.toggle('active')
+    }
+</script>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>验证</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+//    var reg = /\d/;//0-9的任意数字
+//    var str = 'n1';
+//    console.log(reg.test(str));//true
+//    console.log(reg.test('aa'));//false
+//    console.log(reg.test('a1bbb'));//true
+//
+//    var reg1 = /^\d$/;//限定了出现的字符只能是0-9数字，而且出现一次
+//    var reg2 = /^\d\d$/;//限定了出现的字符只能是0-9数字，而且出现2次
+//    var str = 'n1';
+//    var reg = [a - z];
+//    var reg2 = /^[a-z]$/;//限制a-z之间的任意一个字符,以字母开头并以字母结尾
+//    var reg3 = /^[a-z]+$/;//验证的字符串只能是a-z，可以连续出现一到多次
+//    var reg4 = /[a-z]{2}/;//两个字母连续出现两次
+
+//    var reg=/^\d/;//验证的字符串以数字开头
+//    console.log(reg.test('12abc'));// true
+//    var reg2=/\d$/;//验证的字符要以数字结尾
+//    console.log(reg.test('22ad1'));//true
+//    console.log(reg.test('2efd'));//false
+
+//    var reg=/a|z/;//验证的字符不管在任何位置只要包含z或者z都成立
+//    console.log(reg.test('a123'));//true
+//    console.log(reg.test('12azf'));//true
+
+//    var reg=/^a|z$/;//要验证的字符以a开头或者以z结尾
+//    console.log(reg.test('a'));//true
+//    console.log(reg.test('a12'));//true
+//    console.log(reg.test('13z'));//true
+//    console.log(reg.test('a13z'));//true
+
+//    var reg=/^(a|z)$/;//只能是a或者z作为开头和结尾
+//    console.log(reg.test('a'));//true
+//    console.log(reg.test('z'));//true
+//    console.log(reg.test('az'));//false
+
+//    var reg = /^(a|z)/;//要验证的字符，是以a或z开头的字符
+//    console.log(reg.test('a12'));//true
+//    console.log(reg.test('123z'));//false
+
+
+
+
+    //1.匹配有效数字
+    /*
+    * 正数负数：(^[+-]?)
+    * 整数：多位数不能以0开头
+    * 0：
+    * 小数：（\.\d+—)? 最多出现一次或者不出现，？标示限制出现0-1次,利用括号改变优先级
+    * */
+//    var reg=/^[+-]?(\d|[1-9]\d+)(\.\d+)?$/;
+//
+//   // var reg2 = /[+-]?/;
+//
+//
+//    //2.手机号
+//    var reg2 = /^1(88|32|76)\d{8}$/;
+
+
+    //3.汉字 u4e00 Unicode编码
+
+//    var reg=/^[\u4e00-\u9fa5]{2,6}$/;
+
+    //4.[]
+    //[81] 不能识别多位数
+    //[12-36] 看作1或者2-3或者6
+
+    //18-65的两位数
+//    var reg=/^(1[89]|[2-5]\d|6[0-5])$/;//限定了只能是18-65
+
+    //28-56的两位数
+    //28-29 ^2[89]
+    //30-49 ^[3-4]\d
+    //50-56 ^5[0-6]
+
+//    var reg=/^(2[89]|[34]\d|5[0-6])$/;
+
+
+
+    //关于[]的细节
+    //部分元字符代表的是本身的意义[+] ==> '+',[?]==>'?',[.]==>'.'
+
+    //5.邮箱验证
+    var str='546563803@qq.com';
+    var reg=/^\w+@[0-9a-z]{2,8}(\.[a-z]{2,8}){1,2}$/;
+    console.log(reg.test(str));
+
+
+</script>

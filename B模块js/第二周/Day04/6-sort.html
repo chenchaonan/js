@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">切换</button>
+<ul id="oUl">
+    <li>22</li>
+    <li>33</li>
+    <li>11</li>
+    <li>55</li>
+    <li>33</li>
+</ul>
+</body>
+</html>
+<script src="utils.js"></script>
+<script>
+    var oLis = document.getElementsByTagName('li');
+    var btn = document.getElementById('btn');
+    //1.转换成数组
+    var listArray = utils.likeToArray(oLis);
+    console.log(listArray);
+    btn.flag = -1;//升降序标识
+    btn.onclick = function () {
+        this.flag *= -1;
+        var that = this;
+        listArray.sort(function (a, b) {
+            var p1 = a.innerHTML;
+            var p2 = b.innerHTML;
+            if (isNaN(p1)) {
+                return p1.localeCompare(p2) * that.flag;
+            }
+            return (p1 - p2) * that.flag
+        });
+        //将排好序的内容添加到文档碎片在添加到页面
+        var frg = document.createDocumentFragment();
+        for (var i = 0; i < listArray.length; i++) {
+            frg.appendChild(listArray[i]);
+        }
+        oUl.appendChild(frg)
+    }
+
+
+</script>

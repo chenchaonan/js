@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型继承</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //父类中有些属性方法，子类想吧父类中的属性方法继承过来，给子类的实例来使用。
+    //原型链继承就是把子类的原型作为父类的实例
+    //子类把父类中的私有和公有作为子类的原型属性
+    function A() {
+        this.a = 'a';
+        this.say = function () {
+            console.log('say');
+        }
+    }
+    A.prototype.mess = 'mess';
+    B.prototype = new A;//将子类的原型对象重构为父类A的实例。
+    B.prototype.constructor = B;
+    function B() {
+
+    }
+    var b1 = new B;
+    var b2 = new B;
+    console.log(b1);
+    console.log(b1.a);
+    console.log(b1.mess);
+    console.log(b1.say);
+    console.log(b1.say === b2.say);
+    console.log(B.prototype.__proto__ === A.prototype);
+    console.log(B.prototype.__proto__.mess = ' 被子类重写的mess');
+</script>

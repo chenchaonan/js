@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //支持正则
+//    var str = 'h1h1h1';
+//    //str = str.replace('1','2');
+//    //str = str.replace(/1/g,'2');
+//    str = str.replace(/\d/g, function (a) {
+//        console.log(arguments);
+//        /*
+//         * 第一个参数：匹配到的内容
+//         * 第二个参数：捕获到的索引位置
+//         * 第三个原始字符串
+//         * */
+//        //return 333;//return 的返回值就可以把大正的内容替换掉
+//        return 2 * a;
+//    });
+//    console.log(str);
+
+//    var str = '{01}--{02}--{03}--{04}';
+//    var reg = /\{(\d)(\d)\}/g;
+//    var str = str.replace(reg, function (a,b,c) {
+//        console.log(arguments);
+//        console.log(b);
+//        /*
+//         * 第一项大正则捕获到的内容
+//         * 从第二项开始是分组捕获到的内容；
+//         * 第三项是捕获到的索引位置
+//         * 第四项是原始字符串
+//         * */
+//        return c+''+b;
+//    });
+//    console.log(str);
+
+
+
+//    str1 = str.replace(reg, 'hello');
+//    console.log(str1);
+
+//    str2 = str.replace(reg, '$2$1');//$1第一个分组里捕获到的内容，$1-$9;
+//    console.log(str2);
+
+
+//    var str = 'zhufeng123zhufeng666';
+//    var reg = /(\d)/g;
+//    console.log(reg.exec(str));
+//    console.log(reg.exec(str));
+//    console.log(RegExp.$1);//获取到最近一次还捕获到的分组内容$1-$9
+
+
+
+    //方式一
+//    var str = '2017-01-01 18:00:40';
+//    var reg = /(\d+)-(\d+)-(\d+) (\d+):(\d+):(\d+)/
+//    str = str.replace(reg, '$1年$2月$3日$4时$5分$6秒');
+//    console.log(str);
+
+    //方式二
+//    var time=['年','月','日 ','时','分','秒'];
+//    var str = '2017-01-01 18:00:40';
+//    var n = 0;//用来记录索引
+//    var reg=/(\d+)[:-]?/g;
+//    str=str.replace(reg,function (a, b) {
+//        return b+time[n++]
+//    });
+//    console.log(str);
+
+
+    //方式三
+
+    //split拆分成数组，支持正则
+//    var time = ['年', '月', '日 ', '时', '分', '秒'];
+//    var str = '2017-01-01 18:00:40';
+//    var n = 0;
+//    var reg=/(\d+)[:-]?/g;
+//    //console.log(str.split(/[- :]/));
+//    var arr = str.split(/[- :]/);
+//    str = str.replace(reg, function () {
+//        var str2 = arr[n] + time[n];
+//        n++
+//    });
+//    console.log(str);
+
+    //方式四模版引擎
+//    var str = '2017-01-01 18:00:40';
+//    var tempStr='{0}年{1}月{2}日{3}时{4}分{5}秒';
+//    var arr=str.split(/[: -]/);
+//    //console.log(arr);
+//    str=tempStr.replace(/\{(\d+)\}/g,function (a, b) {
+//        return arr[b]
+//    })
+//    console.log(str);
+
+
+
+    //查询字符串
+    httpStr='www.baidu.com/s?wd=replace&rsv_spt=1&rsv_iqid=0xb86e17800001e209&issp=1&f=8&rsv_bp=0&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=1&rsv_sug3=4&rsv_sug1=4&rsv_sug7=101'
+    function getUrlParam(url) {
+        var obj={};
+        var reg=/([^?&=])=(^?&=)/g;
+        url.replace(reg,function () {
+            obj[arguments[1]]=arguments[2];
+        });
+        return obj
+    }
+    console.log(getUrlParam(httpStr));
+</script>

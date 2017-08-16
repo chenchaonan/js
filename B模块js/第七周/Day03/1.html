@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script language="javascript">
+    try {
+        document.writeln("开始执行try块语句 ---> ")
+        document.writeln("还没有发生例外 ---> ")
+        alert((prompt("输入一个值：","")))
+    } catch(err) {
+        document.writeln("捕捉到例外，开始执行catch块语句 --->");
+        document.writeln("错误名称: " + err.name+" ---> ");
+        document.writeln("错误信息: " + err.message+" ---> ");
+    } finally {
+        document.writeln("开始执行finally块语句")
+    }
+
+
+
+    function Text() {
+        try {
+            alert((prompt("Enter JavaScript to uate:","")))
+        } catch(err) {
+            if(err.name == "SyntaxError") alert("Invalid expression")
+            else alert("Cannot uate")
+        }
+    }
+    Text();
+</script>
+</body>
+</html>

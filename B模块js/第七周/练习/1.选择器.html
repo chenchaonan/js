@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        ul > li{
+            width: 50px;
+            height: 50px;
+            background: orange;
+            float: left;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            margin: 10px;
+        }
+        ul :nth-child(1){
+            background: green;
+        }
+        ul :nth-of-type(1){
+            background: green;
+        }
+        ul p{
+            width: 100px;
+            height: 50px;
+            background: red;
+            margin: 10px;
+            line-height: 50px;
+            text-align: center;
+        }
+        ul :nth-child(2n){
+            background: pink;
+        }
+        ul :nth-child(2n+1){
+            background: green;
+        }
+        ul :empty{
+            width:100px;
+            height: 100px;
+            background: red;
+        }
+        ul :not(:nth-child(4)){
+            background: orange;
+        }
+        ul li[class$='zf']{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <li class="zf">1</li>
+    <li class="zf list">2</li>
+    <li class="list">3</li>
+    <li class="list1">4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+</ul>
+</body>
+</html>

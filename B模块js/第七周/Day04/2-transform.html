@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #oDiv {
+            width: 100px;
+            height: 100px;
+            margin: 50px auto;
+            background: red;
+            transition: all 0.5s linear;
+        }
+
+        #oDiv:hover {
+            /*transform: translate(200px);*/
+            /*transform: translate(100px, 200px);*/
+            /*transform: rotate(90deg);*/
+            /*transform-origin: left; !*指定变换基准点 默认center*!*/
+            /*transform: scale(1.5);*/
+            /*transform: skew(30deg);*/
+            /*!*transform: skew(0,45deg);*!*/
+            /*transform: skew(30deg,30deg);*/
+            -webkit-transform: translate(200px) scale(1.5) rotate(90deg) skew(45deg);
+            -moz-transform: translate(200px) scale(1.5) rotate(90deg) skew(45deg);
+            -ms-transform: translate(200px) scale(1.5) rotate(90deg) skew(45deg);
+            -o-transform: translate(200px) scale(1.5) rotate(90deg) skew(45deg);
+            transform: translate(200px) scale(1.5) rotate(90deg) skew(45deg);
+        }
+    </style>
+</head>
+<body>
+<div id="oDiv"></div>
+</body>
+</html>

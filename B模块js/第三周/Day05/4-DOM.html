@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+    <li id="li1">11</li>
+    <li id="li2">22</li>
+    <li id="li3">33</li>
+    <li>44</li>
+</ul>
+</body>
+</html>
+<script>
+    var list = document.getElementById('list');
+    var li3 = document.getElementById('li3');
+    //获取所有子元素节点
+//    function children(curEle) {
+//        var childNodes = curEle.childNodes;
+//        var eles = [];
+//        for (var i = 0; i < childNodes.length; i++) {
+//            var node = childNodes[i];
+//            if (node.nodeType === 1) {
+//                eles[eles.length] = node;
+//            }
+//        }
+//        return eles;
+//    }
+//    console.log(list.childNodes);
+//    console.log(children(list));
+
+
+    //    //    //获取上一个哥哥节点
+//
+//    function prev(curEle) {
+//        var p = curEle.previousSibling;
+//        while (p && p.nodeType !== 1) {
+//            p = p.previousSibling;
+//        }
+//        return p;
+//    }
+//
+//
+//    //获取所有哥哥元素节点
+//    function prevAll(curEle) {
+//        var p = prev(curEle);
+//        var arr = [];
+//        while (p) {
+//            if(p.nodeType===1){
+//                arr.unshift(p);
+//            }
+//            p=p.previousSibling;
+//        }
+//        return p;
+//    }
+//
+//    //获取下一个弟弟节点
+//    function next(curEle) {
+//        var n = curEle.nextSibling;
+//        while (n && n.nodeType !== 1) {
+//            n = n.nextSibling;
+//        }
+//        return n;
+//    }
+//
+//    //获取所有弟弟节点
+    function nextAll(curEle) {
+        var n = next(curEle);
+        var all = [];
+        while (n) {
+            all[all.length] = n;
+            n = next(n);
+        }
+        return all;
+    }
+//
+//    //sibling获取上下相邻两个兄弟;
+    function sibling(curEle) {
+        var p = prev(curEle);
+        var n = next(curEle);
+        var eles = [];
+        p && eles.push(p);
+        n && eles.push(n);
+        return eles;
+    }
+//
+//    //console.log(sibling('li3'));
+//
+//
+//    //siblings 所有兄弟节点
+//    function siblings(curEle) {
+//        prevAll(curEle).concat(nextAll(curEle));
+//    }
+//
+//
+//    //index 索引有几个哥哥索引就是几
+//    function index(curEle) {
+//        return prevAll(curEle).length
+//    }
+//
+//
+//    //获取第一个子元素
+//    function first(container) {
+//        var first = container.firstChild;
+//        while (first && first.nodeType !== 1) {
+//            first = first.nextSibling;
+//        }
+//        return first;
+//    }
+//
+//    //获取最后一个子元素
+//    function last(container) {
+//        var last = container.lastChild;
+//        if (last && last.nodeType !== 1) {
+//            last = prev(last);
+//        }
+//        return last;
+//    }
+//
+//    //insertBefore
+//    var li6 = document.createElement('li');
+//    li6.innerHTML = '66666';
+//    function prepend(newEle, container) {
+//        var one = first(container);
+//        if (one) {
+//            container.insertBefore(newEle, one);
+//            return;
+//        }
+//        container.appendChild(newEle);
+//    };
+
+
+    //insertAfter
+
+
+</script>

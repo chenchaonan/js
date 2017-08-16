@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>filter-find-children</title>
+</head>
+<body>
+<ul id="oUl">
+    <li>11</li>
+    <li class="li2">22</li></br><span class="li2">测试</span></li>
+    <li>33</li>
+    <li>44</li>
+</ul>
+</body>
+</html>
+<script src="jquery-1.11.3.js"></script>
+<script>
+    $(function () {
+        console.log($('#oUl').children('.li2'));//获取所有自元素
+        console.log($('#oUl').find('.li2'));//在后代元素中进行查找
+        console.log($('#oUl li').filter('.li2'));//过滤指定的类名
+        console.log($('#oUl li,span').filter('.li2'));
+        console.log($('*', '#oUl'));
+
+    })
+    //filter:同级过滤，（如果什么都不传就什么也得不到），通过选择器获取一个集合，在获取的内容中进行二次筛选
+    //find:后代过滤，如果不传就返回一个空集合
+    //children :子集过滤
+    //jQuery这个元素对象的私有属性中，叫做selector这个属性存储的值是当前本次查找的选择器的容器；context是当前本次查找的上下文。
+</script>

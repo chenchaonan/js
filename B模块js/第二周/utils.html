@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var utils = (function () {
+        function likeToArray(likeArray) {
+            try {
+                return [].slice.call(likeArray)
+            } catch (e) {
+                var arr = [];
+                for (var i = 0; i < likeArray.length; i++) {
+                    arr.push(likeArray[i]);
+                }
+                return arr
+            }
+        }
+
+        function jsonParser(jsonStr) {
+            return "JSON" in window ? JSON.parse(jsonStr) :eval('('+jsonStr+')')
+        }
+        return{
+            likeToArray:likeToArray,
+            jsonParse:jsonParser
+        }
+    })()
+</script>

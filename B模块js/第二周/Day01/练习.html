@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+</body>
+</html>
+<script>
+    function Fn(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    var Person = new Fn('chenchaonan', 26);
+    console.log(Person.__proto__.constructor);
+</script>

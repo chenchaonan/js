@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+    'use strict';
+    /*
+    console.log(a);
+    var a=0;
+    function a() {
+
+    }
+    console.log(a);
+    */
+    //let :1.没有变量提升 ,2.变量不能重复声明 3.虽然不进行量提升但是先回会把所有的变量过滤一遍,一旦不合法就直接报错了
+
+    //console.log(a);//报错
+    //let a=1;
+
+    function a() {
+     //'a' has already been declared
+    }
+
+    let b=1;
+    function fn() {
+        //console.log(b);//报错了
+        console.log(1);
+        let b=1;
+        let b=1;
+    }
+    //fn();
+
+
+    //const定义静态变量,定义之后不能改变
+    let a;
+    //const a;  不可以不赋值
+</script>
+Node应用由模块组成，采用CommonJS模块规范。
+根据这个规范，每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。
+AMD: 异步模块定义 常用require.js
+在 AMD 规范中的 require 函数与一般的 CommonJS中的 require 不同。由于动态检测依赖关系使加载异步，对于基于回调的 require 需求强烈。
+CMD中,常用sea.js，一个模块就是一个文件，格式为：
+define( factory );
+1. 对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。CMD 推崇 as lazy as possible.
+2. CMD 推崇依赖就近，AMD 推崇依赖前置
+
+ES6是新的语法规范

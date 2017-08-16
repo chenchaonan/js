@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*
+     * 作用链 在私有作用域中遇到一个变量，先看是不是私有变量（形参，私有作用域解析过的），如果不是，去上级作用域找，一直找到window。
+     * 如果window也没有就会报错，xxx is not defined。
+     *
+     * 上级作用域 就看当前作用域是在哪里定义的
+     *
+     * */
+    //    console.log(num); //undefined
+    //    var num=100;
+    //    function bar() {//此时的全局作用域是bar 私有作用的上级作用域
+    //        console.log(num);//100
+    //    }
+    //    bar();
+    //    console.log(num);//100
+
+
+    var num = 100;
+    function fn() {
+        var num = 50;
+        return function () {
+            //console.log(num);//50
+            var num = 60;
+            return function () {
+                console.log(num);
+            }
+        }
+    }
+    var f1 = fn();
+    console.log(f1);
+    var fe = f1();
+    console.log(fe);
+    fe();
+
+
+</script>

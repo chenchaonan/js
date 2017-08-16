@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>珠峰培训</title>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    console.log(String.prototype);
+
+    //includes 判断字符串中有没有指定字符,返回值 true/false
+    //第二个参数:开始查找的索引  负数默认就是0
+
+    let str="12345";
+    console.log(str.includes("5",2));
+
+    //startsWith/endsWith
+    //判断字符串是不是以什么开头或者结尾
+    //第二个参数:开始查找的索引
+
+    console.log(str.startsWith("1"));
+    console.log(str.startsWith("2",1));
+    console.log(str.endsWith("5"));
+    ///^ +| +$/
+    let str1="   aa  a  ad  d  ";
+    let str2="";
+    for (var i=0;i<str1.length;i++){
+        if(!str1.startsWith(" ",i)){
+            str2+=str1.substr(i,1);
+        }
+    }
+    console.log(str2);
+    //字符串的length属性只读不可写
+    //str1.length--
+
+
+    console.log(Object.getOwnPropertyDescriptor(str,"length"));
+    //repeat()
+
+    //小数:向下取整
+    console.log("abc".repeat(2.7));
+    //-0.4 :0
+
+
+</script>
